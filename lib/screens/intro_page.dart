@@ -1,14 +1,20 @@
-
 import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Intropage extends StatelessWidget {
+const Keys = "success";
+
+class Intropage extends StatefulWidget {
   const Intropage({super.key});
 
   @override
+  State<Intropage> createState() => _IntropageState();
+}
+
+class _IntropageState extends State<Intropage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         backgroundColor: Colors.white,
         body: SafeArea(
             child: Column(
@@ -17,10 +23,10 @@ class Intropage extends StatelessWidget {
               flex: 6,
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/intro.jpg'),
-                        fit: BoxFit.contain )),
+                        fit: BoxFit.contain)),
               ),
             ),
             Expanded(
@@ -30,34 +36,31 @@ class Intropage extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
                     const Text(
                       "IT'S TIME ",
                       style: TextStyle(
-                        fontFamily: 'custom',
+                          fontFamily: 'custom',
                           color: Colors.black,
-                          fontSize: 30 ,
+                          fontSize: 30,
                           fontWeight: FontWeight.w600),
                     ),
-                    Text(
+                    const Text(
                       "TO GET",
                       style: TextStyle(
-                        fontFamily: 'custom',
+                          fontFamily: 'custom',
                           color: Colors.black,
                           fontSize: 30,
                           fontWeight: FontWeight.w700),
                     ),
-                    Text(
+                    const Text(
                       "STRONGER",
                       style: TextStyle(
-                        fontFamily: 'custom', 
+                          fontFamily: 'custom',
                           color: Colors.black,
-                          fontSize: 30 ,
+                          fontSize: 30,
                           fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -65,15 +68,12 @@ class Intropage extends StatelessWidget {
                       width: 110,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (ctx) {
-                            return SignupScreen() ;
-                          }));
+                          checknext();
                         },
-                        child: Text(
+                        child: const Text(
                           "NEXT ",
                           style: TextStyle(
-                            fontFamily: 'custom',
+                              fontFamily: 'custom',
                               fontSize: 15,
                               color: Colors.black,
                               fontWeight: FontWeight.w600),
@@ -81,7 +81,7 @@ class Intropage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.red),
+                                side: const BorderSide(color: Colors.red),
                                 borderRadius: BorderRadius.circular(18))),
                       ),
                     )
@@ -91,5 +91,14 @@ class Intropage extends StatelessWidget {
             )
           ],
         )));
+  }
+
+  checknext() async {
+    final sharedpref = await SharedPreferences.getInstance();
+    await sharedpref.setBool(Keys, true);
+
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
+      return SignupScreen();
+    }));
   }
 }

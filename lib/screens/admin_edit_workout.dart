@@ -40,7 +40,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Workout"),
+        title: const Text("Add Workout"),
         backgroundColor: Colors.red[700],
       ),
       body: SingleChildScrollView(
@@ -70,13 +70,13 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             onPressed: () {
                               fromGallery();
                             },
-                            icon: Icon(Icons.camera_alt_rounded)))
+                            icon: const Icon(Icons.camera_alt_rounded)))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
-                Row(
+                const Row(
                   children: [
                     Text(
                       "Catagory",
@@ -97,14 +97,14 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             return null;
                           },
                           controller: _catagoryController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Workout Name",
@@ -121,14 +121,14 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             return null;
                           },
                           controller: _workoutnameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Body Part",
@@ -145,14 +145,14 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             return null;
                           },
                           controller: _bodypartController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Reps/Time",
@@ -173,13 +173,13 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10)
                           ],
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                           ),
                         ),
                       ],
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -190,11 +190,11 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                         onAddButtonClicked(context, widget.editmodel.id);
                       },
                       style: ElevatedButton.styleFrom(
-                          side: BorderSide(color: Colors.red),
+                          side: const BorderSide(color: Colors.red),
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18))),
-                      child: Text(
+                      child: const Text(
                         "Add",
                         style: TextStyle(
                             color: Colors.black,

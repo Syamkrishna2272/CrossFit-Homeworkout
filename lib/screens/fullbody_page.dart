@@ -256,7 +256,7 @@ class Fullbody extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.amber,
                           borderRadius: BorderRadius.circular(10)),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Row(
@@ -319,7 +319,7 @@ class Fullbody extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           
-                            side:  BorderSide(color: Colors.red),
+                            side:  const BorderSide(color: Colors.red),
                             backgroundColor: Colors.red[900], 
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18))),

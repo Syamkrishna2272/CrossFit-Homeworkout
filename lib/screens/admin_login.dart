@@ -53,7 +53,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   ),
                 ),
               ),
-              Text(
+              const Text(
                 "Admin",
                 style: TextStyle(
                   fontSize: 30,
@@ -88,6 +88,9 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           prefixIcon: Icon(Icons.account_box_sharp),
                           labelText: "Username:",
                           border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder( 
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                           labelStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
@@ -112,10 +115,13 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           fontWeight: FontWeight.w500,
                         ),
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.lock),
                           labelText: "Password:",
                           border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder( 
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                           labelStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
@@ -127,7 +133,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               ElevatedButton(
@@ -175,10 +181,10 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Text(
+              const Text(
                 "This is only for Admins",
                 style: TextStyle(
                   fontSize: 18,

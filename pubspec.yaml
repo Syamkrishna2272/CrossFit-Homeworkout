@@ -35,6 +35,7 @@ dependencies:
   image_picker: ^1.0.4
   cached_network_image: ^3.3.0
   lottie: ^2.6.0
+  shared_preferences: ^2.2.2
 
 
 dev_dependencies:
@@ -71,8 +72,23 @@ flutter:
     - assets/images/Leg.jpg
     - assets/images/abs.jpg
     - assets/images/abs2.jpg
+    - assets/images/advance chest.jpg
+    - assets/images/advance shoulder.jpg
+    - assets/images/advance biceps.webp
+    - assets/images/advance triceps.jpg
+    - assets/images/advance leg.jpg
+    - assets/images/advance wings.jpg
     - assets/animation/Animation - 1698144768477.json
     - assets/animation/Animation - 1698121902339.json
+    - assets/animation/Animation - 1700231163262.json
+    - assets/animation/Animation - 1700231657737.json
+    - assets/animation/Animation - 1700231795833.json
+    - assets/animation/Animation - 1700231997438.json
+    - assets/animation/Animation - 1700232157844.json
+    - assets/animation/Animation - 1700232285169.json
+    - assets/animation/Animation - 1700232403774.json
+    - assets/animation/Animation - 1700232503062.json
+    - assets/animation/Animation - 1700232636962.json
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

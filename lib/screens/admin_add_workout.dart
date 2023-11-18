@@ -31,7 +31,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Workout"),
+        title: const Text("Add Workout"),
         backgroundColor: Colors.red[700],
       ),
       body: SingleChildScrollView(
@@ -49,7 +49,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             fit: BoxFit.fill,
                             image: image1 != null
                                 ? FileImage(image1!)
-                                : AssetImage('assets/images/advanced.jpg')
+                                : const AssetImage('assets/images/advanced.jpg')
                                     as ImageProvider,
                           ),
                           color: Colors.amber,
@@ -64,16 +64,16 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             onPressed: () {
                               fromGallery();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.camera_alt_rounded,
                               color: Colors.white,
                             )))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
-                Row(
+                const Row(
                   children: [
                     Text(
                       "Catagory",
@@ -95,14 +95,17 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             return null;
                           },
                           controller: _catagoryController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder( 
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Workout Name",
@@ -120,14 +123,17 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             return null;
                           },
                           controller: _workoutnameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red), 
+                        ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Body Part",
@@ -145,14 +151,17 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             return null;
                           },
                           controller: _bodypartController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               "Reps/Time",
@@ -173,16 +182,19 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10)
                           ],
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                           ),
                         ),
                       ],
                     )),
-                SizedBox(
+                const SizedBox( 
                   height: 20,
                 ),
-                Container(
+                Container( 
                   width: 110,
                   height: 45,
                   child: ElevatedButton(
@@ -190,11 +202,11 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                         onAddButtonClicked(context);
                       },
                       style: ElevatedButton.styleFrom(
-                          side: BorderSide(color: Colors.red),
+                          side: const BorderSide(color: Colors.red),
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18))),
-                      child: Text(
+                      child: const Text(
                         "Add",
                         style: TextStyle(
                             color: Colors.black,
@@ -231,7 +243,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
       allClear();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          behavior: SnackBarBehavior.floating,
+          behavior: SnackBarBehavior.floating, 
           margin: EdgeInsets.all(10),
           backgroundColor: Colors.red,
           content: Text("Add Profile Picture ")));

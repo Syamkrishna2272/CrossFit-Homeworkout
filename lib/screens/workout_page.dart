@@ -1,4 +1,5 @@
 import 'package:cross_fit/screens/admin_login.dart';
+import 'package:cross_fit/screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner_page.dart';
 import 'package:cross_fit/screens/fullbody_page.dart';
 import 'package:cross_fit/screens/information_page.dart';
@@ -17,34 +18,34 @@ class Homeworkout extends StatelessWidget {
             backgroundColor: Colors.black,
             child: ListView(
               children: [
-                ListTile(
+                const ListTile(
                   leading: Icon(
                     Icons.info,
                   ),
                   iconColor: Colors.white,
                   title: Text("ABOUT", style: TextStyle(color: Colors.white)),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.receipt),
                   iconColor: Colors.white,
                   title: Text("PRIVACY & POLICY ",
                       style: TextStyle(color: Colors.white)),
                 ),
                 ListTile(
-                  leading: Icon(Icons.person),
+                  leading: const Icon(Icons.person),
                   iconColor: Colors.white,
-                  title: Text("PROFILE", style: TextStyle(color: Colors.white)),
+                  title: const Text("PROFILE", style: TextStyle(color: Colors.white)),
                   onTap: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (ctx) {
-                      return PersonalInfo();
+                      return const PersonalInfo();
                     }));
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.home),
+                  leading: const Icon(Icons.home),
                   iconColor: Colors.white,
-                  title: Text("ADMIN", style: TextStyle(color: Colors.white)),
+                  title: const Text("ADMIN", style: TextStyle(color: Colors.white)),
                   onTap: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (ctx) {
@@ -67,14 +68,10 @@ class Homeworkout extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (ctx) {
-                      return PersonalInfo();
+                      return const PersonalInfo();
                     }));
                   },
                   icon: const Icon(Icons.person)),
-              // IconButton(
-              //   onPressed: () {},
-              //   icon: const Icon(Icons.menu),
-              // ),
             ],
           )
         ],
@@ -118,7 +115,9 @@ class Homeworkout extends StatelessWidget {
                         "FULL BODY\n7x4 CHALLENGE ",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 22,
+                          backgroundColor: Colors.black38,
+                          fontFamily: 'custom',
+                          fontSize: 17,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -135,7 +134,8 @@ class Homeworkout extends StatelessWidget {
                 Text(
                   "BEGINNER",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontFamily: 'custom',
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: Colors.black),
                 ),
@@ -143,12 +143,12 @@ class Homeworkout extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             child: GestureDetector(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
-                  return beginner();
-                })); 
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return const beginner();
+                }));
               },
               child: Container(
                 height: 170,
@@ -176,33 +176,40 @@ class Homeworkout extends StatelessWidget {
               children: [
                 Text("ADVANCED",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontFamily: 'custom',
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: Colors.black)),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12),
-            child: Container(
-              height: 170,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                    image: AssetImage('assets/images/advanced.jpg'),
-                    fit: BoxFit.cover),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(2, 2),
-                    blurRadius: 4,
-                    spreadRadius: 3,
+              padding: const EdgeInsets.all(12),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                    return const advance();
+                  }));
+                },
+                child: Container(
+                  height: 170,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/images/advanced.jpg'),
+                        fit: BoxFit.cover),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(2, 2),
+                        blurRadius: 4,
+                        spreadRadius: 3,
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
+                ),
+              )),
         ],
       )),
     );

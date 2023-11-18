@@ -16,7 +16,7 @@ class Adminintropage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red[700],
-        title: Text("Admin"),
+        title: const Text("Admin"),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -43,7 +43,7 @@ class Adminintropage extends StatelessWidget {
                           fontWeight: FontWeight.w800),
                     ),
                     Text(
-                      "click on + icon ",
+                      "click on + icon ", 
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'SYAM',
@@ -67,7 +67,7 @@ class Adminintropage extends StatelessWidget {
                         final data = workoutList[index];
                         return Padding(
                           padding:
-                              EdgeInsets.only(left: 10, right: 10, top: 10),
+                              const EdgeInsets.only(left: 10, right: 10, top: 10),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.grey[400],
@@ -77,51 +77,51 @@ class Adminintropage extends StatelessWidget {
                             width: 200,
                             child: Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 15,
                                 ),
                                 Image(
                                     width: 130,
                                     image: FileImage(File(data.image))),
                                 Padding(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Category: ${data.catagory}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
                                         "Name: ${data.workoutname}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
                                         "Body Part: ${data.bodypart}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
                                         "Reps/Time: ${data.reps}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -132,58 +132,16 @@ class Adminintropage extends StatelessWidget {
                                             onPressed: () {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
-                                                      builder: (ctx) {
+                                                      builder: (ctx) { 
                                                 return Admineditworkoutpage(
                                                     editmodel: data);
                                               }));
                                             },
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.edit,
                                               color: Colors.green,
                                             ),
                                           ),
-                                          // IconButton(
-                                          //     onPressed: () {
-                                          //       if (data.id != null) {
-                                          //         showDialog(
-                                          //             context: context,
-                                          //             builder: (ctx1) {
-                                          //               return AlertDialog(
-                                          //                 title: Text(
-                                          //                     "do you want to delete?"),
-                                          //                 actions: [
-                                          //                   TextButton(
-                                          //                     onPressed: () {
-                                          //                       deleteAllworkout(
-                                          //                           data.id!);
-                                          //                       deleteButtonClickedYes(
-                                          //                           ctx);
-                                          //                       Navigator.of(
-                                          //                               context)
-                                          //                           .pop();
-                                          //                     },
-                                          //                     child:
-                                          //                         Text("Yes"),
-                                          //                   ),
-                                          //                   TextButton(
-                                          //                       onPressed: () {
-                                          //                         Navigator.of(
-                                          //                                 context)
-                                          //                             .pop();
-                                          //                       },
-                                          //                       child:
-                                          //                           Text("No"))
-                                          //                 ],
-                                          //               );
-                                          //             });
-                                          //       } else {
-                                          //         print("Unable to delete");
-                                          //       }
-                                          //     },
-                                          //     icon: Icon(
-                                          //       Icons.delete,
-                                          //       color: Colors.red,
-                                          //     ))
                                           IconButton(
                                             onPressed: () {
                                               print(
@@ -192,38 +150,34 @@ class Adminintropage extends StatelessWidget {
                                                 context: context,
                                                 builder: (ctx1) {
                                                   return AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                         "Do you want to delete?"),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () {
                                                           if (data.id != null) {
-                                                            deleteAllworkout(
-                                                                data.id!);
-                                                            deleteButtonClickedYes(
-                                                                ctx);
+                                                            deleteAllworkout(data.id!);
+                                                            deleteButtonClickedYes(ctx);
                                                           } else {
-                                                            print(
-                                                                "Unable to delete");
+                                                            print("Unable to delete");
                                                           }
-                                                          Navigator.of(context)
-                                                              .pop();
+                                                          Navigator.of(context) .pop();
                                                         },
-                                                        child: Text("Yes"),
+                                                        child: const Text("Yes"),
                                                       ),
                                                       TextButton(
                                                         onPressed: () {
                                                           Navigator.of(context)
                                                               .pop();
                                                         },
-                                                        child: Text("No"),
+                                                        child: const Text("No"),
                                                       ),
                                                     ],
                                                   );
                                                 },
                                               );
                                             },
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.delete,
                                               color: Colors.red,
                                             ),
@@ -239,7 +193,7 @@ class Adminintropage extends StatelessWidget {
                         );
                       },
                       separatorBuilder: (ctx, index) {
-                        return SizedBox(
+                        return const SizedBox(
                           height: 5,
                         );
                       },
@@ -257,7 +211,7 @@ class Adminintropage extends StatelessWidget {
                     return Adminaddworkoutpage();
                   }));
                 },
-                child: Icon(Icons.add),
+                child: const Icon(Icons.add),
               ),
             ),
           ],
@@ -267,7 +221,7 @@ class Adminintropage extends StatelessWidget {
   }
 
   deleteButtonClickedYes(ctx) {
-    ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
       content: Text("Successfully Deleted"),
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.all(10),

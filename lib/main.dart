@@ -1,5 +1,6 @@
 
 import 'package:cross_fit/db/model/data_model.dart';
+import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:cross_fit/screens/spalsh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -9,7 +10,9 @@ Future<void> main()async{
    WidgetsFlutterBinding.ensureInitialized();
    await Hive.initFlutter();
    Hive.registerAdapter(WorkoutmodelAdapter()); 
-   await Hive.openBox<Workoutmodel>('workout_db'); 
+   Hive.registerAdapter(signupmodelAdapter()); 
+   await Hive.openBox<Workoutmodel>('workout_db');
+   await Hive.openBox<signupmodel>('signup_db'); 
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
