@@ -17,6 +17,9 @@ Future<void> addWorkout(Workoutmodel value) async {               //Add all work
   print('value id ===${value.id}');
 }
 
+
+
+
 Future<void> getAllworkout() async {                              //Read all workout
   final workoutDB = await Hive.openBox<Workoutmodel>('workout_db');
   workoutListnotifier.value.clear();

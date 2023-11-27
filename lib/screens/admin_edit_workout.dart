@@ -25,6 +25,8 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
 
   final _repsController = TextEditingController();
 
+  final _descriptionController = TextEditingController();
+
   final GlobalKey<FormState> validation = GlobalKey<FormState>();
 
   @override
@@ -55,9 +57,8 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                     Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:FileImage(File(widget.editmodel.image))
-                          ),
+                              fit: BoxFit.fill,
+                              image: FileImage(File(widget.editmodel.image))),
                           color: Colors.amber,
                           borderRadius: BorderRadius.circular(8)),
                       width: 170,
@@ -177,6 +178,27 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             border: OutlineInputBorder(),
                           ),
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          textCapitalization: TextCapitalization.words,
+                          validator: (value) {
+                            if (value!.isEmpty || value == null) {
+                              return 'Enter Catagory';
+                            }
+                            return null;
+                          },
+                          controller: _catagoryController,
+                          decoration: const InputDecoration(
+                            hintText: "Category",
+                            contentPadding: EdgeInsets.symmetric(vertical: 50),
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
+                          ),
+                        ),
                       ],
                     )),
                 const SizedBox(
@@ -215,17 +237,19 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     final _workoutname = _workoutnameController.text.trim();
     final _bodypart = _bodypartController.text.trim();
     final _reps = _repsController.text.trim();
+    final _description = _descriptionController.text.trim();
 
     if (validation.currentState!.validate() && image != null) {
       final workout = Workoutmodel(
-        id: id,
+          id: id,
           catagory: _catagory,
           workoutname: _workoutname,
           bodypart: _bodypart,
           image: image!,
-          reps: _reps);
+          reps: _reps,
+          description: _description);
 
-      editAllworkout(id!,workout); 
+      editAllworkout(id!, workout);
       Navigator.of(context).pop();
     }
   }

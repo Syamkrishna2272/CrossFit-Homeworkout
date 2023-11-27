@@ -39,6 +39,7 @@ class PersonalInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
+                        
                         style: const TextStyle(color: Colors.white),
                         textCapitalization: TextCapitalization.words,
                         decoration: const InputDecoration(
@@ -126,7 +127,7 @@ class PersonalInfo extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (ctx) {
-                          return const Homeworkout();
+                          return  Homeworkout();
                         }));
                       },
                       style: ElevatedButton.styleFrom(

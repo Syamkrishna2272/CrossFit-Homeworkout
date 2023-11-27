@@ -73,7 +73,7 @@ class Adminintropage extends StatelessWidget {
                               color: Colors.grey[400],
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            height: 170,
+                            height: 190 ,
                             width: 200,
                             child: Row(
                               children: [
@@ -122,6 +122,16 @@ class Adminintropage extends StatelessWidget {
                                       Text(
                                         "Reps/Time: ${data.reps}",
                                         style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                        ), 
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        "Description: ${data.description}",
+                                        style: const TextStyle( 
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),

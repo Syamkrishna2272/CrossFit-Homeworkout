@@ -21,11 +21,15 @@ class Workoutmodel {
   @HiveField(5)
   final String image;
 
+  @HiveField(6)
+  final String? description;
+
   Workoutmodel(
       {required this.catagory,
       required this.workoutname,
       required this.bodypart,
       required this.reps,
       required this.image,
+      required this.description, 
       this.id});
 }

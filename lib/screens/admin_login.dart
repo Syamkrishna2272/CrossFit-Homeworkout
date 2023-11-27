@@ -2,6 +2,7 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admin_intro.dart';
 import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 
 class Adminloginpage extends StatefulWidget {
@@ -34,9 +35,9 @@ class _AdminloginpageState extends State<Adminloginpage> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (ctx) {
-                          return SignupScreen();
+                          return Homeworkout();
                         }),
-                      );
+                      ); 
                     },
                     icon: Icon(Icons.arrow_back),
                     iconSize: 30,
@@ -73,9 +74,9 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       child: TextFormField(
                         controller: _usernameController,
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value==null||value.isEmpty) {
                             return 'Enter username';
-                          }
+                          } 
                           return null;
                         },
                         style: const TextStyle(
@@ -104,7 +105,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       child: TextFormField(
                         controller: _passwordController,
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value==null||value.isEmpty) {
                             return 'Enter password';
                           }
                           return null;

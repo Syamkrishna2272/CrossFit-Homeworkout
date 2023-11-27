@@ -22,6 +22,7 @@ class WorkoutmodelAdapter extends TypeAdapter<Workoutmodel> {
       bodypart: fields[3] as String,
       reps: fields[4] as String,
       image: fields[5] as String,
+      description: fields[6] as String?,
       id: fields[0] as int?,
     );
   }
@@ -29,7 +30,7 @@ class WorkoutmodelAdapter extends TypeAdapter<Workoutmodel> {
   @override
   void write(BinaryWriter writer, Workoutmodel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class WorkoutmodelAdapter extends TypeAdapter<Workoutmodel> {
       ..writeByte(4)
       ..write(obj.reps)
       ..writeByte(5)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(6)
+      ..write(obj.description);
   }
 
   @override
