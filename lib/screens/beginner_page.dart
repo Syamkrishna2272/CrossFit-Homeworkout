@@ -1,12 +1,11 @@
 import 'package:cross_fit/screens/beginner_body_screen.dart';
-import 'package:cross_fit/screens/warm_up_page.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class beginner extends StatelessWidget {
   beginner({super.key});
   final List<Map<String, String>> BEGINNERBODYPART = [
-    {'title': 'Warm-Up', 'image': 'assets/images/warm-up-exercises.jpg'},
+    // {'title': 'Warm-Up', 'image': 'assets/images/warm-up-exercises.jpg'},
     {'title': 'Chest Beginner', 'image': 'assets/images/chest workout.webp'},
     {'title': 'Shoulder Beginner', 'image': 'assets/images/Shoulder.jpg'},
     {'title': 'Leg Beginner', 'image': 'assets/images/Leg.jpg'},
@@ -29,38 +28,42 @@ class beginner extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       switch (index) {
+                        // case 0:
+                        // Navigator.of(context)
+                        //     .push(MaterialPageRoute(builder: (ctx) {
+                        //   return warmUp();
+                        // }));
+                        // break;
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return warmUp();
+                            return Beginnerbodypage(
+                                bodypart:
+                                    BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
                         case 1:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                bodypart: BEGINNERBODYPART[index]['title'] ?? '');
+                                bodypart:
+                                    BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
                         case 2:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                bodypart: BEGINNERBODYPART[index]['title'] ?? '');
+                                bodypart:
+                                    BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
                         case 3:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                bodypart: BEGINNERBODYPART[index]['title'] ?? '');
-                          }));
-                          break;
-                        case 4:
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (ctx) {
-                            return Beginnerbodypage(
-                                bodypart: BEGINNERBODYPART[index]['title'] ?? '');
+                                bodypart:
+                                    BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
                       }
@@ -68,7 +71,8 @@ class beginner extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(BEGINNERBODYPART[index]['image'] ??
+                              image: AssetImage(BEGINNERBODYPART[index]
+                                      ['image'] ??
                                   'assets/images/warm-up-exercises.jpg'),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(8),

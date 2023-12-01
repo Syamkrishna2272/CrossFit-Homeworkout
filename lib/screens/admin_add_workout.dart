@@ -2,33 +2,37 @@ import 'dart:io';
 
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/data_model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cross_fit/screens/admin_intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'beginner_body_screen.dart';
 
 File? image1;
 String? image;
 
 class Adminaddworkoutpage extends StatefulWidget {
-  final List<Map<String, String>> workoutData = [
-    {'title': 'BEGINNER', 'bodyPart': 'BEGINNERBODYPART'},
-    {'title': 'ADVANCED', 'bodyPart': 'ADVANCEBODYPART'},
+  final List<Map<String,String>> workoutData = [
+    {'title': 'BEGINNER'},
+    {'title': 'ADVANCED'},
+
     // Add more data as needed
   ];
-  Adminaddworkoutpage({super.key});
 
-  get categories => null;
+  Adminaddworkoutpage({super.key});
 
   @override
   State<Adminaddworkoutpage> createState() => _AdminaddworkoutpageState();
 }
 
-class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
-  final _catagoryController = TextEditingController();
+class _AdminaddworkoutpageState 
+extends State<Adminaddworkoutpage> {
+  String? category;
+  final _categoryController = TextEditingController();
 
   final _workoutnameController = TextEditingController();
-
+ 
   final _bodypartController = TextEditingController();
 
   final _repsController = TextEditingController();
@@ -38,8 +42,6 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   final GlobalKey<FormState> validation = GlobalKey<FormState>();
 
   String? _selectedcategory;
-
-  get categories => null;
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +94,12 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                     child: Column(
                       children: [
                         DropdownButtonFormField<String>(
+                          
                           value: _selectedcategory,
                           onChanged: (String? value) {
                             setState(() {
                               _selectedcategory = value;
+                              print(_selectedcategory);
                             });
                           },
                           items: widget.workoutData
@@ -103,31 +107,16 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             return DropdownMenuItem<String>(
                               value: category['title'],
                               child: Text(category['title']!),
+                              
                             );
                           }).toList(),
+                          
                           decoration: const InputDecoration(
-                              hintText: "Category",
+                              labelText: "Category",
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.red))),
                         ),
-                        // TextFormField(
-                        //   textCapitalization: TextCapitalization.words,
-                        //   validator: (value) {
-                        //     if (value!.isEmpty || value == null) {
-                        //       return 'Enter Catagory';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   controller: _catagoryController,
-                        //   decoration: const InputDecoration(
-                        //     hintText: "Category",
-                        //     border: OutlineInputBorder(),
-                        //     enabledBorder: OutlineInputBorder(
-                        //       borderSide: BorderSide(color: Colors.red),
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 20,
                         ),
@@ -141,7 +130,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                           },
                           controller: _workoutnameController,
                           decoration: const InputDecoration(
-                            hintText: "Workout Name",
+                            labelText: "Workout Name",
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.red),
@@ -161,7 +150,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                           },
                           controller: _bodypartController,
                           decoration: const InputDecoration(
-                            hintText: "Body Parts",
+                            labelText: "Body Parts",
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.red),
@@ -184,7 +173,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             LengthLimitingTextInputFormatter(10)
                           ],
                           decoration: const InputDecoration(
-                            hintText: "Reps/Time",
+                            labelText: "Reps/Time",
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.red),
@@ -204,7 +193,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                           controller: _descriptionController,
                           textAlign: TextAlign.start,
                           decoration: const InputDecoration(
-                            hintText: "Description",
+                            labelText: "Description",
                             contentPadding: EdgeInsets.symmetric(vertical: 50),
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -246,15 +235,17 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   }
 
   Future<void> onAddButtonClicked(context) async {
-    final _catagory = _catagoryController.text.trim();
+    // final _category = _categoryController.text.trim();
     final _workoutname = _workoutnameController.text.trim();
     final _bodypart = _bodypartController.text.trim();
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 
+    print(_selectedcategory);
+
     if (validation.currentState!.validate() && image1 != null) {
       final workout = Workoutmodel(
-          catagory: _catagory,
+          category: _selectedcategory!,
           workoutname: _workoutname,
           bodypart: _bodypart,
           reps: _reps,
@@ -262,8 +253,33 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
           image: image!);
 
       await addWorkout(workout);
-
       Navigator.of(context).pop();
+          
+
+      // Navigator.push(context, MaterialPageRoute(builder: (ctx){
+      //   return Adminintropage();
+      // }));
+
+   
+      //   Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+      //     int index=0;
+      //     return Beginnerbodypage(
+      //        bodypart: [_bodypart],
+      //         category: _selectedcategory!);
+      //   }));
+      
+
+      // final selectedcategory = widget.workoutData
+      //     .firstWhere((category) => category['title'] == _selectedcategory);
+      // final bodyParts = [selectedcategory['bodyPart']];
+
+      // Navigator.push(context, MaterialPageRoute(builder: (ctx){
+      //   String bodyPart=BEGI['title']??'';
+      //   List<Exercise>exercise=getExercisesForBodypart(bodypart);
+      //   return Beginnerbodypage(bodypart: _bodypart,exerciseList:exercise);
+      // }));
+
+      
 
       allClear();
     } else {
@@ -286,7 +302,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   }
 
   allClear() {
-    _catagoryController.text = '';
+    _categoryController.text = '';
     _workoutnameController.text = '';
     _bodypartController.text = '';
     _repsController.text = '';

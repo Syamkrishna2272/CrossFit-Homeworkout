@@ -7,9 +7,14 @@ import '../db/functions/db_functions.dart';
 import '../db/model/data_model.dart';
 
 class Adminintropage extends StatelessWidget {
-  const Adminintropage({
-    Key? key, // Add the 'Key' parameter here
-  }) : super(key: key);
+ final String? selectedCategory;
+  // final List<Map<String, String>> workoutData = [
+  //   {'title': 'BEGINNER', 'bodyPart': 'BEGINNERBODYPART'},
+  //   {'title': 'ADVANCED', 'bodyPart': 'ADVANCEBODYPART'},
+  //   // Add more data as needed
+  // ];
+  Adminintropage({Key? key,this.selectedCategory}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class Adminintropage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          children: [
+          children: [ 
             const Expanded(
               flex: 2,
               child: Center(
@@ -43,7 +48,7 @@ class Adminintropage extends StatelessWidget {
                           fontWeight: FontWeight.w800),
                     ),
                     Text(
-                      "click on + icon ", 
+                      "click on + icon ",
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'SYAM',
@@ -66,14 +71,14 @@ class Adminintropage extends StatelessWidget {
                       itemBuilder: (ctx, index) {
                         final data = workoutList[index];
                         return Padding(
-                          padding:
-                              const EdgeInsets.only(left: 10, right: 10, top: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, top: 10),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.grey[400],
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            height: 190 ,
+                            height: 190,
                             width: 200,
                             child: Row(
                               children: [
@@ -90,7 +95,7 @@ class Adminintropage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Category: ${data.catagory}",
+                                        "Category: ${data.category}",
                                         style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
@@ -124,14 +129,14 @@ class Adminintropage extends StatelessWidget {
                                         style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
-                                        ), 
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
                                         "Description: ${data.description}",
-                                        style: const TextStyle( 
+                                        style: const TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -142,7 +147,7 @@ class Adminintropage extends StatelessWidget {
                                             onPressed: () {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
-                                                      builder: (ctx) { 
+                                                      builder: (ctx) {
                                                 return Admineditworkoutpage(
                                                     editmodel: data);
                                               }));
@@ -166,14 +171,19 @@ class Adminintropage extends StatelessWidget {
                                                       TextButton(
                                                         onPressed: () {
                                                           if (data.id != null) {
-                                                            deleteAllworkout(data.id!);
-                                                            deleteButtonClickedYes(ctx);
+                                                            deleteAllworkout(
+                                                                data.id!);
+                                                            deleteButtonClickedYes(
+                                                                ctx);
                                                           } else {
-                                                            print("Unable to delete");
+                                                            print(
+                                                                "Unable to delete");
                                                           }
-                                                          Navigator.of(context) .pop();
+                                                          Navigator.of(context)
+                                                              .pop();
                                                         },
-                                                        child: const Text("Yes"),
+                                                        child:
+                                                            const Text("Yes"),
                                                       ),
                                                       TextButton(
                                                         onPressed: () {
@@ -236,7 +246,7 @@ class Adminintropage extends StatelessWidget {
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.all(10),
       backgroundColor: Colors.red,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 1), 
     ));
   }
 }

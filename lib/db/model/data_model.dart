@@ -7,7 +7,7 @@ class Workoutmodel {
   int? id;
 
   @HiveField(1)
-  late final String catagory;
+  late final String category;
 
   @HiveField(2)
   late final String workoutname;
@@ -24,12 +24,16 @@ class Workoutmodel {
   @HiveField(6)
   final String? description;
 
+  // var workoutData;
+
   Workoutmodel(
-      {required this.catagory,
+      {required this.category,
       required this.workoutname,
       required this.bodypart,
       required this.reps,
       required this.image,
       required this.description, 
       this.id});
+
+ 
 }

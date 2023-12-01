@@ -1,9 +1,19 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+class Exercise{
+  final String name;
+  final String bodyPart;
+  final String category;
+
+  Exercise({required this.name,required this.bodyPart,required this.category});
+}
+
 class Beginnerbodypage extends StatelessWidget {
+
   final String bodypart;
 
-  const Beginnerbodypage({super.key,required this.bodypart});
+  Beginnerbodypage({super.key,required this.bodypart});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +21,18 @@ class Beginnerbodypage extends StatelessWidget {
       appBar: AppBar(
         title: Text(bodypart),
       ),
-      body: Center( 
-        // child: Text('Information or exercises related to $bodypart'),
-      ), 
+      // body: SafeArea(
+      //   child: 
+      //   // ListView.builder(
+      //   //   itemCount: exerciseList.length  ,
+      //   //   itemBuilder: (context,index){
+      //   //     return ListTile(
+      //   //       title: Text(exerciseList[index].name  )
+      //   //     );
+
+      //   // }
+      //   // )
+      //   ) 
     );
   }
 }

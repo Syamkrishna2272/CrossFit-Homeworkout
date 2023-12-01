@@ -8,6 +8,11 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Admineditworkoutpage extends StatefulWidget {
+  final List<Map<String, String>> workoutData = [
+    {'title': 'BEGINNER'},
+    {'title': 'ADVANCED'},
+    // Add more data as needed
+  ];
   Admineditworkoutpage({super.key, required this.editmodel});
 
   final Workoutmodel editmodel;
@@ -28,13 +33,15 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
   final _descriptionController = TextEditingController();
 
   final GlobalKey<FormState> validation = GlobalKey<FormState>();
+  String? _selectedcategory;
 
   @override
   void initState() {
-    _catagoryController.text = widget.editmodel.catagory;
+    _catagoryController.text = widget.editmodel.category;
     _workoutnameController.text = widget.editmodel.workoutname;
     _bodypartController.text = widget.editmodel.bodypart;
     _repsController.text = widget.editmodel.reps;
+    _descriptionController.text = widget.editmodel.description!;
     super.initState();
   }
 
@@ -77,66 +84,52 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                 const SizedBox(
                   height: 35,
                 ),
-                const Row(
-                  children: [
-                    Text(
-                      "Catagory",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
                 Form(
                     key: validation,
                     child: Column(
                       children: [
-                        TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Catagory';
-                            }
-                            return null;
+                        DropdownButtonFormField<String>(
+                          value: _selectedcategory,
+                          onChanged: (String? value) {
+                            setState(() {
+                              _selectedcategory = value;
+                              print(_selectedcategory);
+                            });
                           },
-                          controller: _catagoryController,
+                          items: widget.workoutData
+                              .map((Map<String, String> category) {
+                            return DropdownMenuItem<String>(
+                              value: category['title'],
+                              child: Text(category['title']!),
+                            );
+                          }).toList(),
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
+                              labelText: "Category",
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red))),
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        const Row(
-                          children: [
-                            Text(
-                              "Workout Name",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
                         TextFormField(
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Enter Your Age';
+                              return 'workout name';
                             }
                             return null;
                           },
                           controller: _workoutnameController,
                           decoration: const InputDecoration(
+                            labelText: "Workout name",
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
                           ),
                         ),
                         const SizedBox(
                           height: 20,
-                        ),
-                        const Row(
-                          children: [
-                            Text(
-                              "Body Part",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
-                            ),
-                          ],
                         ),
                         TextFormField(
                           validator: (value) {
@@ -147,20 +140,15 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                           },
                           controller: _bodypartController,
                           decoration: const InputDecoration(
+                            labelText: "Body Part",
                             border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
                           ),
                         ),
                         const SizedBox(
                           height: 20,
-                        ),
-                        const Row(
-                          children: [
-                            Text(
-                              "Reps/Time",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
-                            ),
-                          ],
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
@@ -176,6 +164,10 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                           ],
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
+                            labelText: "Reps/Time",
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -189,9 +181,9 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                             }
                             return null;
                           },
-                          controller: _catagoryController,
+                          controller: _descriptionController,
                           decoration: const InputDecoration(
-                            hintText: "Category",
+                            labelText: "Description",
                             contentPadding: EdgeInsets.symmetric(vertical: 50),
                             border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
@@ -233,7 +225,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
   }
 
   Future<void> onAddButtonClicked(context, int? id) async {
-    final _catagory = _catagoryController.text.trim();
+    // final _category = _catagoryController.text.trim();
     final _workoutname = _workoutnameController.text.trim();
     final _bodypart = _bodypartController.text.trim();
     final _reps = _repsController.text.trim();
@@ -242,7 +234,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     if (validation.currentState!.validate() && image != null) {
       final workout = Workoutmodel(
           id: id,
-          catagory: _catagory,
+          category: _selectedcategory!,
           workoutname: _workoutname,
           bodypart: _bodypart,
           image: image!,

@@ -15,6 +15,9 @@ class Adminloginpage extends StatefulWidget {
 class _AdminloginpageState extends State<Adminloginpage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  bool isUsernameEmpty=true;
+  bool isPasswordEmpty=true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
    @override
   void initState() {
@@ -67,12 +70,17 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               Form(
                 key: _formKey,
-                child: Column(
+                child: Column( 
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _usernameController,
+                        onChanged: (value){
+                          setState(() {
+                            isUsernameEmpty=value.isNotEmpty;
+                          });
+                        },
                         validator: (value) {
                           if (value==null||value.isEmpty) {
                             return 'Enter username';
@@ -85,12 +93,12 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           fontWeight: FontWeight.w500,
                         ),
                         textCapitalization: TextCapitalization.words,
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           prefixIcon: Icon(Icons.account_box_sharp),
                           labelText: "Username:",
                           border: OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder( 
-                          borderSide: BorderSide(color: Colors.red),
+                          borderSide: BorderSide(color: isUsernameEmpty !? Colors.red:Colors.blue),
                         ),
                           labelStyle: TextStyle(
                             color: Colors.black,

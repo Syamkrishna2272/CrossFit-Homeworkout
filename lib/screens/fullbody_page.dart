@@ -1,3 +1,5 @@
+
+import 'package:cross_fit/screens/warm_up_page.dart';
 import 'package:flutter/material.dart';
 
 class Fullbody extends StatelessWidget {
@@ -10,9 +12,9 @@ class Fullbody extends StatelessWidget {
         backgroundColor: Colors.redAccent[700],
         title: const Text("7x4 CHALLENGE"),
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Column(
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Column(
           children: [
             Container(
               width: double.infinity,
@@ -34,57 +36,7 @@ class Fullbody extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        spacing: 45,
-                        runSpacing: 30,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("1",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("2",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("3",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("4",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("5",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("6",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("7",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  buildWeekContainer(context),
                   const SizedBox(
                     height: 15,
                   ),
@@ -95,57 +47,7 @@ class Fullbody extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        spacing: 45,
-                        runSpacing: 30,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("1",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("2",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("3",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("4",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("5",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("6",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("7",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  buildWeekContainer(context),
                   const SizedBox(
                     height: 15,
                   ),
@@ -156,57 +58,7 @@ class Fullbody extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        spacing: 45,
-                        runSpacing: 30,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("1",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("2",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("3",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("4",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("5",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("6",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("7",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  buildWeekContainer(context),
                   const SizedBox(
                     height: 15,
                   ),
@@ -217,84 +69,52 @@ class Fullbody extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        spacing: 45,
-                        runSpacing: 30,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("1",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("2",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("3",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("4",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("5",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("6",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Text("7",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // ElevatedButton(
-                      //   onPressed: () {},
-                      //   style: ElevatedButton.styleFrom(
-
-                      //       side:  const BorderSide(color: Colors.red),
-                      //       backgroundColor: Colors.red[900],
-                      //       shape: RoundedRectangleBorder(
-                      //           borderRadius: BorderRadius.circular(18))),
-                      //   child: const Text(
-                      //     "GO",
-                      //     style: TextStyle(
-                      //         fontFamily: 'SYAM',
-                      //         color: Colors.white,
-                      //         fontSize: 15,
-                      //         fontWeight: FontWeight.w600),
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                  buildWeekContainer(context),
                 ],
               ),
             )
           ],
-        )),
+        ),
+      )),
+    );
+  }
+
+  
+
+  buildWeekContainer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 150,
+      decoration: BoxDecoration(
+        color: Colors.amber,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Wrap(
+          spacing: 45,
+          runSpacing: 30,
+          children: List.generate(
+            7,
+            (index) => GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (ctx) {
+                    return warmUp();
+                  }),
+                );
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.grey,
+                child: Text(
+                  (index + 1).toString(),
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
