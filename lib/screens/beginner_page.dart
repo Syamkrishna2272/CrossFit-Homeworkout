@@ -1,6 +1,7 @@
+import 'package:cross_fit/db/functions/beginner_function.dart';
 import 'package:cross_fit/screens/beginner_body_screen.dart';
 import 'package:flutter/material.dart';
-
+List chestlist = [];
 // ignore: camel_case_types
 class beginner extends StatelessWidget {
   beginner({super.key});
@@ -11,6 +12,7 @@ class beginner extends StatelessWidget {
     {'title': 'Leg Beginner', 'image': 'assets/images/Leg.jpg'},
     {'title': 'Abs Beginner', 'image': 'assets/images/abs2.jpg'},
   ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +23,27 @@ class beginner extends StatelessWidget {
       ),
       body: SafeArea(
           child: ListView.builder(
-              itemCount: BEGINNERBODYPART.length,
+              itemCount: 4,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8),
                   child: GestureDetector(
                     onTap: () {
                       switch (index) {
-                        // case 0:
-                        // Navigator.of(context)
-                        //     .push(MaterialPageRoute(builder: (ctx) {
-                        //   return warmUp();
-                        // }));
-                        // break;
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
+                                chest:chestlist, 
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
-                        case 1:
+                        case 1: 
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
+                                chest: [],
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
@@ -54,6 +52,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
+                                chest:[],
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
@@ -62,6 +61,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
+                                chest:[],
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));

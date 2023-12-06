@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:cross_fit/db/functions/beginner_function.dart';
+import 'package:cross_fit/db/model/beginner_data_model.dart';
 import 'package:cross_fit/screens/admin_add_workout.dart';
 import 'package:cross_fit/screens/admin_edit_workout.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +9,13 @@ import '../db/functions/db_functions.dart';
 import '../db/model/data_model.dart';
 
 class Adminintropage extends StatelessWidget {
- final String? selectedCategory;
+  final String? selectedCategory;
   // final List<Map<String, String>> workoutData = [
   //   {'title': 'BEGINNER', 'bodyPart': 'BEGINNERBODYPART'},
   //   {'title': 'ADVANCED', 'bodyPart': 'ADVANCEBODYPART'},
   //   // Add more data as needed
   // ];
-  Adminintropage({Key? key,this.selectedCategory}) : super(key: key);
-  
+  Adminintropage({Key? key, this.selectedCategory}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class Adminintropage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          children: [ 
+          children: [
             const Expanded(
               flex: 2,
               child: Center(
@@ -173,6 +174,7 @@ class Adminintropage extends StatelessWidget {
                                                           if (data.id != null) {
                                                             deleteAllworkout(
                                                                 data.id!);
+                                                                deletebeginner( data.id!);
                                                             deleteButtonClickedYes(
                                                                 ctx);
                                                           } else {
@@ -202,6 +204,12 @@ class Adminintropage extends StatelessWidget {
                                               color: Colors.red,
                                             ),
                                           ),
+                                          TextButton(
+                                              onPressed: () {
+                                                var a=Beginnermodel([], [], [], [], data.id, data.image,data.description);
+                                                AddbeginnerWorkout(a);
+                                              },
+                                              child: Text("Add "))
                                         ],
                                       ),
                                     ],
@@ -246,7 +254,7 @@ class Adminintropage extends StatelessWidget {
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.all(10),
       backgroundColor: Colors.red,
-      duration: Duration(seconds: 1), 
+      duration: Duration(seconds: 1),
     ));
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cross_fit/db/functions/beginner_function.dart';
 import 'package:cross_fit/screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner_page.dart';
@@ -16,6 +17,7 @@ class Homeworkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getbeginnerWorkout();
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: SizedBox(
@@ -98,7 +100,7 @@ class Homeworkout extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(
-                        left: 10, right: 10, bottom: 25, top: 18),
+                        left: 10, right: 10, bottom: 20, top: 18),
                     child: GestureDetector(
                       onTap: () {
                         if (index == 0) {

@@ -10,6 +10,7 @@ class Advancebodypage extends StatelessWidget {
       appBar: AppBar(
         title: Text(bodypart),
       ),
+       
     );
   }
 }

@@ -14,28 +14,28 @@ Future<void> addWorkout(Workoutmodel value) async {
   final workoutDB = await Hive.openBox<Workoutmodel>('workout_db');
   final id1 = await workoutDB.add(value);
   value.id = id1;
-  workoutDB.put(id1, value);
+  workoutDB.put(id1, value);  
   getAllworkout();
   print('value id ===${value.id}');
 }
 
-Future<List<Workoutmodel>> getWorkoutsByCategory(String category) async {
-  try {
-    var box = await Hive.openBox<Workoutmodel>('workout_db');
-    List<Workoutmodel> workouts = [];
+// Future<List<Workoutmodel>> getWorkoutsByCategory(String category) async {
+//   try {
+//     var box = await Hive.openBox<Workoutmodel>('workout_db');
+//     List<Workoutmodel> workouts = [];
 
-    for (var i = 0; i < box.length; i++) {
-      Workoutmodel workout = box.getAt(i)!;
-      if (workout.category == category) {
-        workouts.add(workout);
-      }
-    }
-    return workouts;
-  } catch (e) {
-    print('Error fetching workouts: $e');
-    return [];
-  }
-}
+//     for (var i = 0; i < box.length; i++) {
+//       Workoutmodel workout = box.getAt(i)!;
+//       if (workout.category == category) {
+//         workouts.add(workout);
+//       }
+//     }
+//     return workouts;
+//   } catch (e) {
+//     print('Error fetching workouts: $e');
+//     return [];
+//   }
+// }
 
 Future<void> getAllworkout() async {
   //Read all workout
