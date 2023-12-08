@@ -17,19 +17,24 @@ class AdvancemodelAdapter extends TypeAdapter<Advancemodel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Advancemodel(
-      fields[1] as String,
-      fields[2] as String,
-      fields[3] as String,
-      fields[4] as String,
-      fields[5] as String,
-      fields[6] as String,
-    )..id = fields[0] as int?;
+      (fields[1] as List?)?.cast<dynamic>(),
+      (fields[2] as List?)?.cast<dynamic>(),
+      (fields[3] as List?)?.cast<dynamic>(),
+      (fields[4] as List?)?.cast<dynamic>(),
+      (fields[5] as List?)?.cast<dynamic>(),
+      (fields[6] as List?)?.cast<dynamic>(),
+      fields[0] as int?,
+      fields[7] as String?,
+      fields[9] as String?,
+      fields[8] as String?,
+      fields[10] as String?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, Advancemodel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -43,7 +48,15 @@ class AdvancemodelAdapter extends TypeAdapter<Advancemodel> {
       ..writeByte(5)
       ..write(obj.Leg)
       ..writeByte(6)
-      ..write(obj.Wings);
+      ..write(obj.Wings)
+      ..writeByte(7)
+      ..write(obj.image)
+      ..writeByte(8)
+      ..write(obj.description)
+      ..writeByte(9)
+      ..write(obj.reps)
+      ..writeByte(10)
+      ..write(obj.workoutname);
   }
 
   @override

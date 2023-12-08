@@ -1,6 +1,15 @@
 
+import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/advance_body_screen.dart';
+import 'package:cross_fit/screens/beginner_page.dart';
 import 'package:flutter/material.dart';
+
+List AdChestlist=[];
+List AdShoulderlist=[];
+List AdBicepslist=[];
+List AdTricepslist=[];
+List AdLeglist=[];
+List AdWingslist=[];
 
 // ignore: camel_case_types
 class advance extends StatelessWidget {
@@ -17,6 +26,7 @@ class advance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getAllworkout();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
@@ -35,6 +45,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest: AdChestlist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));
@@ -43,6 +54,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest: AdShoulderlist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));
@@ -51,6 +63,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest:AdBicepslist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));
@@ -59,6 +72,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest: AdTricepslist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));
@@ -67,6 +81,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest: AdLeglist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));
@@ -75,6 +90,7 @@ class advance extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Advancebodypage(
+                              chest: AdWingslist,
                                 bodypart:
                                     ADVANCEBODYPART[index]['title'] ?? '');
                           }));

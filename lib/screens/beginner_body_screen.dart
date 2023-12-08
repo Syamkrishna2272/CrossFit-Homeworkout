@@ -13,8 +13,6 @@ class Exercise {
   });
 }
 
-
-
 class Beginnerbodypage extends StatelessWidget {
   List chest;
   final String bodypart;
@@ -23,50 +21,46 @@ class Beginnerbodypage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(chest);
     getbeginnerWorkout();
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(bodypart),
         ),
-        body: ListView.separated(
+        body: 
+        ListView.separated(
             itemBuilder: ((context, index) {
               final data = chest[index];
-
               return Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  height: 190,
-                  width: 200,
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Image(width: 130, image: FileImage(File(data.image))),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Description: ${data.description}",
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(width: 200, image: FileImage(File(data.image))),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Name: ${data.workoutname}",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'custom'),
                         ),
-                      ),
-                    ],
-                  ),
+                        Text("Reps : ${data.reps}",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'custom')),
+                        Text(" ${data.description}",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'custom'))
+                      ],
+                    ),
+                  ],
                 ),
               );
             }),
@@ -74,18 +68,6 @@ class Beginnerbodypage extends StatelessWidget {
               return SizedBox();
             },
             itemCount: chest.length)
-        // body: SafeArea(
-        //   child:
-        //   // ListView.builder(
-        //   //   itemCount: exerciseList.length  ,
-        //   //   itemBuilder: (context,index){
-        //   //     return ListTile(
-        //   //       title: Text(exerciseList[index].name  )
-        //   //     );
-
-        //   // }
-        //   // )
-        //   )
-        );
+            );
   }
 }

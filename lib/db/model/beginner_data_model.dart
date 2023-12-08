@@ -25,6 +25,12 @@ class Beginnermodel {
   @HiveField(6)
    String? description;
 
+   @HiveField(7)
+   String? reps;
+ 
+   @HiveField(8)
+    String? workoutname;
+
   Beginnermodel(this.Chestbeginner, this.Shoulderbeginner, this.Legbeginenr,
-      this.Absbeginner, this.id, this.image, this.description);
+      this.Absbeginner, this.id, this.image, this.description,this.reps, this.workoutname);
 }

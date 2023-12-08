@@ -13,7 +13,7 @@ File? image1;
 String? image;
 
 class Adminaddworkoutpage extends StatefulWidget {
-  final List<Map<String,String>> workoutData = [
+  final List<Map<String, String>> workoutData = [
     {'title': 'BEGINNER'},
     {'title': 'ADVANCED'},
 
@@ -26,13 +26,12 @@ class Adminaddworkoutpage extends StatefulWidget {
   State<Adminaddworkoutpage> createState() => _AdminaddworkoutpageState();
 }
 
-class _AdminaddworkoutpageState 
-extends State<Adminaddworkoutpage> {
+class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   String? category;
   final _categoryController = TextEditingController();
 
   final _workoutnameController = TextEditingController();
- 
+
   final _bodypartController = TextEditingController();
 
   final _repsController = TextEditingController();
@@ -94,7 +93,6 @@ extends State<Adminaddworkoutpage> {
                     child: Column(
                       children: [
                         DropdownButtonFormField<String>(
-                          
                           value: _selectedcategory,
                           onChanged: (String? value) {
                             setState(() {
@@ -107,10 +105,8 @@ extends State<Adminaddworkoutpage> {
                             return DropdownMenuItem<String>(
                               value: category['title'],
                               child: Text(category['title']!),
-                              
                             );
                           }).toList(),
-                          
                           decoration: const InputDecoration(
                               labelText: "Category",
                               border: OutlineInputBorder(),
@@ -254,32 +250,6 @@ extends State<Adminaddworkoutpage> {
 
       await addWorkout(workout);
       Navigator.of(context).pop();
-          
-
-      // Navigator.push(context, MaterialPageRoute(builder: (ctx){
-      //   return Adminintropage();
-      // }));
-
-   
-      //   Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-      //     int index=0;
-      //     return Beginnerbodypage(
-      //        bodypart: [_bodypart],
-      //         category: _selectedcategory!);
-      //   }));
-      
-
-      // final selectedcategory = widget.workoutData
-      //     .firstWhere((category) => category['title'] == _selectedcategory);
-      // final bodyParts = [selectedcategory['bodyPart']];
-
-      // Navigator.push(context, MaterialPageRoute(builder: (ctx){
-      //   String bodyPart=BEGI['title']??'';
-      //   List<Exercise>exercise=getExercisesForBodypart(bodypart);
-      //   return Beginnerbodypage(bodypart: _bodypart,exerciseList:exercise);
-      // }));
-
-      
 
       allClear();
     } else {

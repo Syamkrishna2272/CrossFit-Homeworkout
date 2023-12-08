@@ -1,7 +1,11 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
+import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/beginner_body_screen.dart';
 import 'package:flutter/material.dart';
 List chestlist = [];
+List shoulderlist=[];
+List leglist=[];
+List abslist=[];
 // ignore: camel_case_types
 class beginner extends StatelessWidget {
   beginner({super.key});
@@ -16,6 +20,8 @@ class beginner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getAllworkout();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
@@ -43,7 +49,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest: [],
+                                chest: shoulderlist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
@@ -52,7 +58,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest:[],
+                                chest:leglist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
@@ -61,7 +67,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest:[],
+                                chest:abslist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
