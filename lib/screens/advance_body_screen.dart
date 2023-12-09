@@ -13,7 +13,8 @@ class Advancebodypage extends StatelessWidget {
     print(chest);
     getAdvanceworkout();
     return Scaffold(
-      appBar: AppBar(
+      backgroundColor: Colors.white,
+      appBar: AppBar( 
         title: Text(bodypart),
       ),
       body: ListView.separated(

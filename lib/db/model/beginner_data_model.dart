@@ -7,30 +7,37 @@ class Beginnermodel {
   int? id;
 
   @HiveField(1)
-   List? Chestbeginner;
+  List? Chestbeginner;
 
   @HiveField(2)
-   List? Shoulderbeginner;
+  List? Shoulderbeginner;
 
   @HiveField(3)
-   List? Legbeginenr;
+  List? Legbeginenr;
 
   @HiveField(4)
-   List? Absbeginner;
- 
+  List? Absbeginner;
 
   @HiveField(5)
-   String? image;
+  String? image;
 
   @HiveField(6)
-   String? description;
+  String? description;
 
-   @HiveField(7)
-   String? reps;
- 
-   @HiveField(8)
-    String? workoutname;
+  @HiveField(7)
+  String? reps;
 
-  Beginnermodel(this.Chestbeginner, this.Shoulderbeginner, this.Legbeginenr,
-      this.Absbeginner, this.id, this.image, this.description,this.reps, this.workoutname);
+  @HiveField(8)
+  String? workoutname;
+
+  Beginnermodel(
+      this.Chestbeginner,
+      this.Shoulderbeginner,
+      this.Legbeginenr,
+      this.Absbeginner,
+      this.id,
+      this.image,
+      this.description,
+      this.reps,
+      this.workoutname);
 }

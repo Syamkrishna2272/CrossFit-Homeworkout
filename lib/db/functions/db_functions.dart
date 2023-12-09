@@ -16,7 +16,7 @@ Future<void> addWorkout(Workoutmodel value) async {
   value.id = id1;
   workoutDB.put(id1, value);
   getAllworkout();
-  print('value id ===${value.id}');
+  print('value id ===${value.id}'); 
 }
 
 Future<void> getAllworkout() async {
@@ -38,6 +38,7 @@ Future<void> deleteAllworkout(int id) async {
 Future<void> editAllworkout(int id, Workoutmodel value) async {
   //Edit workout
   final workoutDB = await Hive.openBox<Workoutmodel>('workout_db');
+
   // await workoutDB.
 
   await workoutDB.put(id, value);

@@ -156,9 +156,7 @@ class Adminintropage extends StatelessWidget {
                                             ),
                                           ),
                                           IconButton(
-                                            onPressed: () {
-                                              print(
-                                                  ' delete id======== ${data.id}');
+                                            onPressed: () {                                             
                                               showDialog(
                                                 context: context,
                                                 builder: (ctx1) {
@@ -167,11 +165,15 @@ class Adminintropage extends StatelessWidget {
                                                         "Do you want to delete?"),
                                                     actions: [
                                                       TextButton(
+                                                        
                                                         onPressed: () {
                                                           if (data.id != null) {
                                                             deleteAllworkout(
                                                                 data.id!);
                                                             deletebeginner(
+                                                                data.id!, data);
+                                                                print('pass id==${data.id}');
+                                                            deleteadvance(
                                                                 data.id!, data);
                                                             deleteButtonClickedYes(
                                                                 ctx);
@@ -232,9 +234,6 @@ class Adminintropage extends StatelessWidget {
                                                 Advanceworkoutchecking(data, b);
                                               },
                                               child: Text("ADD")),
-                                          // TextButton(
-                                          //     onPressed: () {},
-                                          //     child: Text("A"))
                                         ],
                                       ),
                                     ],

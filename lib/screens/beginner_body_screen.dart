@@ -57,7 +57,13 @@ class Beginnerbodypage extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                fontFamily: 'custom'))
+                                fontFamily: 'custom')),
+
+                                Text(" ${data.id}",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'custom')),
                       ],
                     ),
                   ],

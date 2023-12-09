@@ -1,4 +1,3 @@
-
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admin_intro.dart';
 import 'package:cross_fit/screens/signup_page.dart';
@@ -16,14 +15,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool isUsernameEmpty=true;
-  bool isPasswordEmpty=true;
+  bool isUsernameEmpty = true;
+  bool isPasswordEmpty = true;
+  bool formSubmitted = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-   @override
+  @override
   void initState() {
     getAllworkout();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         MaterialPageRoute(builder: (ctx) {
                           return Homeworkout();
                         }),
-                      ); 
+                      );
                     },
                     icon: Icon(Icons.arrow_back),
                     iconSize: 30,
@@ -70,21 +71,24 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               Form(
                 key: _formKey,
-                child: Column( 
+                child: Column(
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _usernameController,
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            isUsernameEmpty=value.isNotEmpty;
+                            isUsernameEmpty = value.isEmpty;
+                            if (formSubmitted) {
+                              _formKey.currentState?.validate();
+                            }
                           });
                         },
                         validator: (value) {
-                          if (value==null||value.isEmpty) {
+                          if (value == null || value.isEmpty) {
                             return 'Enter username';
-                          } 
+                          }
                           return null;
                         },
                         style: const TextStyle(
@@ -93,13 +97,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           fontWeight: FontWeight.w500,
                         ),
                         textCapitalization: TextCapitalization.words,
-                        decoration:  InputDecoration(
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_box_sharp),
                           labelText: "Username:",
                           border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder( 
-                          borderSide: BorderSide(color: isUsernameEmpty !? Colors.red:Colors.blue),
-                        ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: isUsernameEmpty!
+                                    ? Colors.red
+                                    : Colors.blue),
+                          ),
                           labelStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
@@ -112,8 +119,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _passwordController,
+                        onChanged: (value) {
+                          setState(() {
+                            isPasswordEmpty = value.isEmpty;
+                            if (formSubmitted) {
+                              _formKey.currentState?.validate();
+                            }
+                          });
+                        },
                         validator: (value) {
-                          if (value==null||value.isEmpty) {
+                          if (value == null || value.isEmpty) {
                             return 'Enter password';
                           }
                           return null;
@@ -124,13 +139,17 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           fontWeight: FontWeight.w500,
                         ),
                         keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock),
                           labelText: "Password:",
                           border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder( 
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: isPasswordEmpty || !formSubmitted
+                                  ? Colors.red
+                                  : Colors.blue,
+                            ),
+                          ),
                           labelStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
@@ -147,19 +166,19 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               ElevatedButton(
                 onPressed: () {
+                   Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                        return Adminintropage();
+                      }));
                   // if (_formKey.currentState!.validate()) {
                   //   if (_usernameController.text == 'Admin' &&
                   //       _passwordController.text == '1234') {
                   //     Navigator.of(context)
                   //         .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                  //       return Adminintropage(); 
+                  //       return Adminintropage();
                   //     }));
                   //   }
                   // }
-                  Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                        return Adminintropage(); 
-                      }));
                   //  else
                   //   showDialog(
                   //       context: context,

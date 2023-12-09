@@ -10,7 +10,6 @@ List abslist=[];
 class beginner extends StatelessWidget {
   beginner({super.key});
   final List<Map<String, String>> BEGINNERBODYPART = [
-    // {'title': 'Warm-Up', 'image': 'assets/images/warm-up-exercises.jpg'},
     {'title': 'Chest Beginner', 'image': 'assets/images/chest workout.webp'},
     {'title': 'Shoulder Beginner', 'image': 'assets/images/Shoulder.jpg'},
     {'title': 'Leg Beginner', 'image': 'assets/images/Leg.jpg'},
@@ -21,6 +20,7 @@ class beginner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     getAllworkout();
+
 
     return Scaffold(
       appBar: AppBar(
