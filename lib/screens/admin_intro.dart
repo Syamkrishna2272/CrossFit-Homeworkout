@@ -19,34 +19,34 @@ class Adminintropage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         backgroundColor: Colors.red[700],
         title: const Text("Admin"),
-        centerTitle: true,
+        centerTitle: true, 
         actions: [
-          IconButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (ctx) {
-                      return AlertDialog(
-                        content: Text("Do you want to logout"),
-                        actions: [
-                          TextButton(
-                              onPressed: () {
-                                logout(context);
-                              },
-                              child: Text("Yes")),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text("No"))
-                        ],
-                      );
-                    });
-              },
-              icon: Icon(Icons.logout_rounded))
+          // IconButton(
+          //     onPressed: () {
+          //       showDialog(
+          //           context: context,
+          //           builder: (ctx) {
+          //             return AlertDialog(
+          //               content: Text("Do you want to logout"),
+          //               actions: [
+          //                 TextButton(
+          //                     onPressed: () {
+          //                       logout(context);
+          //                     },
+          //                     child: Text("Yes")),
+          //                 TextButton(
+          //                     onPressed: () {
+          //                       Navigator.of(context).pop();
+          //                     },
+          //                     child: Text("No"))
+          //               ],
+          //             );
+          //           });
+          //     },
+          //     icon: Icon(Icons.logout_rounded))
         ],
       ),
       backgroundColor: Colors.white,
@@ -335,9 +335,9 @@ class Adminintropage extends StatelessWidget {
     ));
   }
 
-  void logout(BuildContext context) {
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
-      return Adminloginpage();
-    }), (route) => false);
-  }
+  // void logout(BuildContext context) {
+  //   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
+  //     return Adminloginpage();
+  //   }), (route) => false);
+  // }
 }

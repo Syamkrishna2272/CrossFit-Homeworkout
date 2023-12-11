@@ -2,12 +2,10 @@ import 'dart:io';
 
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/data_model.dart';
-import 'package:cross_fit/screens/admin_intro.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'beginner_body_screen.dart';
 
 File? image1;
 String? image;
@@ -27,7 +25,17 @@ class Adminaddworkoutpage extends StatefulWidget {
 }
 
 class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
+  final List<String> bodypartList = [
+    'Chest',
+    'Shoulder',
+    'Leg',
+    'Abs',
+    'Biceps',
+    'Triceps',
+    'Wings'
+  ];
   String? category;
+
   final _categoryController = TextEditingController();
 
   final _workoutnameController = TextEditingController();
@@ -41,6 +49,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   final GlobalKey<FormState> validation = GlobalKey<FormState>();
 
   String? _selectedcategory;
+  String? _selectedbodypart;
 
   @override
   Widget build(BuildContext context) {
@@ -136,24 +145,47 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                         const SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          textCapitalization: TextCapitalization.words,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Body Part';
-                            }
-                            return null;
-                          },
-                          controller: _bodypartController,
-                          decoration: const InputDecoration(
-                            labelText: "Body Parts",
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
+                        DropdownButtonFormField<String>(
+                            value: _selectedbodypart,
+                            items: bodypartList.map((String bodypart) {
+                              return DropdownMenuItem<String>(
+                                value: bodypart,
+                                child: Text(bodypart),
+                              );
+                            }).toList(),
+                            decoration: InputDecoration(
+                              labelText: "Body part",
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red)),
                             ),
-                          ),
-                        ),
-                        const SizedBox(
+                            onChanged: (String? value) {
+                              setState(() {
+                                _selectedbodypart = value;
+                                print(_selectedbodypart);
+                              });
+                            }),
+
+                        // TextFormField(
+                        //   textCapitalization: TextCapitalization.words,
+                        //   validator: (value) {
+                        //     if (value!.isEmpty) {
+                        //       return 'Enter Body Part';
+                        //     }
+                        //     return null;
+                        //   },
+                        //   controller: _bodypartController,
+                        //   decoration:  InputDecoration(
+                        //     labelText: "Body Parts",
+                        //     border: OutlineInputBorder(),
+                        //     enabledBorder: OutlineInputBorder(
+                        //       borderSide: BorderSide(color: Colors.red),
+
+                        //     ),
+
+                        //   ),
+                        // ),
+                        SizedBox(
                           height: 20,
                         ),
                         TextFormField(
