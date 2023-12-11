@@ -156,7 +156,7 @@ class Adminintropage extends StatelessWidget {
                                             ),
                                           ),
                                           IconButton(
-                                            onPressed: () {                                             
+                                            onPressed: () {
                                               showDialog(
                                                 context: context,
                                                 builder: (ctx1) {
@@ -165,14 +165,14 @@ class Adminintropage extends StatelessWidget {
                                                         "Do you want to delete?"),
                                                     actions: [
                                                       TextButton(
-                                                        
                                                         onPressed: () {
                                                           if (data.id != null) {
                                                             deleteAllworkout(
                                                                 data.id!);
                                                             deletebeginner(
                                                                 data.id!, data);
-                                                                print('pass id==${data.id}');
+                                                            print(
+                                                                'pass id==${data.id}');
                                                             deleteadvance(
                                                                 data.id!, data);
                                                             deleteButtonClickedYes(
@@ -205,35 +205,60 @@ class Adminintropage extends StatelessWidget {
                                             ),
                                           ),
                                           TextButton(
-                                              onPressed: () {
-                                                var a = Beginnermodel(
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    data.id,
-                                                    data.image,
-                                                    data.description,
-                                                    data.reps,
-                                                    data.workoutname);
+                                            onPressed: () {
+                                              var a = Beginnermodel(
+                                                [],
+                                                [],
+                                                [],
+                                                [],
+                                                data.id,
+                                                data.image,
+                                                data.description,
+                                                data.reps,
+                                                data.workoutname,
+                                              );
 
-                                                var b = Advancemodel(
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    [],
-                                                    data.id,
-                                                    data.image,
-                                                    data.description,
-                                                    data.reps,
-                                                    data.workoutname);
+                                              var b = Advancemodel(
+                                                [],
+                                                [],
+                                                [],
+                                                [],
+                                                [],
+                                                [],
+                                                data.id,
+                                                data.image,
+                                                data.description,
+                                                data.reps,
+                                                data.workoutname,
+                                              );
 
-                                                workoutchecking(data, a);
-                                                Advanceworkoutchecking(data, b);
-                                              },
-                                              child: Text("ADD")),
+                                              workoutchecking(data, a);
+                                              Advanceworkoutchecking(data, b);
+                                              
+                                              showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                        'Workout Added'),
+                                                    content: const Text(
+                                                        'The workout has been added to your list.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop(); // Close the dialog
+                                                        },
+                                                        child: Text('OK'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: Text("ADD"),
+                                          ),
                                         ],
                                       ),
                                     ],

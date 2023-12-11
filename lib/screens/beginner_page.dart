@@ -1,4 +1,4 @@
-import 'package:cross_fit/db/functions/beginner_function.dart';
+
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/beginner_body_screen.dart';
 import 'package:flutter/material.dart';

@@ -29,6 +29,10 @@ getAdvanceworkout() async {
   AdShoulderlist.clear();
   AdShoulderlist.addAll(shoulder.values);
 
+  final Biceps = await Hive.openBox<Advancemodel>('biceps_db');
+  AdBicepslist.clear();
+  AdBicepslist.addAll(Biceps.values);
+
   final Triceps = await Hive.openBox<Advancemodel>('triceps_db');
   AdTricepslist.clear();
   AdTricepslist.addAll(Triceps.values);
@@ -143,7 +147,6 @@ biceps(Advancemodel value) async {
   final data = Advancemodel([], [], b, [], [], [], value.id, value.image,
       value.description, value.workoutname, value.reps);
   bicep.add(data);
-  // shold.put(value.id, data);
 
   print(bicep.values);
   getAdvanceworkout();

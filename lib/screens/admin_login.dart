@@ -77,14 +77,6 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _usernameController,
-                        onChanged: (value) {
-                          setState(() {
-                            isUsernameEmpty = value.isEmpty;
-                            if (formSubmitted) {
-                              _formKey.currentState?.validate();
-                            }
-                          });
-                        },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter username';
@@ -119,14 +111,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _passwordController,
-                        onChanged: (value) {
-                          setState(() {
-                            isPasswordEmpty = value.isEmpty;
-                            if (formSubmitted) {
-                              _formKey.currentState?.validate();
-                            }
-                          });
-                        },
+
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter password';
@@ -166,19 +151,19 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                   Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                        return Adminintropage();
-                      }));
-                  // if (_formKey.currentState!.validate()) {
-                  //   if (_usernameController.text == 'Admin' &&
-                  //       _passwordController.text == '1234') {
-                  //     Navigator.of(context)
+                  // Navigator.of(context)
                   //         .pushReplacement(MaterialPageRoute(builder: (ctx) {
                   //       return Adminintropage();
                   //     }));
-                  //   }
-                  // }
+                  if (_formKey.currentState!.validate()) {
+                    if (_usernameController.text == 'Admin' &&
+                        _passwordController.text == '1234') {
+                      Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                        return Adminintropage();
+                      }));
+                    }
+                  }
                   //  else
                   //   showDialog(
                   //       context: context,

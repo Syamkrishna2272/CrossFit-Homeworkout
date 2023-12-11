@@ -105,7 +105,8 @@ class advance extends StatelessWidget {
                                   'assets/images/advance chest.jpg'),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.amber),
+                          color: Colors.amber
+                          ),
                       height: 160,
                       width: double.infinity,
                       child: Row(

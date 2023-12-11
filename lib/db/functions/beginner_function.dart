@@ -55,7 +55,7 @@ deletebeginner(int id, Workoutmodel value) async {
       value.bodypart == 'Shoulder' &&
       value.id == id) {
     final shold = await Hive.openBox<Beginnermodel>('shoulder_db');
-    shold.delete(id);
+    shold.delete(id); 
     getbeginnerWorkout();
   } else if (value.category == 'BEGINNER' &&
       value.bodypart == 'Leg' &&

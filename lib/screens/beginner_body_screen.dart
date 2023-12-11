@@ -28,8 +28,7 @@ class Beginnerbodypage extends StatelessWidget {
         appBar: AppBar(
           title: Text(bodypart),
         ),
-        body: 
-        ListView.separated(
+        body: ListView.separated(
             itemBuilder: ((context, index) {
               final data = chest[index];
               return Padding(
@@ -58,12 +57,6 @@ class Beginnerbodypage extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'custom')),
-
-                                Text(" ${data.id}",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'custom')),
                       ],
                     ),
                   ],
@@ -71,9 +64,11 @@ class Beginnerbodypage extends StatelessWidget {
               );
             }),
             separatorBuilder: (ctx, index) {
-              return SizedBox();
+              return Divider(
+                thickness: 1,
+                color: Colors.black,
+              );
             },
-            itemCount: chest.length)
-            );
+            itemCount: chest.length));
   }
 }
