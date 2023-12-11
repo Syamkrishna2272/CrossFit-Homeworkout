@@ -5,6 +5,7 @@ import 'package:cross_fit/db/model/advance_data_model.dart';
 import 'package:cross_fit/db/model/beginner_data_model.dart';
 import 'package:cross_fit/screens/admin_add_workout.dart';
 import 'package:cross_fit/screens/admin_edit_workout.dart';
+import 'package:cross_fit/screens/admin_login.dart';
 import 'package:flutter/material.dart';
 
 import '../db/functions/db_functions.dart';
@@ -12,14 +13,41 @@ import '../db/model/data_model.dart';
 
 class Adminintropage extends StatelessWidget {
   final String? selectedCategory;
-  Adminintropage({Key? key, this.selectedCategory}) : super(key: key);
+  const Adminintropage({Key? key, this.selectedCategory}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.red[700],
         title: const Text("Admin"),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        content: Text("Do you want to logout"),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                logout(context);
+                              },
+                              child: Text("Yes")),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("No"))
+                        ],
+                      );
+                    });
+              },
+              icon: Icon(Icons.logout_rounded))
+        ],
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -234,7 +262,7 @@ class Adminintropage extends StatelessWidget {
 
                                               workoutchecking(data, a);
                                               Advanceworkoutchecking(data, b);
-                                              
+
                                               showDialog(
                                                 context: context,
                                                 builder:
@@ -305,5 +333,11 @@ class Adminintropage extends StatelessWidget {
       backgroundColor: Colors.red,
       duration: Duration(seconds: 1),
     ));
+  }
+
+  void logout(BuildContext context) {
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
+      return Adminloginpage();
+    }), (route) => false);
   }
 }

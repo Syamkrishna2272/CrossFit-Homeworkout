@@ -1,11 +1,11 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admin_intro.dart';
-import 'package:cross_fit/screens/signup_page.dart';
+
 import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 
 class Adminloginpage extends StatefulWidget {
-  Adminloginpage({Key? key}) : super(key: key);
+  const Adminloginpage({Key? key}) : super(key: key);
 
   @override
   State<Adminloginpage> createState() => _AdminloginpageState();
@@ -43,7 +43,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         }),
                       );
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     iconSize: 30,
                   ),
                 ],
@@ -66,7 +66,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   fontFamily: 'custom',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Form(
@@ -90,16 +90,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         ),
                         textCapitalization: TextCapitalization.words,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.account_box_sharp),
+                          prefixIcon: const Icon(Icons.account_box_sharp),
                           labelText: "Username:",
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: isUsernameEmpty!
+                                color: isUsernameEmpty
                                     ? Colors.red
                                     : Colors.blue),
                           ),
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
@@ -111,7 +111,6 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
                         controller: _passwordController,
-
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Enter password';
@@ -125,9 +124,9 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         ),
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: const Icon(Icons.lock),
                           labelText: "Password:",
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: isPasswordEmpty || !formSubmitted
@@ -135,7 +134,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                                   : Colors.blue,
                             ),
                           ),
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
@@ -151,10 +150,6 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context)
-                  //         .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                  //       return Adminintropage();
-                  //     }));
                   if (_formKey.currentState!.validate()) {
                     if (_usernameController.text == 'Admin' &&
                         _passwordController.text == '1234') {
@@ -164,23 +159,6 @@ class _AdminloginpageState extends State<Adminloginpage> {
                       }));
                     }
                   }
-                  //  else
-                  //   showDialog(
-                  //       context: context,
-                  //       builder: (context) {
-                  //         return AlertDialog(
-                  //           title: Text("Login Failed"),
-                  //           content: Text("Invalid Username or Password"),
-                  //           actions: [
-                  //             TextButton(
-                  //               onPressed: () {
-                  //                 Navigator.of(context).pop();
-                  //               },
-                  //               child: Text('OK'),
-                  //             ),
-                  //           ],
-                  //         );
-                  //       });
                 },
                 style: ElevatedButton.styleFrom(
                   side: const BorderSide(color: Colors.red),
