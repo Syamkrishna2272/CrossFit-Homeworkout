@@ -1,11 +1,12 @@
-
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/beginner_body_screen.dart';
 import 'package:flutter/material.dart';
+
 List chestlist = [];
-List shoulderlist=[];
-List leglist=[];
-List abslist=[];
+List shoulderlist = [];
+List leglist = [];
+List abslist = [];
+
 // ignore: camel_case_types
 class beginner extends StatelessWidget {
   beginner({super.key});
@@ -15,12 +16,10 @@ class beginner extends StatelessWidget {
     {'title': 'Leg Beginner', 'image': 'assets/images/Leg.jpg'},
     {'title': 'Abs Beginner', 'image': 'assets/images/abs2.jpg'},
   ];
- 
 
   @override
   Widget build(BuildContext context) {
     getAllworkout();
-
 
     return Scaffold(
       appBar: AppBar(
@@ -40,12 +39,12 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest:chestlist, 
+                                chest: chestlist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
                           break;
-                        case 1: 
+                        case 1:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
@@ -58,7 +57,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest:leglist,
+                                chest: leglist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));
@@ -67,7 +66,7 @@ class beginner extends StatelessWidget {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return Beginnerbodypage(
-                                chest:abslist,
+                                chest: abslist,
                                 bodypart:
                                     BEGINNERBODYPART[index]['title'] ?? '');
                           }));

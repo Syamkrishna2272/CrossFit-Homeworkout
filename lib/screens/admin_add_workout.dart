@@ -35,6 +35,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
     'Wings'
   ];
   String? category;
+  String? bodypart;
 
   final _categoryController = TextEditingController();
 
@@ -101,131 +102,122 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                     key: validation,
                     child: Column(
                       children: [
-                        DropdownButtonFormField<String>(
-                          value: _selectedcategory,
-                          onChanged: (String? value) {
-                            setState(() {
-                              _selectedcategory = value;
-                              print(_selectedcategory);
-                            });
-                          },
-                          items: widget.workoutData
-                              .map((Map<String, String> category) {
-                            return DropdownMenuItem<String>(
-                              value: category['title'],
-                              child: Text(category['title']!),
-                            );
-                          }).toList(),
-                          decoration: const InputDecoration(
-                              labelText: "Category",
-                              border: OutlineInputBorder(),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.red))),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          textCapitalization: TextCapitalization.words,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Workout name';
-                            }
-                            return null;
-                          },
-                          controller: _workoutnameController,
-                          decoration: const InputDecoration(
-                            labelText: "Workout Name",
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        DropdownButtonFormField<String>(
-                            value: _selectedbodypart,
-                            items: bodypartList.map((String bodypart) {
-                              return DropdownMenuItem<String>(
-                                value: bodypart,
-                                child: Text(bodypart),
-                              );
-                            }).toList(),
-                            decoration: InputDecoration(
-                              labelText: "Body part",
-                              border: OutlineInputBorder(),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.red)),
-                            ),
+                        Card(
+                          child: DropdownButtonFormField<String>(
+                            value: _selectedcategory,
                             onChanged: (String? value) {
                               setState(() {
-                                _selectedbodypart = value;
-                                print(_selectedbodypart);
+                                _selectedcategory = value;
+                                print(_selectedcategory);
                               });
-                            }),
-
-                        // TextFormField(
-                        //   textCapitalization: TextCapitalization.words,
-                        //   validator: (value) {
-                        //     if (value!.isEmpty) {
-                        //       return 'Enter Body Part';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   controller: _bodypartController,
-                        //   decoration:  InputDecoration(
-                        //     labelText: "Body Parts",
-                        //     border: OutlineInputBorder(),
-                        //     enabledBorder: OutlineInputBorder(
-                        //       borderSide: BorderSide(color: Colors.red),
-
-                        //     ),
-
-                        //   ),
-                        // ),
+                            },
+                            items: widget.workoutData
+                                .map((Map<String, String> category) {
+                              return DropdownMenuItem<String>(
+                                value: category['title'],
+                                child: Text(category['title']!),
+                              );
+                            }).toList(),
+                            decoration: const InputDecoration(
+                                labelText: "Category",
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.red))),
+                          ),
+                        ),
                         SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Reps/Time';
-                            }
-                            return null;
-                          },
-                          controller: _repsController,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(10)
-                          ],
-                          decoration: const InputDecoration(
-                            labelText: "Reps/Time",
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
+                        Card(
+                          child: TextFormField(
+                            textCapitalization: TextCapitalization.words,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Enter Workout name';
+                              }
+                              return null;
+                            },
+                            controller: _workoutnameController,
+                            decoration: const InputDecoration(
+                              labelText: "Workout Name",
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.red),
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Reps/Time';
-                            }
-                            return null;
-                          },
-                          controller: _descriptionController,
-                          textAlign: TextAlign.start,
-                          decoration: const InputDecoration(
-                            labelText: "Description",
-                            contentPadding: EdgeInsets.symmetric(vertical: 50),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
+                        Card(
+                          child: DropdownButtonFormField<String>(
+                              value: _selectedbodypart,
+                              items: bodypartList.map((String bodypart) {
+                                return DropdownMenuItem<String>(
+                                  value: bodypart,
+                                  child: Text(bodypart),
+                                );
+                              }).toList(),
+                              decoration: InputDecoration(
+                                labelText: "Body part",
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.red)),
+                              ),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _selectedbodypart = value;
+                                  print(_selectedbodypart);
+                                });
+                              }),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Card(
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Enter Reps/Time';
+                              }
+                              return null;
+                            },
+                            controller: _repsController,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10)
+                            ],
+                            decoration: const InputDecoration(
+                              labelText: "Reps/Time",
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.red),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Card(
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Enter Reps/Time';
+                              }
+                              return null;
+                            },
+                            controller: _descriptionController,
+                            // textAlign: TextAlign.start,
+                            decoration: const InputDecoration(
+                              labelText: "Description",
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 40),
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.red),
+                              ),
                             ),
                           ),
                         ),
@@ -235,8 +227,8 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                   height: 20,
                 ),
                 Container(
-                  width: 110,
-                  height: 45,
+                  width: 75,
+                  height: 35,
                   child: ElevatedButton(
                       onPressed: () {
                         onAddButtonClicked(context);
@@ -265,7 +257,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   Future<void> onAddButtonClicked(context) async {
     // final _category = _categoryController.text.trim();
     final _workoutname = _workoutnameController.text.trim();
-    final _bodypart = _bodypartController.text.trim();
+
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 
@@ -275,7 +267,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
       final workout = Workoutmodel(
           category: _selectedcategory!,
           workoutname: _workoutname,
-          bodypart: _bodypart,
+          bodypart: _selectedbodypart!,
           reps: _reps,
           description: _description,
           image: image!);
