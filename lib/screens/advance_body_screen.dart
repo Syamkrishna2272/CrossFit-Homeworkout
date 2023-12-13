@@ -14,7 +14,7 @@ class Advancebodypage extends StatelessWidget {
     getAdvanceworkout();
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar( 
+      appBar: AppBar(
         title: Text(bodypart),
       ),
       body: ListView.separated(
@@ -36,16 +36,30 @@ class Advancebodypage extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             fontFamily: 'custom'),
                       ),
-                      Text("Reps : ${data.reps}",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'custom')),
-                      Text(" ${data.description}",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400, 
-                              fontFamily: 'custom'))
+                      Text(
+                        "Reps:${data.reps}",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'custom'),
+                      ),
+                      Text(
+                        "des:${data.description}",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'custom'),
+                      )
+                      // Text("Reps : ${data.reps}",
+                      //     style: TextStyle(
+                      //         fontSize: 14,
+                      //         fontWeight: FontWeight.w400,
+                      //         fontFamily: 'custom')),
+                      // Text(" ${data.description}",
+                      //     style: TextStyle(
+                      //         fontSize: 14,
+                      //         fontWeight: FontWeight.w400,
+                      //         fontFamily: 'custom')),
                     ],
                   ),
                 ],
@@ -53,7 +67,9 @@ class Advancebodypage extends StatelessWidget {
             );
           }),
           separatorBuilder: (ctx, index) {
-            return SizedBox();
+            return Divider(
+              thickness: 2,
+            );
           },
           itemCount: chest.length),
     );

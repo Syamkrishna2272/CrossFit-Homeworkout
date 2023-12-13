@@ -8,14 +8,24 @@ List leglist = [];
 List abslist = [];
 
 // ignore: camel_case_types
-class beginner extends StatelessWidget {
+class beginner extends StatefulWidget {
   beginner({super.key});
+
+  @override
+  State<beginner> createState() => _beginnerState();
+}
+
+class _beginnerState extends State<beginner> {
   final List<Map<String, String>> BEGINNERBODYPART = [
-    {'title': 'Chest Beginner', 'image': 'assets/images/chest workout.webp'},
-    {'title': 'Shoulder Beginner', 'image': 'assets/images/Shoulder.jpg'},
-    {'title': 'Leg Beginner', 'image': 'assets/images/Leg.jpg'},
-    {'title': 'Abs Beginner', 'image': 'assets/images/abs2.jpg'},
+    {'title': 'Chest ', 'image': 'assets/images/chest workout.webp'},
+    {'title': 'Shoulder ', 'image': 'assets/images/Shoulder.jpg'},
+    {'title': 'Leg ', 'image': 'assets/images/Leg.jpg'},
+    {'title': 'Abs ', 'image': 'assets/images/abs2.jpg'},
   ];
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +35,14 @@ class beginner extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
         title: const Text("Beginner"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              
+            },
+            icon: const Icon(Icons.search),
+          ),
+        ],
       ),
       body: SafeArea(
           child: ListView.builder(

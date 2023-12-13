@@ -260,6 +260,9 @@ class _SignupScreenState extends State<SignupScreen> {
           sharedpref.setBool(key1, true);
 
       await addSignup(signup);
+      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (ctx){
+      //   return Homeworkout();
+      // }), (route) => false);
 
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){
         return Homeworkout();

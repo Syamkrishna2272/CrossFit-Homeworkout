@@ -257,7 +257,6 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   Future<void> onAddButtonClicked(context) async {
     // final _category = _categoryController.text.trim();
     final _workoutname = _workoutnameController.text.trim();
-
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 

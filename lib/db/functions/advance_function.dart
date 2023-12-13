@@ -14,7 +14,8 @@ Addadvanceworkout(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel(b, [], [], [], [], [], value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.description, value.reps, value.workoutname);
+  // final data1=Advancemodel(Chest, Shoulder, Biceps, Triceps, Leg, Wings, id, image, reps, description, workoutname)
   chest.add(data);
   print(chest.values);
   getAdvanceworkout();
@@ -125,7 +126,8 @@ shoulder(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel([], b, [], [], [], [], value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.reps, value.description, value.workoutname);
+  // final data1=Advancemodel(Chest, Shoulder, Biceps, Triceps, Leg, Wings, id, image, reps, description, workoutname)
   shold.add(data);
   // shold.put(value.id, data);
 
@@ -145,7 +147,8 @@ biceps(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel([], [], b, [], [], [], value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.reps, value.description, value.workoutname);
+  // final da=Advancemodel(Chest, Shoulder, Biceps, Triceps, Leg, Wings, id, image, reps, description, workoutname)
   bicep.add(data);
 
   print(bicep.values);
@@ -164,7 +167,8 @@ triceps(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel([], [], [], b, [], [], value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.reps, value.description, value.workoutname);
+      // final ss=Advancemodel(Chest, Shoulder, Biceps, Triceps, Leg, Wings, id, image, reps, description, workoutname)
   tricep.add(data);
   // shold.put(value.id, data);
 
@@ -184,7 +188,7 @@ legs(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel([], [], [], [], b, [], value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.reps, value.description, value.workoutname);
   leg.add(data);
   // shold.put(value.id, data);
 
@@ -204,7 +208,7 @@ wings(Advancemodel value) async {
 
   b.add(value);
   final data = Advancemodel([], [], [], [], [], b, value.id, value.image,
-      value.description, value.workoutname, value.reps);
+      value.reps, value.description, value.workoutname);
   wing.add(data);
   // shold.put(value.id, data);
 

@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 class Homeworkout extends StatelessWidget {
   Homeworkout({super.key});
   final List<Map<String, String>> categories = [
-    {'title': 'FULL BODY\n7x4 CHALLENGE','image': 'assets/images/fullbody.jpg'},
+    {
+      'title': 'FULL BODY\n7x4 CHALLENGE',
+      'image': 'assets/images/fullbody.jpg'
+    },
     {'title': 'BEGINNER', 'image': 'assets/images/beginner.jpg'},
     {'title': 'ADVANCED', 'image': 'assets/images/advanced.jpg'},
     // Add more categories as needed
@@ -24,7 +27,7 @@ class Homeworkout extends StatelessWidget {
           width: 230,
           child: Drawer(
               backgroundColor: Colors.black,
-              child: ListView(
+              child: ListView( 
                 children: [
                   const ListTile(
                     leading: Icon(
@@ -120,31 +123,36 @@ class Homeworkout extends StatelessWidget {
                           }));
                         }
                       },
-                      child: Container(
-                        height: 180,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(categories[index]['image']!),
-                              fit: BoxFit.cover),
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                categories[index]['title']!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  backgroundColor: Colors.black38,
-                                  fontFamily: 'custom',
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
+                      child: Card(
+                        // elevation: 8,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          height: 170, 
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: AssetImage(categories[index]['image']!),
+                                fit: BoxFit.cover),
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  categories[index]['title']!,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    backgroundColor: Colors.black38,
+                                    fontFamily: 'custom',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

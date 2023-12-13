@@ -161,13 +161,13 @@ class Adminintropage extends StatelessWidget {
                                         const SizedBox(
                                           height: 8,
                                         ),
-                                        // Text(
-                                        //   "Description: ${data.description}",
-                                        //   style: const TextStyle(
-                                        //     fontSize: 15,
-                                        //     fontWeight: FontWeight.w600,
-                                        //   ),
-                                        // ),
+                                        Text(
+                                          "Description: ${data.description}",
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                         Row(
                                           children: [
                                             IconButton(
