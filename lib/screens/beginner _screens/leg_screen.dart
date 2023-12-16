@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 
 import '../../db/functions/beginner_function.dart';
@@ -15,7 +16,7 @@ class Legscreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Leg ",
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
@@ -57,18 +58,18 @@ class Legscreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Name: ${data.workoutname}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'custom'),
                                   ),
                                   Text("Reps : ${data.reps}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'custom')),
                                   Text(" ${data.description}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'custom')),

@@ -1,5 +1,3 @@
-
-
 class ExerciseData {
   final String title;
   final String animationpath;
@@ -22,11 +20,11 @@ final List<ExerciseData> exercisedata = [
       title: "Single leg hip rotation",
       animationpath: 'assets/animation/Animation - 1700231657737.json',
       total: '10'),
-  ExerciseData( 
-      title: "Squat kicks", 
+  ExerciseData(
+      title: "Squat kicks",
       animationpath: 'assets/animation/Animation - 1700231795833.json',
       total: '10'),
-  ExerciseData(  
+  ExerciseData(
       title: "Push Ups",
       animationpath: 'assets/animation/Animation - 1700231997438.json',
       total: '10'),

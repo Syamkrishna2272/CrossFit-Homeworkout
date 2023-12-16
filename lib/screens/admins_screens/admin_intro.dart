@@ -5,9 +5,8 @@ import 'package:cross_fit/db/model/advance_data_model.dart';
 import 'package:cross_fit/db/model/beginner_data_model.dart';
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
 import 'package:cross_fit/screens/admins_screens/admin_edit_workout.dart';
-import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+
 
 import '../../db/functions/db_functions.dart';
 import '../../db/model/data_model.dart';
@@ -190,11 +189,8 @@ class Adminintropage extends StatelessWidget {
                                                                   () async {
                                                                 if (data.id !=
                                                                     null) {
-                                                                  deletebeginner(
-                                                                      data.id!,
-                                                                      data);
-                                                                  deleteAllworkout(
-                                                                      data.id!);
+                                                                  deletebeginner(data.id!,data);
+                                                                  deleteAllworkout(data.id!);
 
                                                                   // deleteadvance(data.id!,data);
                                                                   deleteButtonClickedYes(
@@ -248,6 +244,7 @@ class Adminintropage extends StatelessWidget {
                                                     );
 
                                                     workoutchecking(data, val);
+                                                    
                                                     Advanceworkoutchecking(data, b);
                                                     ScaffoldMessenger.of(ctx).showSnackBar(
                                                             const SnackBar(

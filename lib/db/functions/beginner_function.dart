@@ -10,29 +10,37 @@ ValueNotifier<List<Beginnermodel>> shouldernotifier = ValueNotifier([]);
 ValueNotifier<List<Beginnermodel>> legnotifier = ValueNotifier([]);
 ValueNotifier<List<Beginnermodel>> absnotifier = ValueNotifier([]);
 
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 AddchestrWorkout(Beginnermodel value) async {
   final chest = await Hive.openBox<Beginnermodel>('chest_db');
-  chest.add(value);
-  getallchest();
+  // final id1 = await chest.add(value);
+  chest.put(value.id, value);
+  getallchest();  
 }
 
 AddshoulderWorkout(Beginnermodel value) async {
   final shold = await Hive.openBox<Beginnermodel>('shoulder_db');
-  shold.add(value);
+  // final id1 = await shold.add(value);
+  
+  shold.put(value.id, value);
   getallshoulder();
 }
 
 AddlegWorkout(Beginnermodel value) async {
   final leg = await Hive.openBox<Beginnermodel>('leg_db');
-  leg.add(value);
+  // final id1 = await leg.add(value);
+  // value.id = id1;
+  leg.put(value.id, value);
   getallleg();
 }
 
 AddabsWorkout(Beginnermodel value) async {
   final abs = await Hive.openBox<Beginnermodel>('abs_db');
-  abs.add(value);
+  // final id1 = await abs.add(value);
+  // value.id = id1;
+  abs.put(value.id, value);
   getallabs();
 }
 
@@ -93,7 +101,7 @@ getbeginnerWorkout() async {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 deletebeginner(int id, Workoutmodel value) async {
-  print('id==${value.id}');
+  // print('id==${value.id}');
 
   if (value.category == 'BEGINNER' && value.bodypart == 'Chest') {
     final chest = await Hive.openBox<Beginnermodel>('chest_db');
@@ -118,7 +126,6 @@ deletebeginner(int id, Workoutmodel value) async {
 
 workoutchecking(Workoutmodel value, Beginnermodel data) async {
   if (value.category == 'BEGINNER' && value.bodypart == 'Chest') {
-    print("haaaai");
     AddchestrWorkout(data);
   } else if (value.category == 'BEGINNER' && value.bodypart == 'Shoulder') {
     AddshoulderWorkout(data);

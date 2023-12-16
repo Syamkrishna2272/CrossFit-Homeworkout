@@ -53,18 +53,18 @@ class Beginnerbodypage extends StatelessWidget {
                       children: [
                         Text(
                           "Name: ${data.workoutname}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'custom'),
                         ),
                         Text("Reps : ${data.reps}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'custom')),
                         Text(" ${data.description}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'custom')),
@@ -75,7 +75,7 @@ class Beginnerbodypage extends StatelessWidget {
               );
             }),
             separatorBuilder: (ctx, index) {
-              return Divider(
+              return const Divider(
                 thickness: 1,
                 color: Colors.black,
               );

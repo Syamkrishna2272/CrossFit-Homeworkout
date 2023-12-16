@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Advancebodypage extends StatelessWidget {
   List chest;
   final String bodypart;
@@ -32,21 +33,21 @@ class Advancebodypage extends StatelessWidget {
                     children: [
                       Text(
                         "Name: ${data.workoutname}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'custom'),
                       ),
                       Text(
                         "Reps:${data.reps}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'custom'),
                       ),
                       Text(
                         "des:${data.description}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'custom'),
@@ -68,7 +69,7 @@ class Advancebodypage extends StatelessWidget {
             );
           }),
           separatorBuilder: (ctx, index) {
-            return Divider(
+            return const Divider(
               thickness: 2,
             );
           },

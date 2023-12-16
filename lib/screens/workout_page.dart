@@ -27,7 +27,7 @@ class Homeworkout extends StatelessWidget {
           width: 230,
           child: Drawer(
               backgroundColor: Colors.black,
-              child: ListView( 
+              child: ListView(
                 children: [
                   const ListTile(
                     leading: Icon(
@@ -78,19 +78,19 @@ class Homeworkout extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             "Home Workout ",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'custom'),
           ),
           actions: [
             Row(
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (ctx) {
-                        return const PersonalInfo();
-                      }));
+                      showSearch(context: context, delegate: Search());
                     },
-                    icon: const Icon(Icons.person)),
+                    icon: Icon(Icons.search)),
               ],
             )
           ],
@@ -128,7 +128,7 @@ class Homeworkout extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: Container(
-                          height: 170, 
+                          height: 170,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),

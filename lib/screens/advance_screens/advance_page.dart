@@ -40,8 +40,9 @@ class advance extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.redAccent[700],
-        title: const Text("Advance"),
+        title: const Text("Advance", style: TextStyle(fontFamily: 'custom')),
       ),
       body: SafeArea(
           child: ListView.builder(

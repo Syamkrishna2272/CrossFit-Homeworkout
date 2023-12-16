@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 part 'data_model.g.dart';
 
 @HiveType(typeId: 1)
-class Workoutmodel {
+class   Workoutmodel {
   @HiveField(0)
   int? id;
 
