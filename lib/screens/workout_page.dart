@@ -1,7 +1,7 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
-import 'package:cross_fit/screens/admin_login.dart';
-import 'package:cross_fit/screens/advance_page.dart';
-import 'package:cross_fit/screens/beginner_page.dart';
+import 'package:cross_fit/screens/admins_screens/admin_login.dart';
+import 'package:cross_fit/screens/advance_screens/advance_page.dart';
+import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/fullbody_page.dart';
 import 'package:cross_fit/screens/information_page.dart';
 import 'package:flutter/material.dart';

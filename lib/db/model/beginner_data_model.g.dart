@@ -17,39 +17,27 @@ class BeginnermodelAdapter extends TypeAdapter<Beginnermodel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Beginnermodel(
-      (fields[1] as List?)?.cast<dynamic>(),
-      (fields[2] as List?)?.cast<dynamic>(),
-      (fields[3] as List?)?.cast<dynamic>(),
-      (fields[4] as List?)?.cast<dynamic>(),
       fields[0] as int?,
-      fields[5] as String?,
-      fields[6] as String?,
-      fields[7] as String?,
-      fields[8] as String?,
+      fields[1] as String?,
+      fields[2] as String?,
+      fields[3] as String?,
+      fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Beginnermodel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.Chestbeginner)
-      ..writeByte(2)
-      ..write(obj.Shoulderbeginner)
-      ..writeByte(3)
-      ..write(obj.Legbeginenr)
-      ..writeByte(4)
-      ..write(obj.Absbeginner)
-      ..writeByte(5)
       ..write(obj.image)
-      ..writeByte(6)
+      ..writeByte(2)
       ..write(obj.description)
-      ..writeByte(7)
+      ..writeByte(3)
       ..write(obj.reps)
-      ..writeByte(8)
+      ..writeByte(4)
       ..write(obj.workoutname);
   }
 

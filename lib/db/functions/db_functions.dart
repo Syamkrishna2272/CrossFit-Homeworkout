@@ -1,5 +1,7 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
 
+import 'package:cross_fit/db/functions/beginner_function.dart';
+import 'package:cross_fit/db/model/beginner_data_model.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

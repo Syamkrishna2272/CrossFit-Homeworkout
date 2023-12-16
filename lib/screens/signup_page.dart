@@ -1,6 +1,6 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
-import 'package:cross_fit/screens/admin_login.dart';
+
 import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -194,27 +194,27 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (ctx) {
-                      return Adminloginpage();
-                    }));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      side: const BorderSide(color: Colors.red),
-                      backgroundColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18))),
-                  child: const Text(
-                    "Admin Login ",
-                    style: TextStyle(
-                        fontFamily: 'SYAM',
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     Navigator.of(context)
+                //         .push(MaterialPageRoute(builder: (ctx) {
+                //       return Adminloginpage();
+                //     }));
+                //   },
+                //   style: ElevatedButton.styleFrom(
+                //       side: const BorderSide(color: Colors.red),
+                //       backgroundColor: Colors.transparent,
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(18))),
+                //   child: const Text(
+                //     "Admin Login ",
+                //     style: TextStyle(
+                //         fontFamily: 'SYAM',
+                //         color: Colors.white,
+                //         fontSize: 15,
+                //         fontWeight: FontWeight.w600),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -235,8 +235,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextButton(
                         style: ButtonStyle(
                             foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white    
-                                    )),
+                                MaterialStateProperty.all<Color>(Colors.white)),
                         onPressed: () {},
                         child: Text("Login"))
                   ],
@@ -256,17 +255,17 @@ class _SignupScreenState extends State<SignupScreen> {
     if (_formKey.currentState!.validate()) {
       final signup = signupmodel(
           name: _name, email: _email, phone: _phone, password: _password);
-          final sharedpref=await SharedPreferences.getInstance();
-          sharedpref.setBool(key1, true);
+      final sharedpref = await SharedPreferences.getInstance();
+      sharedpref.setBool(key1, true);
 
       await addSignup(signup);
       // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (ctx){
       //   return Homeworkout();
       // }), (route) => false);
 
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
         return Homeworkout();
-      })); 
-    } 
-  } 
+      }));
+    }
+  }
 }

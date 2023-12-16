@@ -1,15 +1,19 @@
-
+import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:cross_fit/db/functions/db_functions.dart';
-import 'package:cross_fit/screens/advance_body_screen.dart';
-import 'package:cross_fit/screens/beginner_page.dart';
+import 'package:cross_fit/screens/advance_screens/biceps_advance.dart';
+import 'package:cross_fit/screens/advance_screens/chest_advance.dart';
+import 'package:cross_fit/screens/advance_screens/leg_advance.dart';
+import 'package:cross_fit/screens/advance_screens/shoulder_advance.dart';
+import 'package:cross_fit/screens/advance_screens/triceps_advance.dart';
+import 'package:cross_fit/screens/advance_screens/wings_advance.dart';
 import 'package:flutter/material.dart';
 
-List AdChestlist=[];
-List AdShoulderlist=[];
-List AdBicepslist=[];
-List AdTricepslist=[];
-List AdLeglist=[];
-List AdWingslist=[];
+List AdChestlist = [];
+List AdShoulderlist = [];
+List AdBicepslist = [];
+List AdTricepslist = [];
+List AdLeglist = [];
+List AdWingslist = [];
 
 // ignore: camel_case_types
 class advance extends StatelessWidget {
@@ -27,6 +31,13 @@ class advance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     getAllworkout();
+    Getallchest();
+    Getallshoulder();
+    Getallbiceps();
+    Getalltriceps();
+    Getallleg();
+    Getallwings();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
@@ -44,55 +55,37 @@ class advance extends StatelessWidget {
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest: AdChestlist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const chestScreen();
                           }));
                           break;
                         case 1:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest: AdShoulderlist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const shoulderScreen();
                           }));
                           break;
                         case 2:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest:AdBicepslist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const bicepsScreen();
                           }));
                           break;
                         case 3:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest: AdTricepslist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const tricepsScreen();
                           }));
                           break;
                         case 4:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest: AdLeglist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const legScreen();
                           }));
                           break;
                         case 5:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Advancebodypage(
-                              chest: AdWingslist,
-                                bodypart:
-                                    ADVANCEBODYPART[index]['title'] ?? '');
+                            return const wingsScreen();
                           }));
                           break;
                       }
@@ -105,8 +98,7 @@ class advance extends StatelessWidget {
                                   'assets/images/advance chest.jpg'),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.amber
-                          ),
+                          color: Colors.amber),
                       height: 160,
                       width: double.infinity,
                       child: Row(

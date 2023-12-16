@@ -19,6 +19,9 @@ Future<void> main() async {
   await Hive.openBox<Beginnermodel>('chest_db');
   await Hive.openBox<Workoutmodel>('workout_db');
   await Hive.openBox<signupmodel>('signup_db');
+  await Hive.openBox<Beginnermodel>('shoulder_db');
+  await Hive.openBox<Beginnermodel>('leg_db');
+  await Hive.openBox<Beginnermodel>('abs_db');
   runApp(MyApp());
 }
 

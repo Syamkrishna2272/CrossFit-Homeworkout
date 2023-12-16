@@ -1,9 +1,9 @@
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../db/functions/beginner_function.dart';
+import '../../db/functions/beginner_function.dart';
+
+
 
 class Exercise {
   final String bodyPart;
@@ -13,6 +13,7 @@ class Exercise {
   });
 }
 
+// ignore: must_be_immutable
 class Beginnerbodypage extends StatelessWidget {
   List chest;
   final String bodypart;
@@ -26,7 +27,12 @@ class Beginnerbodypage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(bodypart),
+          backgroundColor: Colors.redAccent[700],
+          title: Text(
+            bodypart,
+            style:const TextStyle(fontWeight: FontWeight.w600),
+          ),
+          centerTitle: true,
         ),
         body: ListView.separated(
             itemBuilder: ((context, index) {
@@ -36,7 +42,12 @@ class Beginnerbodypage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image(width: 200, image: FileImage(File(data.image))),
+                    Container(
+                        height: 150,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(),
+                        child: Image(
+                            width: 200, image: FileImage(File(data.image)))),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

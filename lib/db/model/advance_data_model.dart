@@ -7,35 +7,17 @@ class Advancemodel {
   int? id;
 
   @HiveField(1)
-  List? Chest;
-
-  @HiveField(2)
-  List? Shoulder;
-
-  @HiveField(3)
-  List? Biceps;
-
-  @HiveField(4)
-  List? Triceps;
-
-  @HiveField(5)
-  List? Leg;
-
-  @HiveField(6)
-  List? Wings;
-
-  @HiveField(7)
   String? image;
 
-  @HiveField(8)
+  @HiveField(2)
   String? description;
 
-  @HiveField(9)
+  @HiveField(3)
   String? reps;
 
-  @HiveField(10)
+  @HiveField(4)
   String? workoutname;
 
-  Advancemodel(this.Chest, this.Shoulder, this.Biceps, this.Triceps, this.Leg,
-      this.Wings, this.id, this.image,this.reps, this.description, this.workoutname);
+  Advancemodel(
+      this.id, this.image, this.reps, this.description, this.workoutname);
 }
