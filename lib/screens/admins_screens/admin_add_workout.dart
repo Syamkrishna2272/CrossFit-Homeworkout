@@ -213,11 +213,12 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             decoration: const InputDecoration(
                               labelText: "Description",
                               contentPadding:
-                                  EdgeInsets.symmetric(vertical: 40),
+                                  EdgeInsets.symmetric(vertical: 45,horizontal: 10),
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
                               ),
+                              // alignLabelWithHint: true
                             ),
                           ),
                         ),

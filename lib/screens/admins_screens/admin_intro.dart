@@ -7,9 +7,9 @@ import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
 import 'package:cross_fit/screens/admins_screens/admin_edit_workout.dart';
 import 'package:flutter/material.dart';
 
-
 import '../../db/functions/db_functions.dart';
 import '../../db/model/data_model.dart';
+import 'admin_login.dart';
 
 class Adminintropage extends StatelessWidget {
   final String? selectedCategory;
@@ -21,34 +21,37 @@ class Adminintropage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.red[700],
-        title: const Text("Admin"),
+        title: const Text(
+          "Admin",
+          style: TextStyle(fontFamily: 'custom'),
+        ),
         centerTitle: true,
         actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       showDialog(
-          //           context: context,
-          //           builder: (ctx) {
-          //             return AlertDialog(
-          //               content: Text("Do you want to logout"),
-          //               actions: [
-          //                 TextButton(
-          //                     onPressed: () {
-          //                       logout(context);
-          //                     },
-          //                     child: Text("Yes")),
-          //                 TextButton(
-          //                     onPressed: () {
-          //                       Navigator.of(context).pop();
-          //                     },
-          //                     child: Text("No"))
-          //               ],
-          //             );
-          //           });
-          //     },
-          //     icon: Icon(Icons.logout_rounded))
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        content: Text("Do you want to Logout ?"),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                logout(context);
+                              },
+                              child: Text("Yes")),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("No"))
+                        ],
+                      );
+                    });
+              },
+              icon: Icon(Icons.logout_rounded))
         ],
       ),
       // backgroundColor: Colors.grey[350],
@@ -190,9 +193,8 @@ class Adminintropage extends StatelessWidget {
                                                                 if (data.id !=
                                                                     null) {
                                                                   deletebeginner(data.id!,data);
+                                                                  deleteadvance(data.id!,data);
                                                                   deleteAllworkout(data.id!);
-
-                                                                  // deleteadvance(data.id!,data);
                                                                   deleteButtonClickedYes(
                                                                       ctx);
                                                                 } else {
@@ -244,9 +246,10 @@ class Adminintropage extends StatelessWidget {
                                                     );
 
                                                     workoutchecking(data, val);
-                                                    
-                                                    Advanceworkoutchecking(data, b);
-                                                    ScaffoldMessenger.of(ctx).showSnackBar(
+                                                    Advanceworkoutchecking(
+                                                        data, b);
+                                                    ScaffoldMessenger.of(ctx)
+                                                        .showSnackBar(
                                                             const SnackBar(
                                                       content: Text(
                                                           "The workout has been added to your list"),
@@ -301,6 +304,12 @@ class Adminintropage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
+      return Adminloginpage();
+    }), (route) => false);
   }
 
   deleteButtonClickedYes(ctx) {

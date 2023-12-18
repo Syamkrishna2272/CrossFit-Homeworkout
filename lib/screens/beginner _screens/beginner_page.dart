@@ -6,6 +6,7 @@ import 'package:cross_fit/screens/beginner%20_screens/abs_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/chest_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/leg_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/shoulder_screen.dart';
+import 'package:cross_fit/screens/details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -158,9 +159,7 @@ class Search extends SearchDelegate {
     return FutureBuilder<Box<Workoutmodel>>(
         future: Hive.openBox<Workoutmodel>('workout_db'),
         builder: (context, snapshot) {
-          if(query.isEmpty){
-            // return Text("Anthada");
-          }
+        
           if (snapshot.hasData) {
             final stdbox = snapshot.data!.values.toList();
             final filteredData = stdbox
@@ -190,6 +189,13 @@ class Search extends SearchDelegate {
                   return Column(
                     children: [
                       ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
+                            return workoutdetails(
+                              filteredData:data
+                            );
+                          })); 
+                        },
                         leading: CircleAvatar(
                           radius: 80,
                           backgroundImage: FileImage(File(data.image)),
@@ -265,7 +271,7 @@ class Search extends SearchDelegate {
                         height: 12,
                       ),
                     ],
-                  );
+                  );  
                 } else {
                   return const SizedBox();
                 }
