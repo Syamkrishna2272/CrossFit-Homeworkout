@@ -258,7 +258,7 @@ class Search extends SearchDelegate {
                     children: [
                       ListTile(
                         leading: CircleAvatar(
-                          radius: 80,
+                          radius: 85,
                           backgroundImage: FileImage(File(data.image)),
                         ),
                         title: Text(

@@ -193,28 +193,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(
                   height: 15,
-                ),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.of(context)
-                //         .push(MaterialPageRoute(builder: (ctx) {
-                //       return Adminloginpage();
-                //     }));
-                //   },
-                //   style: ElevatedButton.styleFrom(
-                //       side: const BorderSide(color: Colors.red),
-                //       backgroundColor: Colors.transparent,
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(18))),
-                //   child: const Text(
-                //     "Admin Login ",
-                //     style: TextStyle(
-                //         fontFamily: 'SYAM',
-                //         color: Colors.white,
-                //         fontSize: 15,
-                //         fontWeight: FontWeight.w600),
-                //   ),
-                // ),
+                ),        
                 const SizedBox(
                   height: 15,
                 ),

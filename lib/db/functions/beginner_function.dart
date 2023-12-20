@@ -15,31 +15,24 @@ ValueNotifier<List<Beginnermodel>> absnotifier = ValueNotifier([]);
 
  AddchestrWorkout(Beginnermodel value) async {
   final chest = await Hive.openBox<Beginnermodel>('chest_db');
-  // final id1 = await chest.add(value);
   chest.put(value.id, value);
   getallchest();  
 }
 
 AddshoulderWorkout(Beginnermodel value) async {
   final shold = await Hive.openBox<Beginnermodel>('shoulder_db');
-  // final id1 = await shold.add(value);
-  
   shold.put(value.id, value);
   getallshoulder();
 }
 
 AddlegWorkout(Beginnermodel value) async {
   final leg = await Hive.openBox<Beginnermodel>('leg_db');
-  // final id1 = await leg.add(value);
-  // value.id = id1;
   leg.put(value.id, value);
   getallleg();
 }
 
 AddabsWorkout(Beginnermodel value) async {
   final abs = await Hive.openBox<Beginnermodel>('abs_db');
-  // final id1 = await abs.add(value);
-  // value.id = id1;
   abs.put(value.id, value);
   getallabs();
 }
@@ -139,77 +132,3 @@ workoutchecking(Workoutmodel value, Beginnermodel data) async {
   }
 }
 
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-//  else if (value.category == 'BEGINNER' && value.bodypart == 'Leg') {
-//   leg(data);
-// } else if (value.category == 'BEGINNER' && value.bodypart == 'Abs') {
-//   abs(data);
-// }
-
-// if (value.category == 'BEGINNER' && value.bodypart == 'Chest') {
-//   final chest = await Hive.openBox<Beginnermodel>('chest_db');
-//   chest.delete(id);
-//   getallchest();
-// }
-//  if (value.category == 'BEGINNER' && value.bodypart == 'Shoulder') {
-//   final shoulder = await Hive.openBox<Beginnermodel>('shoulder_db');
-//   shoulder.delete(id);
-//   getallshoulder();
-// }
-// if (value.category == 'BEGINNER' && value.bodypart == 'Leg') {
-//   final legg = await Hive.openBox<Beginnermodel>('leg_db');
-//   legg.delete(id);
-//   getbeginnerWorkout();
-// } else if (value.category == 'BEGINNER' && value.bodypart == 'Abs') {
-//   final Abs = await Hive.openBox<Beginnermodel>('abs_db');
-//   Abs.delete(id);
-//   getbeginnerWorkout();
-// }
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-// shoulder(Beginnermodel value) async {
-//   List a = [];
-//   final shold = await Hive.openBox<Beginnermodel>('shoulder_db');
-//   a.clear();
-//   for (var i in shold.values) {
-//     a.add(i.Shoulderbeginner);
-//   }
-
-//   a.add(value);
-//   final data = Beginnermodel([], a, [], [], value.id, value.image,
-//       value.description, value.reps, value.workoutname);
-//   shold.add(data);
-//   // shold.put(value.id, data);
-
-//   print(shold.values);
-//   getbeginnerWorkout();
-// }
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-// leg(Beginnermodel value) async {
-//   final leg = await Hive.openBox<Beginnermodel>('leg_db');
-
-//   leg.add(value);
-
-//   getbeginnerWorkout();
-// }
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-// abs(Beginnermodel value) async {
-//   final abs = await Hive.openBox<Beginnermodel>('abs_db');
-
-//   abs.add(value);
-
-//   getbeginnerWorkout();
-// }

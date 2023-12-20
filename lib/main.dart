@@ -16,9 +16,14 @@ Future<void> main() async {
   Hive.registerAdapter(BeginnermodelAdapter());
   Hive.registerAdapter(AdvancemodelAdapter());
   await Hive.openBox<Advancemodel>('chests_db');
-  await Hive.openBox<Beginnermodel>('chest_db');
+  await Hive.openBox<Advancemodel>('shoulders_db');
+  await Hive.openBox<Advancemodel>('biceps_db');
+  await Hive.openBox<Advancemodel>('triceps_db');
+  await Hive.openBox<Advancemodel>('legs_db');
+  await Hive.openBox<Advancemodel>('wings_db');
   await Hive.openBox<Workoutmodel>('workout_db');
   await Hive.openBox<signupmodel>('signup_db');
+  await Hive.openBox<Beginnermodel>('chest_db');
   await Hive.openBox<Beginnermodel>('shoulder_db');
   await Hive.openBox<Beginnermodel>('leg_db');
   await Hive.openBox<Beginnermodel>('abs_db');

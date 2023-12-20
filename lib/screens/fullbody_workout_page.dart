@@ -1,3 +1,5 @@
+
+
 class ExerciseData {
   final String title;
   final String animationpath;

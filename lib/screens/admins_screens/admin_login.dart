@@ -121,10 +121,12 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           color: Colors.black,
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
+                          
                         ),
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
+                          
                           labelText: "Password:",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
@@ -150,19 +152,19 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  //  Navigator.of(context)
-                  //         .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                  //       return Adminintropage();
-                  //     }));
-                  if (_formKey.currentState!.validate()) {
-                    if (_usernameController.text == 'Admin' &&
-                        _passwordController.text == '1234') {
-                      Navigator.of(context)
+                  Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (ctx) {
                         return Adminintropage();
                       }));
-                    }
-                  }
+                  // if (_formKey.currentState!.validate()) {
+                  //   if (_usernameController.text == 'Admin' &&
+                  //       _passwordController.text == '1234') {
+                  //     Navigator.of(context)
+                  //         .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                  //       return Adminintropage();
+                  //     }));
+                  //   }
+                  // }
                 },
                 style: ElevatedButton.styleFrom(
                   side: const BorderSide(color: Colors.red),

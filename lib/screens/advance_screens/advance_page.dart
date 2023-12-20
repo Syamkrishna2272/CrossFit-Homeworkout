@@ -46,7 +46,7 @@ class advance extends StatelessWidget {
       ),
       body: SafeArea(
           child: ListView.builder(
-              itemCount: ADVANCEBODYPART.length,
+              itemCount: 6,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8),
