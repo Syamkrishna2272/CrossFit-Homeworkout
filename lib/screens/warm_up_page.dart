@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cross_fit/screens/fullbody_workout_page.dart';
@@ -11,40 +9,20 @@ class warmUp extends StatefulWidget {
   State<warmUp> createState() => _warmUpState();
 }
 
-class _warmUpState extends State<warmUp> with TickerProviderStateMixin {
-  late List<AnimationController> _controller;
-  late List<Duration> _animationduration;
-  late Timer _animationTimer;
+class _warmUpState extends State<warmUp> {
+  // bool isPlaying = false;
+  late List<bool> isPlayingList;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = List.generate(
-        exercisedata.length, (index) => AnimationController(vsync: this));
-    _animationduration =
-        List.generate(exercisedata.length, (index) => Duration.zero);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-
-    for (var controller in _controller) {
-      controller.dispose();
-    }
-    if(_animationTimer!=null&&_animationTimer.isActive){
-      _animationTimer.cancel(); 
-    }
-
- 
-    super.dispose();
+    isPlayingList = List.generate(exercisedata.length, (index) => false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
         title: const Text(
@@ -54,79 +32,71 @@ class _warmUpState extends State<warmUp> with TickerProviderStateMixin {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: exercisedata.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Divider(
-                  thickness: 1,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${exercisedata[index].title}",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w700),
-                      )
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 130,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView.separated(
+              itemBuilder: ((context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isPlayingList[index] = !isPlayingList[index];
+                    });
+                  },
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Lottie.asset(
-                            exercisedata[index].animationpath,
-                            controller: _controller[index],
-                            onLoaded: (composition) {
-                              _animationduration[index] = composition.duration;
-                              _controller[index].duration =
-                                  composition.duration;
-                            },
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "${exercisedata[index].title}",
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'custom'),
+                            ),
                           ),
+                          Container(
+                              width: double.infinity,
+                              height: 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Lottie.asset(
+                                        exercisedata[index].animationpath,
+                                        animate: isPlayingList[index]),
+                                  ),
+                                  // if (!isPlayingList[index])
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isPlayingList[index] =
+                                              !isPlayingList[index];
+                                        });
+                                      },
+                                      icon: Icon(isPlayingList[index]
+                                          ? Icons.pause
+                                          : Icons.play_arrow)),
+                                  const SizedBox(
+                                    width: 50,
+                                  )
+                                ],
+                              )),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0), 
-                      child: Text(
-                        formatDuration(_animationduration[index]),
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          if (_controller[index].isAnimating) {
-                            _controller[index].stop();
-                          } else {
-                            _controller[index].forward();
-                            _animationTimer = Timer(Duration(seconds: 20), () {
-                              _controller[index].stop();
-                            });
-                          }
-                        },
-                        icon: Icon(_controller[index].isAnimating
-                            ? Icons.pause
-                            : Icons.play_arrow))
-                  ],
-                )
-              ],
-            );
-          },
-        ),
-      ),
+                  ),
+                );
+              }),
+              separatorBuilder: (context, index) {
+                return const Divider(
+                  thickness: 5,
+                );
+              },
+              itemCount: exercisedata.length)),
     );
-  }
-
-  String formatDuration(Duration duration) {
-    return '${duration.inMinutes.remainder(60).toString().padLeft(2, '0')}:${(duration.inSeconds.remainder(60)).toString().padLeft(2, '0')}';
   }
 }

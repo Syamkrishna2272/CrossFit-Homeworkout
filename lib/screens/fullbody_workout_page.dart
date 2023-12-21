@@ -15,8 +15,8 @@ final List<ExerciseData> exercisedata = [
       animationpath: 'assets/animation/Animation - 1698121902339.json',
       total: '10'),
   ExerciseData(
-      title: "Split Jump",
-      animationpath: 'assets/animation/Animation - 1700231163262.json',
+      title: "Squat Reach",
+      animationpath: 'assets/animation/Animation - 1703132403994.json',
       total: '10'),
   ExerciseData(
       title: "Single leg hip rotation",
