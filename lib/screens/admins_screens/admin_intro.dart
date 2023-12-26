@@ -66,13 +66,13 @@ class Adminintropage extends StatelessWidget {
                     Text(
                       "Add Custom Workout ",
                       style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+                          TextStyle(fontSize: 25 , fontWeight: FontWeight.w500,fontFamily: 'custom'),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "Create Your own customized workout by  ",
+                      "Create Your own customized workout by  ", 
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'SYAM',

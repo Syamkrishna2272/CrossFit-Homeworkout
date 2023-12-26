@@ -16,7 +16,11 @@ class _FullbodyState extends State<Fullbody> {
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         backgroundColor: Colors.redAccent[700],
-        title: const Text("7x4 CHALLENGE"),
+        title: const Text(
+          "7x4 CHALLENGE",
+          style: TextStyle(fontFamily: 'custom',fontSize:18),
+        ),
+        centerTitle: true,
       ),
       body: SafeArea(
           child: SingleChildScrollView(

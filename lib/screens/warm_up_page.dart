@@ -44,81 +44,90 @@ class _warmUpState extends State<warmUp> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: ListView.separated(
-          itemBuilder: ((context, index) {
-            return GestureDetector(
-              onTap: () {
-                startTimer(index);
-                setState(() {
-                  isPlayingList[index] = true;
-                });
-              },
-              child: Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: ((context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      startTimer(index);
+                      setState(() {
+                        isPlayingList[index] = !isPlayingList[index];
+                      });
+                    },
+                    child: Container(
+                      child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "${exercisedata[index].title}",
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'custom'),
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 150,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Lottie.asset(
-                              exercisedata[index].animationpath,
-                              animate: isPlayingList[index],
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                startTimer(index);
-                                setState(() {
-                                  isPlayingList[index] = true;
-                                });
-                              },
-                              icon: Icon(
-                                isPlayingList[index]
-                                    ? Icons.pause
-                                    : Icons.play_arrow,
-                                size: 25,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${exercisedata[index].title}",
+                                style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'custom'),
                               ),
                             ),
-                            const SizedBox(
-                              width: 80,
+                            Container(
+                              width: double.infinity,
+                              height: 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Lottie.asset(
+                                    exercisedata[index].animationpath,
+                                    animate: isPlayingList[index],
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      startTimer(index);
+                                      setState(() {
+                                        isPlayingList[index] = true;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      isPlayingList[index]
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                      size: 25,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 80,
+                                  ),
+                                  Text(
+                                    '${remainingTimes[index] ?? 0}s',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(
+                                    width: 35,
+                                  )
+                                ],
+                              ),
                             ),
-                            Text(
-                              '${remainingTimes[index] ?? 0}s',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: 35,
-                            )
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                }),
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                    thickness: 5,
+                  );
+                },
+                itemCount: exercisedata.length,
               ),
-            );
-          }),
-          separatorBuilder: (context, index) {
-            return const Divider(
-              thickness: 5,
-            );
-          },
-          itemCount: exercisedata.length,
+            ),
+            TextButton(onPressed: (){}, child: Text("Complete"))
+          ],
         ),
       ),
     );
@@ -130,7 +139,7 @@ class _warmUpState extends State<warmUp> {
     timers[index] = Timer.periodic(Duration(seconds: 1), (timer) {
       if (mounted) {
         setState(() {
-          if (remainingTimes[index]! > 0) {
+          if (remainingTimes[index]! > 0 && isPlayingList[index]) {
             remainingTimes[index] = remainingTimes[index]! - 1;
           } else {
             isPlayingList[index] = false;
@@ -139,12 +148,5 @@ class _warmUpState extends State<warmUp> {
         });
       }
     });
-    // timer = Timer.(Duration(seconds: 20), () {
-    //   if (mounted) {
-    //     setState(() {
-    //       isPlayingList[index] = false;
-    //     });
-    //   }
-    // });
   }
 }

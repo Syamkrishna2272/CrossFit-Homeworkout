@@ -83,6 +83,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           }
                           return null;
                         },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 17,
@@ -95,14 +96,14 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: isUsernameEmpty
-                                    ? Colors.red
-                                    : Colors.blue),
+                                color:
+                                    isUsernameEmpty ? Colors.red : Colors.blue),
                           ),
                           labelStyle: const TextStyle(
                             color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 12 ,
+                            fontWeight: FontWeight.w400 ,
+                            fontFamily: 'custom'
                           ),
                         ),
                       ),
@@ -117,16 +118,15 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           }
                           return null;
                         },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
-                          
                         ),
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
-                          
                           labelText: "Password:",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
@@ -138,8 +138,9 @@ class _AdminloginpageState extends State<Adminloginpage> {
                           ),
                           labelStyle: const TextStyle(
                             color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 12 ,
+                            fontWeight: FontWeight.w400 ,
+                            fontFamily: 'custom'
                           ),
                         ),
                       ),
@@ -153,10 +154,11 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                        return Adminintropage();
-                      }));
+                      .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                    return Adminintropage();
+                  }));
                   // if (_formKey.currentState!.validate()) {
+                    
                   //   if (_usernameController.text == 'Admin' &&
                   //       _passwordController.text == '1234') {
                   //     Navigator.of(context)
@@ -176,10 +178,10 @@ class _AdminloginpageState extends State<Adminloginpage> {
                 child: const Text(
                   "NEXT ",
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'custom'),
                 ),
               ),
               const SizedBox(

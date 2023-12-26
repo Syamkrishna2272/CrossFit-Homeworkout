@@ -56,8 +56,9 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Workout"),
+        title: const Text("Add Workout",style: TextStyle(fontFamily: 'custom'),),
         backgroundColor: Colors.red[700],
+        centerTitle: true ,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -119,7 +120,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                               );
                             }).toList(),
                             decoration: const InputDecoration(
-                                labelText: "Category",
+                                labelText: "Category",labelStyle: TextStyle(fontFamily: 'custom'),
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: Colors.red))),
@@ -139,7 +140,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             },
                             controller: _workoutnameController,
                             decoration: const InputDecoration(
-                              labelText: "Workout Name",
+                              labelText: "Workout Name",labelStyle: TextStyle(fontFamily: 'custom'),
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
@@ -160,7 +161,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                                 );
                               }).toList(),
                               decoration: InputDecoration(
-                                labelText: "Body part",
+                                labelText: "Body part",labelStyle: TextStyle(fontFamily: 'custom'),
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: Colors.red)),
@@ -189,7 +190,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                               LengthLimitingTextInputFormatter(10)
                             ],
                             decoration: const InputDecoration(
-                              labelText: "Reps/Time",
+                              labelText: "Reps/Time",labelStyle: TextStyle(fontFamily: 'custom'),
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
@@ -211,7 +212,7 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                             controller: _descriptionController,
                             // textAlign: TextAlign.start,
                             decoration: const InputDecoration(
-                              labelText: "Description",
+                              labelText: "Description",labelStyle: TextStyle(fontFamily: 'custom'),
                               contentPadding:
                                   EdgeInsets.symmetric(vertical: 45,horizontal: 10),
                               border: OutlineInputBorder(),
@@ -239,11 +240,12 @@ class _AdminaddworkoutpageState extends State<Adminaddworkoutpage> {
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18))),
-                      child: const Text(
+                      child:  Text(
                         "Add",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 17,
+                            fontFamily: 'custom',
                             fontWeight: FontWeight.w600),
                       )),
                 )
