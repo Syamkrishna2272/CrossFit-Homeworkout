@@ -48,16 +48,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   ),
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: 200,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/intro.jpg'),
-                    fit: BoxFit.cover,
+                Container(
+                  width: double.infinity,
+                  height: 200,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/intro.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
               const Text(
                 "Admin",
                 style: TextStyle(

@@ -1,10 +1,13 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
+import 'package:cross_fit/screens/login_page.dart';
 
 import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../db/functions/signup_function.dart';
 
 const key1 = "success";
 
@@ -69,6 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       }
                       return null;
                     },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
                       labelText: "Name:",
                       filled: true,
@@ -95,6 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       }
                       return null;
                     },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
                       labelText: "Email:",
@@ -122,6 +127,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       }
                       return null;
                     },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     style: const TextStyle(color: Colors.white),
                     inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     keyboardType: TextInputType.number,
@@ -151,6 +157,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       }
                       return null;
                     },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     style: const TextStyle(color: Colors.white),
                     inputFormatters: [LengthLimitingTextInputFormatter(4)],
                     keyboardType: TextInputType.number,
@@ -215,7 +222,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
+                            return loginPage();
+                          }));
+                        },
                         child: Text("Login"))
                   ],
                 ),

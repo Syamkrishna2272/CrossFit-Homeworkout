@@ -12,7 +12,7 @@ class PersonalInfo extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/personal info.jpg'),
+              image: AssetImage('assets/images/signup.jpg'),
               fit: BoxFit.cover)),
       child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -39,85 +39,86 @@ class PersonalInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-                        textCapitalization: TextCapitalization.words,
-                        decoration: const InputDecoration(
-                            labelText: "Name:",
-                            filled: true,
-                            fillColor: Colors.black,
-                            labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red))),
+                    style: const TextStyle(color: Colors.white),
+                    textCapitalization: TextCapitalization.words,
+                    decoration: const InputDecoration(
+                      labelText: "Name:",
+                      filled: true,
+                      fillColor: Colors.black54,
+                      labelStyle: TextStyle(
+                          fontFamily: 'SYAM',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
                       ),
+                    ),
+                  ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [LengthLimitingTextInputFormatter(2)],
-                        decoration: const InputDecoration(
-                            labelText: "Age:",
-                            filled: true,
-                            fillColor: Colors.black,
-                            labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red))),
+                    style: const TextStyle(color: Colors.white),
+                    textCapitalization: TextCapitalization.words,
+                    decoration: const InputDecoration(
+                      labelText: "Name:",
+                      filled: true,
+                      fillColor: Colors.black54,
+                      labelStyle: TextStyle(
+                          fontFamily: 'SYAM',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
                       ),
+                    ),
+                  ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-                        inputFormatters: [LengthLimitingTextInputFormatter(3)],
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                            labelText: "Height:",
-                            filled: true,
-                            fillColor: Colors.black,
-                            labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red))),
+                    style: const TextStyle(color: Colors.white),
+                    textCapitalization: TextCapitalization.words,
+                    decoration: const InputDecoration(
+                      labelText: "Name:",
+                      filled: true,
+                      fillColor: Colors.black54,
+                      labelStyle: TextStyle(
+                          fontFamily: 'SYAM',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
                       ),
+                    ),
+                  ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-                        inputFormatters: [LengthLimitingTextInputFormatter(3)],
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                            labelText: "Weight:",
-                            filled: true,
-                            fillColor: Colors.black,
-                            labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red))),
+                    style: const TextStyle(color: Colors.white),
+                    textCapitalization: TextCapitalization.words,
+                    decoration: const InputDecoration(
+                      labelText: "Name:",
+                      filled: true,
+                      fillColor: Colors.black54,
+                      labelStyle: TextStyle(
+                          fontFamily: 'SYAM',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
                       ),
+                    ),
+                  ),
                     ),
                     const SizedBox(
                       height: 180,

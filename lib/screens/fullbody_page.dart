@@ -156,7 +156,7 @@ class _FullbodyState extends State<Fullbody> {
               ),
             ),
           ),
-        ),
+        ), 
       ),
     );
   }

@@ -1,8 +1,10 @@
+import 'package:cross_fit/screens/fullbody_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
 import 'package:cross_fit/screens/fullbody_workout_page.dart';
 
+// ignore: camel_case_types
 class warmUp extends StatefulWidget {
   const warmUp({super.key});
 
@@ -10,10 +12,14 @@ class warmUp extends StatefulWidget {
   State<warmUp> createState() => _warmUpState();
 }
 
+List W1 = [];
+
+// ignore: camel_case_types
 class _warmUpState extends State<warmUp> {
   late List<bool> isPlayingList;
   late Map<int, Timer> timers;
   late Map<int, int> remainingTimes;
+  late Map<int, bool> completionState;
 
   @override
   void initState() {
@@ -21,14 +27,14 @@ class _warmUpState extends State<warmUp> {
     isPlayingList = List.generate(exercisedata.length, (index) => false);
     timers = {};
     remainingTimes = {};
+    completionState = {};
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    timers.values.forEach((timer) {
+    for (var timer in timers.values) {
       timer.cancel();
-    });
+    }
     super.dispose();
   }
 
@@ -100,13 +106,29 @@ class _warmUpState extends State<warmUp> {
                                   const SizedBox(
                                     width: 80,
                                   ),
-                                  Text(
-                                    '${remainingTimes[index] ?? 0}s',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  SizedBox(
+                                  isPlayingList[index] == false
+                                      ? completionState[index] != true
+                                          ? const Text(
+                                              "0s",
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          : const Icon(
+                                              Icons.check,
+                                              color: Colors.green,
+                                              size: 25,
+                                            )
+                                      : Visibility(
+                                          visible: isPlayingList[index],
+                                          child: Text(
+                                            '${remainingTimes[index] ?? 0}s',
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          )),
+                                  const SizedBox(
                                     width: 35,
                                   )
                                 ],
@@ -126,7 +148,23 @@ class _warmUpState extends State<warmUp> {
                 itemCount: exercisedata.length,
               ),
             ),
-            TextButton(onPressed: (){}, child: Text("Complete"))
+            TextButton(
+                onPressed: () {
+                  if (W1.length == 10) {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (ctx) {
+                      return const Fullbody();
+                    }));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 1),
+                        margin: EdgeInsets.all(10),
+                        backgroundColor: Colors.red,
+                        content: Text("Complete all workouts ")));
+                  }
+                },
+                child: const Text("Complete"))
           ],
         ),
       ),
@@ -136,7 +174,7 @@ class _warmUpState extends State<warmUp> {
   void startTimer(int index) {
     timers[index]?.cancel();
     remainingTimes[index] = 20;
-    timers[index] = Timer.periodic(Duration(seconds: 1), (timer) {
+    timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (mounted) {
         setState(() {
           if (remainingTimes[index]! > 0 && isPlayingList[index]) {
@@ -144,6 +182,8 @@ class _warmUpState extends State<warmUp> {
           } else {
             isPlayingList[index] = false;
             timer.cancel();
+            completionState[index] = true;
+            W1.add(1);   
           }
         });
       }
