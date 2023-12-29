@@ -1,8 +1,9 @@
-import 'package:cross_fit/screens/fullbody_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
-import 'package:cross_fit/screens/fullbody_workout_page.dart';
+
+import 'fullbody_page.dart';
+import 'fullbody_workout_page.dart';
 
 // ignore: camel_case_types
 class warmUp extends StatefulWidget {
@@ -150,19 +151,7 @@ class _warmUpState extends State<warmUp> {
             ),
             TextButton(
                 onPressed: () {
-                  if (W1.length == 10) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (ctx) {
-                      return const Fullbody();
-                    }));
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        behavior: SnackBarBehavior.floating,
-                        duration: Duration(seconds: 1),
-                        margin: EdgeInsets.all(10),
-                        backgroundColor: Colors.red,
-                        content: Text("Complete all workouts ")));
-                  }
+                  check();
                 },
                 child: const Text("Complete"))
           ],
@@ -183,10 +172,58 @@ class _warmUpState extends State<warmUp> {
             isPlayingList[index] = false;
             timer.cancel();
             completionState[index] = true;
-            W1.add(1);   
+            W1.add(1);
           }
         });
       }
     });
+  }
+
+  check() {
+    print('length is==${W1.length}');
+    if (W1.length == 10) {
+      Navigator.of(context).pop();
+
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else if (W1.length == 10) {
+      Navigator.of(context).pop();
+      completedWorkout = completedWorkout + 1;
+      lottiecomplete = lottiecomplete + 10;
+      W1.clear();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 1),
+          margin: EdgeInsets.all(10),
+          backgroundColor: Colors.red,
+          content: Text("Complete all workouts ")));
+    }
   }
 }
