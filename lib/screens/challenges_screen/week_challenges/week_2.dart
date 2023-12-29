@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 
 import '../fullbody_page.dart';
 
-// ignore: must_be_immutable
+// ignore: must_be_immutable, camel_case_types
 class weekTwo extends StatelessWidget {
-  weekTwo({super.key});
+  const weekTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
+        const Text(
           "week 2",
-          style: const TextStyle(
+          style: TextStyle(
               fontSize: 20,
               fontFamily: 'custom',
               color: Colors.white,
@@ -42,8 +42,8 @@ class weekTwo extends StatelessWidget {
                           onTap: () {
                             if (completedWorkout == 7) {
                               Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                  .push (MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -58,7 +58,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 8
@@ -67,7 +67,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 8) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -82,7 +82,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 9
@@ -91,7 +91,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 9) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -106,7 +106,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 10
@@ -115,7 +115,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 10) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -130,7 +130,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 11
@@ -139,7 +139,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 11) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -154,7 +154,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 12
@@ -163,7 +163,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 12) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -178,7 +178,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 13
@@ -187,7 +187,7 @@ class weekTwo extends StatelessWidget {
                             if (completedWorkout == 13) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                                return const warmUp();
                               }));
                             }
                           },
@@ -202,7 +202,7 @@ class weekTwo extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                 ],

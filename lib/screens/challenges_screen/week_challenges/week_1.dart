@@ -1,21 +1,21 @@
 import 'package:cross_fit/screens/challenges_screen/warm_up_page.dart';
+import 'package:cross_fit/screens/challenges_screen/week_challenges/snackbar_page.dart';
 import 'package:flutter/material.dart';
 
 import '../fullbody_page.dart';
 
-// ignore: must_be_immutable
+// ignore: must_be_immutable, camel_case_types
 class weekOne extends StatelessWidget {
-  weekOne({super.key});
-
+  const weekOne({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
+        const Text(
           "week 1",
-          style: const TextStyle(
+          style: TextStyle(
               fontSize: 20,
               fontFamily: 'custom',
               color: Colors.white,
@@ -42,9 +42,9 @@ class weekOne extends StatelessWidget {
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 0) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -59,16 +59,16 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 1
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 1) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -83,16 +83,21 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
-                          backgroundColor: Colors.black54,
-                          child: Icon(Icons.lock)),
+                      : GestureDetector(
+                          onTap: () {
+                           Snackbar(context, 'Complete Previous Workouts');
+                          },
+                          child: const CircleAvatar(
+                              backgroundColor: Colors.black54,
+                              child: Icon(Icons.lock)),
+                        ),
                   completedWorkout == 2
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 2) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -107,16 +112,21 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
-                          backgroundColor: Colors.black54,
-                          child: Icon(Icons.lock)),
+                      : GestureDetector(
+                          onTap: () {
+                           Snackbar(context, 'Complete Previous Workouts');
+                          },
+                          child: const CircleAvatar(
+                              backgroundColor: Colors.black54,
+                              child: Icon(Icons.lock)),
+                        ),
                   completedWorkout == 3
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 3) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -131,16 +141,16 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 4
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 4) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -155,16 +165,18 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
-                          child: Icon(Icons.lock)),
+                          child: Icon(
+                            Icons.lock,
+                          )),
                   completedWorkout == 5
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 5) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -179,16 +191,16 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                   completedWorkout == 6
                       ? GestureDetector(
                           onTap: () {
                             if (completedWorkout == 6) {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (ctx) {
-                                return warmUp();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) {
+                                return const warmUp();
                               }));
                             }
                           },
@@ -203,7 +215,7 @@ class weekOne extends StatelessWidget {
                             ),
                           ),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           backgroundColor: Colors.black54,
                           child: Icon(Icons.lock)),
                 ],

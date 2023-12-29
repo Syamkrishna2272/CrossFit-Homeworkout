@@ -15,6 +15,7 @@ class Fullbody extends StatefulWidget {
 int completedWorkout = 0;
 int lottiecomplete = 0;
 int taskcomplete = 0;
+int unlock=0;
 
 class _FullbodyState extends State<Fullbody> {
   @override
@@ -50,70 +51,4 @@ class _FullbodyState extends State<Fullbody> {
       )),
     );
   }
-
-  // buildWeekContainer(BuildContext context, int weekNumber) {
-  //   return Card(
-  //     elevation: 8,
-  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //     child: Container(
-  //       width: double.infinity,
-  //       height: 150,
-  //       decoration: BoxDecoration(
-  //         color: Colors.white,
-  //         borderRadius: BorderRadius.circular(10),
-  //       ),
-  //       child: Padding(
-  //         padding: const EdgeInsets.all(8.0),
-  //         child: Wrap(
-  //           spacing: 45,
-  //           runSpacing: 30,
-  //           children: List.generate(
-  //             7,
-  //             (index) => GestureDetector(
-  //               onTap: () {
-  //                 if (completedWorkout == index) {
-  //                   Navigator.push(
-  //                     context,
-  //                     MaterialPageRoute(builder: (ctx) {
-  //                       return warmUp();
-  //                     }),
-  //                   );
-  //                 }
-
-  //                 // if (completedWorkout >= (weekNumber - 1) * 7 + index) {
-
-  //                 //   Navigator.push(
-  //                 //     context,
-  //                 //     MaterialPageRoute(builder: (ctx) {
-  //                 //       return warmUp();
-  //                 //     }),
-  //                 //   );
-  //                 // } else {
-  //                 //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //                 //     content: Text(
-  //                 //         'Complete previous workouts to unlock this day!'),
-  //                 //     behavior: SnackBarBehavior.floating,
-  //                 //     margin: EdgeInsets.all(10),
-  //                 //     backgroundColor: Colors.red,
-  //                 //     duration: Duration(seconds: 1),
-  //                 //   ));
-  //                 // }
-  //               },
-  //               child: CircleAvatar(
-  //                 backgroundColor: Colors.black54,
-  //                 child: Text(
-  //                   (index + 1).toString(),
-  //                   style: const TextStyle(
-  //                       color: Colors.white,
-  //                       fontSize: 16,
-  //                       fontFamily: 'custom'),
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }

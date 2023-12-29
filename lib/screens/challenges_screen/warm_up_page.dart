@@ -43,6 +43,15 @@ class _warmUpState extends State<warmUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                return Fullbody();
+              }));
+            },
+            icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.redAccent[700],
         title: const Text(
           "Warm-Up",
@@ -182,42 +191,14 @@ class _warmUpState extends State<warmUp> {
   check() {
     print('length is==${W1.length}');
     if (W1.length == 10) {
-      Navigator.of(context).pop();
-
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
+        return Fullbody();
+      }));
       completedWorkout = completedWorkout + 1;
       lottiecomplete = lottiecomplete + 10;
       W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else if (W1.length == 10) {
-      Navigator.of(context).pop();
-      completedWorkout = completedWorkout + 1;
-      lottiecomplete = lottiecomplete + 10;
-      W1.clear();
-    } else {
+    }
+    else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           duration: Duration(seconds: 1),
