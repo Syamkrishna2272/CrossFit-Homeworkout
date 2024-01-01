@@ -1,3 +1,5 @@
+import 'package:cross_fit/db/functions/challenge_function.dart';
+import 'package:cross_fit/db/model/challenge_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
@@ -181,7 +183,10 @@ class _warmUpState extends State<warmUp> {
             isPlayingList[index] = false;
             timer.cancel();
             completionState[index] = true;
-            W1.add(1);
+            // W1.add(1);
+          
+           Challengeadd(1);
+
           }
         });
       }

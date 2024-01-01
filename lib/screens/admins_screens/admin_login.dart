@@ -92,7 +92,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         textCapitalization: TextCapitalization.words,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.account_box_sharp),
-                          labelText: "Username:",
+                          labelText: "Username :",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -127,7 +127,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
-                          labelText: "Password:",
+                          labelText: "Password :",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(

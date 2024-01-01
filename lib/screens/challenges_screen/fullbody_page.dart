@@ -2,7 +2,6 @@ import 'package:cross_fit/screens/challenges_screen/week_challenges/week_2.dart'
 import 'package:cross_fit/screens/challenges_screen/week_challenges/week_3.dart';
 import 'package:cross_fit/screens/challenges_screen/week_challenges/week_4.dart';
 import 'package:flutter/material.dart';
-
 import 'week_challenges/week_1.dart';
 
 class Fullbody extends StatefulWidget {
@@ -42,10 +41,10 @@ class _FullbodyState extends State<Fullbody> {
                       image: AssetImage('assets/images/beginner.jpg'),
                       fit: BoxFit.cover)),
             ),
-            weekOne(),
-            weekTwo(),
-            weekThree(),
-            weekFour()
+            const weekOne(),
+            const weekTwo(),
+            const weekThree(),
+            const weekFour()
           ],
         ),
       )),

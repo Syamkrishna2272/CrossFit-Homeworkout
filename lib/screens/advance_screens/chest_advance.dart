@@ -14,7 +14,7 @@ class chestScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Chest ",
-          style: TextStyle(fontWeight: FontWeight.w600),
+          style: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'custom'),
         ),
         backgroundColor: Colors.redAccent[700],
       ),

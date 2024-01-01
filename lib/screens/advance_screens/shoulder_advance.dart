@@ -14,7 +14,7 @@ class shoulderScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Shoulder ",
-          style: TextStyle(fontWeight: FontWeight.w600),
+          style: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'custom'),
         ),
         backgroundColor: Colors.redAccent[700],
       ),

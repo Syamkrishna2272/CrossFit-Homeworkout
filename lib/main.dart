@@ -1,4 +1,5 @@
 import 'package:cross_fit/db/model/advance_data_model.dart';
+import 'package:cross_fit/db/model/challenge_data_model.dart';
 import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:cross_fit/screens/spalsh_page.dart';
@@ -15,6 +16,7 @@ Future<void> main() async {
   Hive.registerAdapter(signupmodelAdapter());
   Hive.registerAdapter(BeginnermodelAdapter());
   Hive.registerAdapter(AdvancemodelAdapter());
+  Hive.registerAdapter(FullChallengeAdapter());
   await Hive.openBox<Advancemodel>('chests_db');
   await Hive.openBox<Advancemodel>('shoulders_db');
   await Hive.openBox<Advancemodel>('biceps_db');
