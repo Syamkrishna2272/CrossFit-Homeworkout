@@ -1,5 +1,6 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
 import 'package:cross_fit/screens/about_page.dart';
+import 'package:cross_fit/screens/privacy_policy.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
@@ -37,6 +38,12 @@ class Homeworkout extends StatelessWidget {
                     ),
                     iconColor: Colors.white,
                     title: Text("ABOUT", style: TextStyle(color: Colors.white)),
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (ctx) {
+                        return AboutScreen();
+                      }));
+                    }
                     
                   ),
                    ListTile(
@@ -47,7 +54,7 @@ class Homeworkout extends StatelessWidget {
                         onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
-                        return Aboutscreen();
+                        return PrivacyPolicyscreen();
                       }));
                     }
                         
