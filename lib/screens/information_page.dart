@@ -1,10 +1,18 @@
-import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 
-class PersonalInfo extends StatelessWidget {
-  const PersonalInfo({super.key});
+import '../db/model/signup_data_model.dart';
+final syam = Hive.openBox<signupmodel>('signup_db');
 
+class PersonalInfo extends StatefulWidget {
+   PersonalInfo({super.key});
+
+  @override
+  State<PersonalInfo> createState() => _PersonalInfoState();
+}
+
+class _PersonalInfoState extends State<PersonalInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,133 +29,61 @@ class PersonalInfo extends StatelessWidget {
             centerTitle: true,
             title: const Text(
               "Personal Information",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'custom'),
             ),
           ),
-          body: SingleChildScrollView(
+          body:  SingleChildScrollView(
             child: Stack(
               children: [
                 Column(
                   children: [
-                    const Text(
-                      "CROSS FIT",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontFamily: 'custom'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: "Name:",
-                      filled: true,
-                      fillColor: Colors.black54,
-                      labelStyle: TextStyle(
-                          fontFamily: 'SYAM',
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800),
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                    ),
-                  ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: "Name:",
-                      filled: true,
-                      fillColor: Colors.black54,
-                      labelStyle: TextStyle(
-                          fontFamily: 'SYAM',
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800),
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                    ),
-                  ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: "Name:",
-                      filled: true,
-                      fillColor: Colors.black54,
-                      labelStyle: TextStyle(
-                          fontFamily: 'SYAM',
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800),
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                    ),
-                  ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: "Name:",
-                      filled: true,
-                      fillColor: Colors.black54,
-                      labelStyle: TextStyle(
-                          fontFamily: 'SYAM',
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800),
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                    ),
-                  ),
-                    ),
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (ctx) {
-                          return Homeworkout();
-                        }));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          side: const BorderSide(color: Colors.red),
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18))),
-                      child: const Text(
-                        "SUBMIT ",
+                    Center(
+                      child: Text(
+                        "CROSS FIT",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
+                            fontSize: 32,
+                            fontFamily: 'custom'),
                       ),
-                    )
+                    ),
+                    // personalContainer(data: syam.name), 
+                    // personalContainer(data: syam.email),
+                    // personalContainer(data: syam,),
+                    // personalContainer(data: syam),
                   ],
-                )
+                  
+                ),
               ],
             ),
           )),
+    );
+  }
+}
+
+class personalContainer extends StatelessWidget {
+  personalContainer({
+    required this.data,
+    super.key,
+  });
+  var data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: double.infinity,
+        height: 65,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.red),
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.transparent,
+        ),
+        // child: Center(child: Text(),),
+      ),
     );
   }
 }

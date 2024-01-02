@@ -1,5 +1,4 @@
 import 'package:cross_fit/screens/challenges_screen/warm_up_page.dart';
-import 'package:cross_fit/screens/challenges_screen/week_challenges/snackbar_page.dart';
 import 'package:flutter/material.dart';
 
 import '../fullbody_page.dart';
@@ -85,7 +84,7 @@ class weekOne extends StatelessWidget {
                         )
                       : GestureDetector(
                           onTap: () {
-                           Snackbar(context, 'Complete Previous Workouts');
+                          //  Snackbar(context, 'Complete Previous Workouts');
                           },
                           child: const CircleAvatar(
                               backgroundColor: Colors.black54,
@@ -114,7 +113,7 @@ class weekOne extends StatelessWidget {
                         )
                       : GestureDetector(
                           onTap: () {
-                           Snackbar(context, 'Complete Previous Workouts');
+                          //  Snackbar(context, 'Complete Previous Workouts');
                           },
                           child: const CircleAvatar(
                               backgroundColor: Colors.black54,

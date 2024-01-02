@@ -1,4 +1,5 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
+import 'package:cross_fit/screens/about_page.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
@@ -30,18 +31,26 @@ class Homeworkout extends StatelessWidget {
               backgroundColor: Colors.black,
               child: ListView(
                 children: [
-                  const ListTile(
+                  ListTile(
                     leading: Icon(
                       Icons.info,
                     ),
                     iconColor: Colors.white,
                     title: Text("ABOUT", style: TextStyle(color: Colors.white)),
+                    
                   ),
-                  const ListTile(
+                   ListTile(
                     leading: Icon(Icons.receipt),
                     iconColor: Colors.white,
                     title: Text("PRIVACY & POLICY ",
                         style: TextStyle(color: Colors.white)),
+                        onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (ctx) {
+                        return Aboutscreen();
+                      }));
+                    }
+                        
                   ),
                   ListTile(
                     leading: const Icon(Icons.person),
@@ -51,7 +60,7 @@ class Homeworkout extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
-                        return const PersonalInfo();
+                        return  PersonalInfo();
                       }));
                     },
                   ),
@@ -125,7 +134,6 @@ class Homeworkout extends StatelessWidget {
                         }
                       },
                       child: Card(
-                        // elevation: 8,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: Container(

@@ -1,6 +1,5 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admins_screens/admin_intro.dart';
-
 import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 

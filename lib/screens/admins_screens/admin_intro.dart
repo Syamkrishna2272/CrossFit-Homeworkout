@@ -1,15 +1,6 @@
-import 'dart:io';
-import 'package:cross_fit/db/functions/advance_function.dart';
-import 'package:cross_fit/db/functions/beginner_function.dart';
-import 'package:cross_fit/db/model/advance_data_model.dart';
-import 'package:cross_fit/db/model/beginner_data_model.dart';
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
-import 'package:cross_fit/screens/admins_screens/admin_edit_workout.dart';
 import 'package:flutter/material.dart';
-
-import '../../db/functions/db_functions.dart';
-import '../../db/model/data_model.dart';
-import 'admin_login.dart';
+import 'admin_intro_expand.dart';
 
 class Adminintropage extends StatelessWidget {
   final String? selectedCategory;
@@ -65,14 +56,16 @@ class Adminintropage extends StatelessWidget {
                   children: [
                     Text(
                       "Add Custom Workout ",
-                      style:
-                          TextStyle(fontSize: 25 , fontWeight: FontWeight.w500,fontFamily: 'custom'),
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'custom'),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "Create Your own customized workout by  ", 
+                      "Create Your own customized workout by  ",
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'SYAM',
@@ -89,191 +82,7 @@ class Adminintropage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 8,
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                child: ValueListenableBuilder(
-                  valueListenable: workoutListnotifier,
-                  builder: (BuildContext ctx, List<Workoutmodel> workoutList,
-                      Widget? child) {
-                    return ListView.separated(
-                      itemBuilder: (ctx, index) {
-                        final data = workoutList[index];
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
-                          child: Card(
-                            elevation: 5,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SizedBox(
-                                height: 190,
-                                width: 180,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: FileImage(File(data.image)),
-                                            fit: BoxFit.fill),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 35),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Category: ${data.category}",
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Name: ${data.workoutname}",
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Body Part: ${data.bodypart}",
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Reps/Time: ${data.reps}",
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).push(
-                                                        MaterialPageRoute(
-                                                            builder: (ctx) {
-                                                      return Admineditworkoutpage(
-                                                          editmodel: data);
-                                                    }));
-                                                  },
-                                                  icon: const Icon(
-                                                    Icons.edit,
-                                                    color: Colors.green,
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (ctx1) {
-                                                        return AlertDialog(
-                                                          title: const Text(
-                                                              "Do you want to delete?"),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed:
-                                                                  () async {
-                                                                if (data.id !=
-                                                                    null) {
-                                                                  deletebeginner(data.id!,data);
-                                                                  deleteadvance(data.id!,data);
-                                                                  deleteAllworkout(data.id!);
-                                                                  deleteButtonClickedYes(ctx);
-                                                                } else {
-                                                                  print( "Unable to delete");
-                                                                }
-                                                                Navigator.of(context).pop();
-                                                              },
-                                                              child: const Text("Yes"),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.of(context).pop();
-                                                              },
-                                                              child: const Text("No"),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                  icon: const Icon(
-                                                    Icons.delete,
-                                                    color: Colors.red,
-                                                  ),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () {
-                                                    var val = Beginnermodel(
-                                                      data.id,
-                                                      data.image,
-                                                      data.description,
-                                                      data.reps,
-                                                      data.workoutname,
-                                                    );
-
-                                                    var b = Advancemodel(
-                                                      data.id,
-                                                      data.image,
-                                                      data.description,
-                                                      data.reps,
-                                                      data.workoutname,
-                                                    );
-
-                                                    workoutchecking(data, val);
-                                                    Advanceworkoutchecking( data, b);
-                                                    ScaffoldMessenger.of(ctx).showSnackBar(
-                                                            const SnackBar( content: Text(
-                                                          "The workout has been added to your list"),
-                                                      behavior: SnackBarBehavior.floating,
-                                                      margin:EdgeInsets.all(10),
-                                                      backgroundColor: Colors.red,
-                                                      duration: Duration(seconds: 1),
-                                                    ));
-                                                  },
-                                                  child: Text("ADD"),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (ctx, index) {
-                        return const SizedBox(
-                          height: 5,
-                        );
-                      },
-                      itemCount: workoutList.length,
-                    );
-                  },
-                ),
-              ),
-            ),
+            const AdminintroExpanded(),
             Expanded(
               flex: 1,
               child: FloatingActionButton(
@@ -289,21 +98,5 @@ class Adminintropage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> logout(BuildContext context) async {
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
-      return Adminloginpage();
-    }), (route) => false);
-  }
-
-  deleteButtonClickedYes(ctx) {
-    ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
-      content: Text("Successfully Deleted"),
-      behavior: SnackBarBehavior.floating,
-      margin: EdgeInsets.all(10),
-      backgroundColor: Colors.red,
-      duration: Duration(seconds: 1),
-    ));
   }
 }

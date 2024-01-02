@@ -49,6 +49,6 @@ Future<void> editAllworkout(int id, Workoutmodel value) async {
   getAllworkout();
 }
 
-/*Signup page functions  */
+
 
 

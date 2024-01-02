@@ -1,4 +1,4 @@
-import 'package:cross_fit/db/functions/db_functions.dart';
+
 import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:cross_fit/screens/login_page.dart';
 

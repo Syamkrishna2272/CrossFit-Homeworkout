@@ -39,7 +39,8 @@ class _FullbodyState extends State<Fullbody> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/beginner.jpg'),
-                      fit: BoxFit.cover)),
+                      fit: BoxFit.cover)
+                      ),
             ),
             const weekOne(),
             const weekTwo(),

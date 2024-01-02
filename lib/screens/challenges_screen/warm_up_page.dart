@@ -1,9 +1,7 @@
-import 'package:cross_fit/db/functions/challenge_function.dart';
-import 'package:cross_fit/db/model/challenge_data_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
-
 import 'fullbody_page.dart';
 import 'fullbody_workout_page.dart';
 
@@ -50,10 +48,10 @@ class _warmUpState extends State<warmUp> {
             onPressed: () {
               Navigator.of(context)
                   .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                return Fullbody();
+                return const Fullbody();
               }));
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
         backgroundColor: Colors.redAccent[700],
         title: const Text(
           "Warm-Up",
@@ -74,80 +72,78 @@ class _warmUpState extends State<warmUp> {
                         isPlayingList[index] = !isPlayingList[index];
                       });
                     },
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "${exercisedata[index].title}",
-                                style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'custom'),
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "${exercisedata[index].title}",
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'custom'),
                             ),
-                            Container(
-                              width: double.infinity,
-                              height: 150,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Lottie.asset(
-                                    exercisedata[index].animationpath,
-                                    animate: isPlayingList[index],
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 150,
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Lottie.asset(
+                                  exercisedata[index].animationpath,
+                                  animate: isPlayingList[index],
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    startTimer(index);
+                                    setState(() {
+                                      isPlayingList[index] = true;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    isPlayingList[index]
+                                        ? Icons.pause
+                                        : Icons.play_arrow,
+                                    size: 25,
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      startTimer(index);
-                                      setState(() {
-                                        isPlayingList[index] = true;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      isPlayingList[index]
-                                          ? Icons.pause
-                                          : Icons.play_arrow,
-                                      size: 25,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 80,
-                                  ),
-                                  isPlayingList[index] == false
-                                      ? completionState[index] != true
-                                          ? const Text(
-                                              "0s",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600),
-                                            )
-                                          : const Icon(
-                                              Icons.check,
-                                              color: Colors.green,
-                                              size: 25,
-                                            )
-                                      : Visibility(
-                                          visible: isPlayingList[index],
-                                          child: Text(
-                                            '${remainingTimes[index] ?? 0}s',
-                                            style: const TextStyle(
+                                ),
+                                const SizedBox(
+                                  width: 80,
+                                ),
+                                isPlayingList[index] == false
+                                    ? completionState[index] != true
+                                        ? const Text(
+                                            "0s",
+                                            style: TextStyle(
+                                                color: Colors.black,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w600),
-                                          )),
-                                  const SizedBox(
-                                    width: 35,
-                                  )
-                                ],
-                              ),
+                                          )
+                                        : const Icon(
+                                            Icons.check,
+                                            color: Colors.green,
+                                            size: 25,
+                                          )
+                                    : Visibility(
+                                        visible: isPlayingList[index],
+                                        child: Text(
+                                          '${remainingTimes[index] ?? 0}s',
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                const SizedBox(
+                                  width: 35,
+                                )
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -183,10 +179,9 @@ class _warmUpState extends State<warmUp> {
             isPlayingList[index] = false;
             timer.cancel();
             completionState[index] = true;
-            // W1.add(1);
-          
-           Challengeadd(1);
+            W1.add(1);
 
+            // Challengeadd(1);
           }
         });
       }
@@ -197,13 +192,12 @@ class _warmUpState extends State<warmUp> {
     print('length is==${W1.length}');
     if (W1.length == 10) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
-        return Fullbody();
+        return const Fullbody();
       }));
       completedWorkout = completedWorkout + 1;
       lottiecomplete = lottiecomplete + 10;
       W1.clear();
-    }
-    else {
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           duration: Duration(seconds: 1),
