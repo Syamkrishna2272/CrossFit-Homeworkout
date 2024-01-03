@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/intro_page.dart';
 import 'package:cross_fit/screens/signup_page.dart';
 import 'package:cross_fit/screens/workout_page.dart';
@@ -19,6 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
     gotonext(); 
     gotoworkout();
+    getsignup();
     // gotoworkout();
 
     // Timer(Duration(seconds: 3), () {

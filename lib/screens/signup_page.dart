@@ -1,5 +1,5 @@
-
 import 'package:cross_fit/db/model/signup_data_model.dart';
+import 'package:cross_fit/screens/information_page.dart';
 import 'package:cross_fit/screens/login_page.dart';
 
 import 'package:cross_fit/screens/workout_page.dart';
@@ -10,6 +10,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../db/functions/signup_function.dart';
 
 const key1 = "success";
+
+dynamic pername;
+dynamic peremail;
+dynamic perpassword;
+dynamic perphone;
+
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});
@@ -200,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(
                   height: 15,
-                ),        
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -223,7 +229,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (ctx) {
                             return loginPage();
                           }));
                         },
@@ -242,7 +249,13 @@ class _SignupScreenState extends State<SignupScreen> {
     final _phone = _phoneController.text;
     final _password = _passwordController.text;
 
+    
+
     if (_formKey.currentState!.validate()) {
+      // pername=_name;
+      // peremail=_email;
+      // perpassword=_password;
+      // perphone=_phone;
       final signup = signupmodel(
           name: _name, email: _email, phone: _phone, password: _password);
       final sharedpref = await SharedPreferences.getInstance();

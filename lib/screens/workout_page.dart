@@ -1,10 +1,12 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
+import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/about_page.dart';
 import 'package:cross_fit/screens/privacy_policy.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/information_page.dart';
+import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
 
 import 'challenges_screen/fullbody_page.dart';
@@ -23,6 +25,7 @@ class Homeworkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getsignup();
     getbeginnerWorkout();
     return Scaffold(
         backgroundColor: Colors.white,
@@ -32,42 +35,47 @@ class Homeworkout extends StatelessWidget {
               backgroundColor: Colors.black,
               child: ListView(
                 children: [
+                  
                   ListTile(
-                    leading: Icon(
-                      Icons.info,
-                    ),
-                    iconColor: Colors.white,
-                    title: Text("ABOUT", style: TextStyle(color: Colors.white)),
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (ctx) {
-                        return AboutScreen();
-                      }));
-                    }
-                    
-                  ),
-                   ListTile(
-                    leading: Icon(Icons.receipt),
-                    iconColor: Colors.white,
-                    title: Text("PRIVACY & POLICY ",
-                        style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (ctx) {
-                        return PrivacyPolicyscreen();
-                      }));
-                    }
-                        
-                  ),
+                      leading: Icon(
+                        Icons.info,
+                      ),
+                      iconColor: Colors.white,
+                      title:
+                          Text("ABOUT", style: TextStyle(color: Colors.white)),
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return AboutScreen();
+                        }));
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.receipt),
+                      iconColor: Colors.white,
+                      title: Text("PRIVACY & POLICY ",
+                          style: TextStyle(color: Colors.white)),
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return PrivacyPolicyscreen();
+                        }));
+                      }),
                   ListTile(
                     leading: const Icon(Icons.person),
                     iconColor: Colors.white,
                     title: const Text("PROFILE",
                         style: TextStyle(color: Colors.white)),
                     onTap: () {
+                      
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
-                        return  PersonalInfo();
+                        return PersonalInfo(
+                          email: peremail,
+                          name: pername,
+                          pass: perpassword,
+                          phn: perphone,
+                        );
+                        
                       }));
                     },
                   ),
@@ -86,7 +94,7 @@ class Homeworkout extends StatelessWidget {
                   const ListTile(
                     title: Text(
                       "Version 1.2D ",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white54, fontSize: 12),
                     ),
                   )
                 ],

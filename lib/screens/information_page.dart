@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
 
-import '../db/model/signup_data_model.dart';
-final syam = Hive.openBox<signupmodel>('signup_db');
-
+// ignore: must_be_immutable
 class PersonalInfo extends StatefulWidget {
-   PersonalInfo({super.key});
+  PersonalInfo({
+    super.key,
+    required this.name,
+    required this.email,
+    required this.pass,
+    required this.phn,
+  });
+
+  var name;
+  var email;
+  var pass;
+  var phn;
 
   @override
   State<PersonalInfo> createState() => _PersonalInfoState();
@@ -35,12 +43,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   fontFamily: 'custom'),
             ),
           ),
-          body:  SingleChildScrollView(
+          body: SingleChildScrollView(
             child: Stack(
               children: [
                 Column(
                   children: [
-                    Center(
+                    const Center(
                       child: Text(
                         "CROSS FIT",
                         style: TextStyle(
@@ -49,12 +57,10 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             fontFamily: 'custom'),
                       ),
                     ),
-                    // personalContainer(data: syam.name), 
-                    // personalContainer(data: syam.email),
-                    // personalContainer(data: syam,),
-                    // personalContainer(data: syam),
+                    personalContainer(data: widget.name),
+                    personalContainer(data: widget.email),
+                    personalContainer(data: widget.phn),
                   ],
-                  
                 ),
               ],
             ),
@@ -76,13 +82,22 @@ class personalContainer extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         width: double.infinity,
-        height: 65,
+        height: 60,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.red),
           borderRadius: BorderRadius.circular(10),
-          color: Colors.transparent,
+          color: Colors.black54,
         ),
-        // child: Center(child: Text(),),
+        child: Center(
+          child: Text(
+            data,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'custom'),
+          ),
+        ),
       ),
     );
   }
