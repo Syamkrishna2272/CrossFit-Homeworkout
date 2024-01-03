@@ -1,15 +1,14 @@
 import 'package:cross_fit/db/functions/beginner_function.dart';
 import 'package:cross_fit/db/functions/signup_function.dart';
-import 'package:cross_fit/screens/about_page.dart';
-import 'package:cross_fit/screens/privacy_policy.dart';
+import 'package:cross_fit/screens/home_page/privacy_policy.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
-import 'package:cross_fit/screens/information_page.dart';
 import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
-
-import 'challenges_screen/fullbody_page.dart';
+import '../challenges_screen/fullbody_page.dart';
+import 'about_page.dart';
+import 'information_page.dart';
 
 class Homeworkout extends StatelessWidget {
   Homeworkout({super.key});
@@ -35,7 +34,6 @@ class Homeworkout extends StatelessWidget {
               backgroundColor: Colors.black,
               child: ListView(
                 children: [
-                  
                   ListTile(
                       leading: Icon(
                         Icons.info,
@@ -66,7 +64,6 @@ class Homeworkout extends StatelessWidget {
                     title: const Text("PROFILE",
                         style: TextStyle(color: Colors.white)),
                     onTap: () {
-                      
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
                         return PersonalInfo(
@@ -75,7 +72,6 @@ class Homeworkout extends StatelessWidget {
                           pass: perpassword,
                           phn: perphone,
                         );
-                        
                       }));
                     },
                   ),

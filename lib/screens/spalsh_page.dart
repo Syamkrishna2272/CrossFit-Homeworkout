@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/intro_page.dart';
 import 'package:cross_fit/screens/signup_page.dart';
-import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'home_page/workout_page.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);

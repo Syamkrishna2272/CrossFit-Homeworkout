@@ -57,9 +57,24 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             fontFamily: 'custom'),
                       ),
                     ),
+                    // Row(
+                    //   // crossAxisAlignment: CrossAxisAlignment.center , 
+                    //   mainAxisAlignment: MainAxisAlignment.,
+                    //   children: [
+                    //     Text(
+                    //       "Name",
+                    //       style: TextStyle(
+                    //           color: Colors.white,
+                    //           fontSize: 18,
+                    //           fontFamily: 'custom',
+                    //           fontWeight: FontWeight.w500),
+                    //     ),
+                    //   ],
+                    // ),
                     personalContainer(data: widget.name),
                     personalContainer(data: widget.email),
                     personalContainer(data: widget.phn),
+                    height_weight_container()
                   ],
                 ),
               ],
@@ -69,6 +84,40 @@ class _PersonalInfoState extends State<PersonalInfo> {
   }
 }
 
+class height_weight_container extends StatelessWidget {
+  const height_weight_container({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 40,
+      children: [
+        Container(
+          height: 60,
+          width: 140,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.red),
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black54,
+          ),
+        ),
+        Container(
+          height: 60,
+          width: 140,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.red),
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black54,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+// ignore: must_be_immutable
 class personalContainer extends StatelessWidget {
   personalContainer({
     required this.data,
@@ -79,7 +128,7 @@ class personalContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(15),
       child: Container(
         width: double.infinity,
         height: 60,

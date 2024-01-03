@@ -6,7 +6,7 @@ import 'package:cross_fit/screens/beginner%20_screens/abs_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/chest_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/leg_screen.dart';
 import 'package:cross_fit/screens/beginner%20_screens/shoulder_screen.dart';
-import 'package:cross_fit/screens/details.dart';
+import 'package:cross_fit/screens/workout_details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';

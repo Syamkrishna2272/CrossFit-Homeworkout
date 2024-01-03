@@ -1,7 +1,7 @@
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admins_screens/admin_intro.dart';
-import 'package:cross_fit/screens/workout_page.dart';
 import 'package:flutter/material.dart';
+import '../home_page/workout_page.dart';
 
 class Adminloginpage extends StatefulWidget {
   const Adminloginpage({Key? key}) : super(key: key);
@@ -47,16 +47,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                   ),
                 ],
               ),
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/intro.jpg'),
-                      fit: BoxFit.cover,
-                    ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/intro.jpg'),
+                    fit: BoxFit.cover,
                   ),
                 ),
+              ),
               const Text(
                 "Admin",
                 style: TextStyle(
@@ -90,7 +90,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         ),
                         textCapitalization: TextCapitalization.words,
                         decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.account_box_sharp),
+                          prefixIcon: const Icon(Icons.account_box_sharp,color: Colors.black ,),
                           labelText: "Username :",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
@@ -99,11 +99,10 @@ class _AdminloginpageState extends State<Adminloginpage> {
                                     isUsernameEmpty ? Colors.red : Colors.blue),
                           ),
                           labelStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 12 ,
-                            fontWeight: FontWeight.w400 ,
-                            fontFamily: 'custom'
-                          ),
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'custom'),
                         ),
                       ),
                     ),
@@ -125,7 +124,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         ),
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock),
+                          prefixIcon: const Icon(Icons.lock,color: Colors.black ),
                           labelText: "Password :",
                           border: const OutlineInputBorder(),
                           enabledBorder: OutlineInputBorder(
@@ -136,11 +135,10 @@ class _AdminloginpageState extends State<Adminloginpage> {
                             ),
                           ),
                           labelStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 12 ,
-                            fontWeight: FontWeight.w400 ,
-                            fontFamily: 'custom'
-                          ),
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'custom'),
                         ),
                       ),
                     ),
@@ -157,7 +155,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                     return Adminintropage();
                   }));
                   // if (_formKey.currentState!.validate()) {
-                    
+
                   //   if (_usernameController.text == 'Admin' &&
                   //       _passwordController.text == '1234') {
                   //     Navigator.of(context)
