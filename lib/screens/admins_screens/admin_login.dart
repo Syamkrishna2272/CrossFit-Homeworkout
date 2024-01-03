@@ -2,6 +2,7 @@ import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/screens/admins_screens/admin_intro.dart';
 import 'package:flutter/material.dart';
 import '../home_page/workout_page.dart';
+import 'admin_login_formPage.dart';
 
 class Adminloginpage extends StatefulWidget {
   const Adminloginpage({Key? key}) : super(key: key);
@@ -68,83 +69,13 @@ class _AdminloginpageState extends State<Adminloginpage> {
               const SizedBox(
                 height: 25,
               ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                        controller: _usernameController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Enter username';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        textCapitalization: TextCapitalization.words,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.account_box_sharp,color: Colors.black ,),
-                          labelText: "Username :",
-                          border: const OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    isUsernameEmpty ? Colors.red : Colors.blue),
-                          ),
-                          labelStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'custom'),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextFormField(
-                        controller: _passwordController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Enter password';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock,color: Colors.black ),
-                          labelText: "Password :",
-                          border: const OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: isPasswordEmpty || !formSubmitted
-                                  ? Colors.red
-                                  : Colors.blue,
-                            ),
-                          ),
-                          labelStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'custom'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              admin_form(
+                  formKey: _formKey,
+                  usernameController: _usernameController,
+                  isUsernameEmpty: isUsernameEmpty,
+                  passwordController: _passwordController,
+                  isPasswordEmpty: isPasswordEmpty,
+                  formSubmitted: formSubmitted),
               const SizedBox(
                 height: 25,
               ),
@@ -199,3 +130,5 @@ class _AdminloginpageState extends State<Adminloginpage> {
     );
   }
 }
+
+
