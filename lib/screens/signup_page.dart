@@ -12,6 +12,8 @@ dynamic pername;
 dynamic peremail;
 dynamic perpassword;
 dynamic perphone;
+dynamic perheight;
+dynamic perweight;
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});
@@ -28,6 +30,10 @@ class _SignupScreenState extends State<SignupScreen> {
   final _phoneController = TextEditingController();
 
   final _passwordController = TextEditingController();
+
+  final _heightController = TextEditingController();
+
+  final _weightController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -179,12 +185,80 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 ),
+                Wrap(
+                  spacing: 40,
+                  children: [
+                    Container(
+                      height: 60,
+                      width: 110,
+                      child: TextFormField(
+                        controller: _heightController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Enter Height";
+                          }
+                          return null;
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        style: const TextStyle(color: Colors.white),
+                        inputFormatters: [LengthLimitingTextInputFormatter(3)],
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: "Height:",
+                          filled: true,
+                          fillColor: Colors.black54,
+                          labelStyle: TextStyle(
+                            fontFamily: 'SYAM',
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 60,
+                      width: 110,
+                      child: TextFormField(
+                        controller: _weightController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Enter Weight";
+                          }
+                          return null;
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        style: const TextStyle(color: Colors.white),
+                        inputFormatters: [LengthLimitingTextInputFormatter(3)],
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: "Weight:",
+                          filled: true,
+                          fillColor: Colors.black54,
+                          labelStyle: TextStyle(
+                            fontFamily: 'SYAM',
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 7,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    
                     onsignupclicked(context);
                   },
                   style: ElevatedButton.styleFrom(
@@ -245,10 +319,17 @@ class _SignupScreenState extends State<SignupScreen> {
     final _email = _emailController.text;
     final _phone = _phoneController.text;
     final _password = _passwordController.text;
+    final _height = _heightController.text;
+    final _weight = _weightController.text;
 
     if (_formKey.currentState!.validate()) {
       final signup = signupmodel(
-          name: _name, email: _email, phone: _phone, password: _password);
+          name: _name,
+          email: _email,
+          phone: _phone,
+          password: _password,
+          height: _height,
+          weight: _weight);
       final sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(key1, true);
 

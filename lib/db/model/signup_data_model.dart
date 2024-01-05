@@ -18,10 +18,18 @@ class signupmodel {
   @HiveField(4)
   final String password;
 
+  @HiveField(5)
+  final String height;
+
+  @HiveField(6)
+  final String weight;
+
   signupmodel(
       {required this.name,
       required this.email,
       required this.phone,
       required this.password,
+      required this.height,
+      required this.weight,
       this.id});
 }

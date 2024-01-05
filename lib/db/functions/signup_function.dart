@@ -16,5 +16,7 @@ Future<void> getsignup() async {
     pername = i.name;
     peremail = i.email;
     perphone = i.phone;
+    perheight=i.height;
+    perweight=i.weight;
   }
 }

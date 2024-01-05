@@ -134,7 +134,7 @@ class _beginnerState extends State<beginner> {
 class Search extends SearchDelegate {
   List data = [];
 
-  @override
+  @override 
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(

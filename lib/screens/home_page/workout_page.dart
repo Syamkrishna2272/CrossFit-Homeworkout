@@ -71,6 +71,8 @@ class Homeworkout extends StatelessWidget {
                           name: pername,
                           pass: perpassword,
                           phn: perphone,
+                          hei: perheight,
+                          wei: perweight,
                         );
                       }));
                     },

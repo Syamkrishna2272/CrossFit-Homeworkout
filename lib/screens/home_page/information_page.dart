@@ -3,18 +3,21 @@ import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class PersonalInfo extends StatefulWidget {
-  PersonalInfo({
-    super.key,
-    required this.name,
-    required this.email,
-    required this.pass,
-    required this.phn,
-  });
+  PersonalInfo(
+      {super.key,
+      required this.name,
+      required this.email,
+      required this.pass,
+      required this.phn,
+      required this.hei,
+      required this.wei});
 
   var name;
   var email;
   var pass;
   var phn;
+  var hei;
+  var wei;
 
   @override
   State<PersonalInfo> createState() => _PersonalInfoState();
@@ -57,24 +60,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             fontFamily: 'custom'),
                       ),
                     ),
-                    // Row(
-                    //   // crossAxisAlignment: CrossAxisAlignment.center , 
-                    //   mainAxisAlignment: MainAxisAlignment.,
-                    //   children: [
-                    //     Text(
-                    //       "Name",
-                    //       style: TextStyle(
-                    //           color: Colors.white,
-                    //           fontSize: 18,
-                    //           fontFamily: 'custom',
-                    //           fontWeight: FontWeight.w500),
-                    //     ),
-                    //   ],
-                    // ),
                     personalContainer(data: widget.name),
                     personalContainer(data: widget.email),
                     personalContainer(data: widget.phn),
-                    height_weight_container()
+                    height_weight_container(
+                        heigthinfo: widget.hei, weightinfo: widget.wei)
                   ],
                 ),
               ],
@@ -85,9 +75,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
 }
 
 class height_weight_container extends StatelessWidget {
-  const height_weight_container({
+  height_weight_container({
+    required this.heigthinfo,
+    required this.weightinfo,
     super.key,
   });
+  var heigthinfo;
+  var weightinfo;
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +96,16 @@ class height_weight_container extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.black54,
           ),
+          child: Center(
+            child: Text(
+              heigthinfo,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'custom'),
+            ),
+          ),
         ),
         Container(
           height: 60,
@@ -110,6 +114,16 @@ class height_weight_container extends StatelessWidget {
             border: Border.all(color: Colors.red),
             borderRadius: BorderRadius.circular(10),
             color: Colors.black54,
+          ),
+          child: Center(
+            child: Text(
+              weightinfo,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'custom'),
+            ),
           ),
         )
       ],

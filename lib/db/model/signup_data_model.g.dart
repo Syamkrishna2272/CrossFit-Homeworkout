@@ -21,6 +21,8 @@ class signupmodelAdapter extends TypeAdapter<signupmodel> {
       email: fields[2] as String,
       phone: fields[3] as String,
       password: fields[4] as String,
+      height: fields[5] as String,
+      weight: fields[6] as String,
       id: fields[0] as int?,
     );
   }
@@ -28,7 +30,7 @@ class signupmodelAdapter extends TypeAdapter<signupmodel> {
   @override
   void write(BinaryWriter writer, signupmodel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +40,11 @@ class signupmodelAdapter extends TypeAdapter<signupmodel> {
       ..writeByte(3)
       ..write(obj.phone)
       ..writeByte(4)
-      ..write(obj.password);
+      ..write(obj.password)
+      ..writeByte(5)
+      ..write(obj.height)
+      ..writeByte(6)
+      ..write(obj.weight);
   }
 
   @override
