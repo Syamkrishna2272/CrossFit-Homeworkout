@@ -90,6 +90,7 @@ class Homeworkout extends StatelessWidget {
                     title: const Text("BMI",
                         style: TextStyle(color: Colors.white)),
                     onTap: () {
+                      Navigator.of(context).pop();
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
                         return AlertDialog(
@@ -148,6 +149,7 @@ class Homeworkout extends StatelessWidget {
                           ),
                         );
                       }));
+                      
                     },
                   ),
                   ListTile(
@@ -258,7 +260,6 @@ class Homeworkout extends StatelessWidget {
   double calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
     double weight = double.parse(_weightController.text);
-
     double heightSquare = height * height;
     double result = weight / heightSquare;
     return result;

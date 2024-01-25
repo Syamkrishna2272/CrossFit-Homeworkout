@@ -30,12 +30,28 @@ class BMIDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent.shade100,
-        title: const Text('BMI Details'),
+        automaticallyImplyLeading: false,
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).pop();
+          
+        }, icon: Icon(Icons.arrow_back)),
+        backgroundColor: Colors.red[700],
+        title: const Text(
+          'BMI Details',
+          style: TextStyle(fontFamily: 'custom', fontSize: 18),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
+          // decoration: BoxDecoration(
+          //   gradient: LinearGradient(
+          //   colors: [Colors.red, Colors.white],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   stops: [0.0, 2.0],
+          //   tileMode: TileMode.clamp)
+          // ),
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

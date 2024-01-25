@@ -1,4 +1,3 @@
-
 import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:flutter/material.dart';
 import '../../db/model/signup_data_model.dart';
@@ -122,41 +121,38 @@ class personalContainer extends StatelessWidget {
                 ),
               ),
             ),
-            
           ],
-          
         ),
         Padding(
           padding: const EdgeInsets.only(top: 25),
           child: Container(
-                height: 50 ,
-                width: 120,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black54, 
-                ),
-                child: Center(
-                  child: Text(
-                    'BMI : ${calculateBMI(data.height,data.weight)}',
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'custom'),
-                  ),
-                ),
+            height: 50,
+            width: 120,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.red),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black54,
+            ),
+            child: Center(
+              child: Text(
+                'BMI : ${calculateBMI(data.height, data.weight)}',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'custom'),
               ),
+            ),
+          ),
         )
       ],
-    ); 
+    );
   }
-  calculateBMI(String he,String we) {
-    double height = double.parse(he);
-    double weight = double.parse(we);
-    double heightInMeters = height / 100;
-     return  weight / (heightInMeters * heightInMeters).floor();
-  
 
+  calculateBMI(String he, String we) {
+    double height = double.parse(he) / 100;
+    double weight = double.parse(we);
+    double heightInMeters = weight / (height * height);
+    return heightInMeters.floor();
   }
 }
