@@ -118,18 +118,11 @@ class AdminintroExpanded extends StatelessWidget {
                                                     TextButton(
                                                       onPressed:
                                                           () async {
-                                                        if (data.id !=
-                                                            null) {
-                                                          deletebeginner(
-                                                              data.id!,
-                                                              data);
-                                                          deleteadvance(
-                                                              data.id!,
-                                                              data);
-                                                          deleteAllworkout(
-                                                              data.id!);
-                                                          deleteButtonClickedYes(
-                                                              ctx);
+                                                        if (data.id !=null) {
+                                                          deletebeginner(data.id!,data);
+                                                          deleteadvance( data.id!,data);
+                                                          deleteAllworkout( data.id!);
+                                                          deleteButtonClickedYes(ctx);
                                                         } else {
                                                           print(
                                                               "Unable to delete");

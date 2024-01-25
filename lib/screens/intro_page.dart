@@ -96,7 +96,6 @@ class _IntropageState extends State<Intropage> {
   checknext() async {
     final sharedpref = await SharedPreferences.getInstance();
     await sharedpref.setBool(Keys, true);
-
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
       return SignupScreen();
     }));

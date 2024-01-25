@@ -1,5 +1,7 @@
+import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:cross_fit/db/functions/beginner_function.dart';
 import 'package:cross_fit/db/functions/signup_function.dart';
+import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:cross_fit/screens/home_page/privacy_policy.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
@@ -9,6 +11,14 @@ import 'package:flutter/material.dart';
 import '../challenges_screen/fullbody_page.dart';
 import 'about_page.dart';
 import 'information_page.dart';
+
+var datas = signupmodel(
+    name: pername,
+    email: peremail,
+    phone: perphone,
+    password: 'perpassword',
+    height: perheight,
+    weight: perweight);
 
 class Homeworkout extends StatelessWidget {
   Homeworkout({super.key});
@@ -26,6 +36,7 @@ class Homeworkout extends StatelessWidget {
   Widget build(BuildContext context) {
     getsignup();
     getbeginnerWorkout();
+    getAdvanceworkout();
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: SizedBox(
@@ -66,14 +77,7 @@ class Homeworkout extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (ctx) {
-                        return PersonalInfo(
-                          email: peremail,
-                          name: pername,
-                          pass: perpassword,
-                          phn: perphone,
-                          hei: perheight,
-                          wei: perweight,
-                        );
+                        return PersonalInfo();
                       }));
                     },
                   ),
@@ -113,7 +117,7 @@ class Homeworkout extends StatelessWidget {
                     onPressed: () {
                       showSearch(context: context, delegate: Search());
                     },
-                    icon: Icon(Icons.search)),
+                    icon: const Icon(Icons.search)),
               ],
             )
           ],

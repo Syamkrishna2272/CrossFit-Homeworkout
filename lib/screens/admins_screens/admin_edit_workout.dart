@@ -54,6 +54,8 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     _bodypartController.text = widget.editmodel.bodypart;
     _repsController.text = widget.editmodel.reps;
     _descriptionController.text = widget.editmodel.description!;
+    _selectedbodypart = widget.editmodel.bodypart;
+    _selectedcategory = widget.editmodel.category;
     super.initState();
   }
 
@@ -61,7 +63,11 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Workout"),
+        title: const Text(
+          "Edit Workouts",
+          style: TextStyle(fontFamily: 'custom'),
+        ),
+        centerTitle: true,
         backgroundColor: Colors.red[700],
       ),
       body: SingleChildScrollView(
@@ -260,7 +266,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 
-    if (validation.currentState!.validate() && image != null) {
+    if (validation.currentState!.validate()) {
       final workout = Workoutmodel(
           id: id,
           category: _selectedcategory!,

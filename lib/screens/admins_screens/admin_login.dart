@@ -82,11 +82,10 @@ class _AdminloginpageState extends State<Adminloginpage> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                    return Adminintropage();
-                  }));
+                          .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                        return Adminintropage();
+                      }));
                   // if (_formKey.currentState!.validate()) {
-
                   //   if (_usernameController.text == 'Admin' &&
                   //       _passwordController.text == '1234') {
                   //     Navigator.of(context)
@@ -130,5 +129,3 @@ class _AdminloginpageState extends State<Adminloginpage> {
     );
   }
 }
-
-

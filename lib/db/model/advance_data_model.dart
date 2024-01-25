@@ -19,5 +19,5 @@ class Advancemodel {
   String? workoutname;
 
   Advancemodel(
-      this.id, this.image, this.reps, this.description, this.workoutname);
+      this.id, this.image, this.description, this.reps, this.workoutname);
 }

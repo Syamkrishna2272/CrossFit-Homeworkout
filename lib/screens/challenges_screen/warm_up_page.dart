@@ -180,7 +180,6 @@ class _warmUpState extends State<warmUp> {
             timer.cancel();
             completionState[index] = true;
             W1.add(1);
-
             // Challengeadd(1);
           }
         });

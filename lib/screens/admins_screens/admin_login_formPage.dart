@@ -81,7 +81,10 @@ class admin_form extends StatelessWidget {
               ),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock,color: Colors.black,),
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  color: Colors.black,
+                ),
                 labelText: "Password :",
                 border: const OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(

@@ -203,7 +203,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: const TextStyle(color: Colors.white),
                         inputFormatters: [LengthLimitingTextInputFormatter(3)],
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Height:",
                           filled: true,
                           fillColor: Colors.black54,
@@ -235,7 +235,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: const TextStyle(color: Colors.white),
                         inputFormatters: [LengthLimitingTextInputFormatter(3)],
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Weight:",
                           filled: true,
                           fillColor: Colors.black54,

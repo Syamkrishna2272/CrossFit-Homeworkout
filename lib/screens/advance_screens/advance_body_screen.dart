@@ -46,7 +46,7 @@ class Advancebodypage extends StatelessWidget {
                             fontFamily: 'custom'),
                       ),
                       Text(
-                        "des:${data.description}",
+                        "${data.description}",
                         style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,

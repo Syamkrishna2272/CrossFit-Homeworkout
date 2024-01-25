@@ -19,10 +19,5 @@ class Beginnermodel {
   String? workoutname;
 
   Beginnermodel(
-     
-      this.id,
-      this.image,
-      this.description,
-      this.reps,
-      this.workoutname);
+      this.id, this.image, this.description, this.reps, this.workoutname);
 }

@@ -48,9 +48,7 @@ class _beginnerState extends State<beginner> {
           "Beginner",
           style: TextStyle(fontFamily: 'custom'),
         ),
-        actions: [
-          
-        ],
+        actions: [],
         centerTitle: true,
       ),
       body: SafeArea(
@@ -134,7 +132,7 @@ class _beginnerState extends State<beginner> {
 class Search extends SearchDelegate {
   List data = [];
 
-  @override 
+  @override
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
@@ -159,7 +157,6 @@ class Search extends SearchDelegate {
     return FutureBuilder<Box<Workoutmodel>>(
         future: Hive.openBox<Workoutmodel>('workout_db'),
         builder: (context, snapshot) {
-        
           if (snapshot.hasData) {
             final stdbox = snapshot.data!.values.toList();
             final filteredData = stdbox
@@ -190,11 +187,10 @@ class Search extends SearchDelegate {
                     children: [
                       ListTile(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
-                            return workoutdetails(
-                              filteredData:data
-                            );
-                          })); 
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (ctx) {
+                            return workoutdetails(filteredData: data);
+                          }));
                         },
                         leading: CircleAvatar(
                           radius: 80,
@@ -271,7 +267,7 @@ class Search extends SearchDelegate {
                         height: 12,
                       ),
                     ],
-                  );  
+                  );
                 } else {
                   return const SizedBox();
                 }

@@ -1,5 +1,6 @@
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
 import 'package:flutter/material.dart';
+import '../challenges_screen/week_challenges/snackbar_page.dart';
 import 'admin_intro_expand.dart';
 
 class Adminintropage extends StatelessWidget {
@@ -45,7 +46,6 @@ class Adminintropage extends StatelessWidget {
           //     icon: Icon(Icons.logout_rounded))
         ],
       ),
-      // backgroundColor: Colors.grey[350],
       body: SafeArea(
         child: Column(
           children: [
