@@ -127,10 +127,10 @@ class personalContainer extends StatelessWidget {
           
         ),
         Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.only(top: 25),
           child: Container(
-                height: 60,
-                width: 140,
+                height: 50 ,
+                width: 120,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.red),
                   borderRadius: BorderRadius.circular(10),

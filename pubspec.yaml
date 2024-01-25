@@ -36,6 +36,8 @@ dependencies:
   cached_network_image: ^3.3.0
   lottie: ^2.6.0
   shared_preferences: ^2.2.2
+  kdgaugeview: ^1.0.5
+
  
 
 

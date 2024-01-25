@@ -1,6 +1,5 @@
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
 import 'package:flutter/material.dart';
-import '../challenges_screen/week_challenges/snackbar_page.dart';
 import 'admin_intro_expand.dart';
 
 class Adminintropage extends StatelessWidget {

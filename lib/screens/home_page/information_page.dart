@@ -20,47 +20,48 @@ class _PersonalInfoState extends State<PersonalInfo> {
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Colors.blue, Colors.green], // Replace with your desired colors
-        ),
+            colors: [Colors.red, Colors.black],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.0, 2.0],
+            tileMode: TileMode.clamp),
       ),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.redAccent[700],
-          centerTitle: true,
-          title: const Text(
-            "Personal Information",
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'custom'),
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.red[700], 
+            centerTitle: true,
+            title: const Text(
+              "Personal Information",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'custom'),
+            ),
           ),
-        ),
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Center(
-                    child: Text(
-                      "CROSS FIT",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontFamily: 'custom'),
+          body: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  personalContainer(data: datas),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+                    const Center(
+                      child: Text(
+                        "CROSS FIT",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: 'custom'),
+                      ),
+                    ),
+                    personalContainer(data: datas),
+                  ],
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
