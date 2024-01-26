@@ -1,5 +1,8 @@
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
+import 'package:cross_fit/screens/admins_screens/admin_login.dart';
+import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
+
 import 'admin_intro_expand.dart';
 
 class Adminintropage extends StatelessWidget {
@@ -20,29 +23,29 @@ class Adminintropage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       showDialog(
-          //           context: context,
-          //           builder: (ctx) {
-          //             return AlertDialog(
-          //               content: Text("Do you want to Logout ?"),
-          //               actions: [
-          //                 TextButton(
-          //                     onPressed: () {
-          //                       logout(context);
-          //                     },
-          //                     child: Text("Yes")),
-          //                 TextButton(
-          //                     onPressed: () {
-          //                       Navigator.of(context).pop();
-          //                     },
-          //                     child: Text("No"))
-          //               ],
-          //             );
-          //           });
-          //     },
-          //     icon: Icon(Icons.logout_rounded))
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        content: Text("Do you want to Logout ?"),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                logout(context);
+                              },
+                              child: Text("Yes")),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("No"))
+                        ],
+                      );
+                    });
+              },
+              icon: Icon(Icons.logout_rounded))
         ],
       ),
       body: SafeArea(
@@ -97,5 +100,10 @@ class Adminintropage extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<void> logout(BuildContext context) async {
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
+      return Adminloginpage();
+    }), (route) => false);
   }
 }

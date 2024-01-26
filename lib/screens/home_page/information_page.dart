@@ -20,7 +20,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            colors: [Colors.red, Colors.black],
+            colors: [Colors.red, Colors.blueGrey],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: [0.0, 2.0],
