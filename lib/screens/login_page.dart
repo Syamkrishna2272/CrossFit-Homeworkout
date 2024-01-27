@@ -1,8 +1,20 @@
+import 'package:cross_fit/db/functions/signup_function.dart';
+import 'package:cross_fit/screens/home_page/workout_page.dart';
+import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class loginPage extends StatelessWidget {
+class loginPage extends StatefulWidget {
   const loginPage({super.key});
 
+  @override
+  State<loginPage> createState() => _loginPageState();
+}
+
+class _loginPageState extends State<loginPage> {
+  final _UsernameController = TextEditingController();
+  final _PasswordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,75 +35,166 @@ class loginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.account_box_sharp,
-                              color: Colors.black),
-                          labelText: "Username :",
-                          border: const OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
+              Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: TextFormField(
+                          controller: _UsernameController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Enter Username";
+                            }
+                            return null;
+                          },
+                          textCapitalization: TextCapitalization.words,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.account_box_sharp,
+                                color: Colors.black),
+                            labelText: "Username :",
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
+                            labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'custom'),
                           ),
-                          labelStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'custom'),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.password,
-                            color: Colors.black,
-                          ),
-                          labelText: "Password :",
-                          border: const OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
-                          ),
-                          labelStyle: const TextStyle(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: TextFormField(
+                          controller: _PasswordController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Enter Password";
+                            }
+                            return null;
+                          },
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(4)
+                          ],
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.password,
                               color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'custom'),
+                            ),
+                            labelText: "Password :",
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
+                            labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'custom'),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        side: const BorderSide(color: Colors.red),
-                        backgroundColor: Colors.black54,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18))),
-                    child: Text(
-                      "Submit",
-                      style: TextStyle(
-                          fontFamily: 'custom',
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400),
+                    ElevatedButton(
+                      onPressed: () async {
+                        loginfun(_UsernameController.text.trim(),
+                            _PasswordController.text.trim());
+                        // if (_formKey.currentState!.validate()) {
+                        //   if (_UsernameController.text == _name &&
+                        //       _PasswordController == _password) {}
+                        // }
+                        // final sharedpref = await SharedPreferences.getInstance();
+                        // final storeusername = sharedpref.getString("username");
+                        // final storerpassword = sharedpref.getString("password");
+
+                        // if (_enteredUsername == storeusername &&
+                        //     _enteredPassword == storerpassword) {
+                        //   Navigator.of(context)
+                        //       .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                        //     return Homeworkout();
+                        //   }));
+                        // } else {
+                        //   print("no going");
+                        // }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          side: const BorderSide(color: Colors.red),
+                          backgroundColor: Colors.black54,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18))),
+                      child: const Text(
+                        "Submit",
+                        style: TextStyle(
+                            fontFamily: 'custom',
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Do you want Create a new account?",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'SYAM',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(builder: (ctx) {
+                                    return SignupScreen();
+                                  }));
+                                },
+                                child: Text(
+                                  "Signup",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.red,
+                                      fontFamily: 'custom',
+                                      fontWeight: FontWeight.w400),
+                                )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
         ),
       )),
     );
+  }
+
+  loginfun(name1, password1) {
+    for (var i = 0; i < logCheck.length; i++) {
+      if (logCheck[i].name == name1 && logCheck[i].password == password1) {
+        if (_formKey.currentState!.validate()) {
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (ctx) {
+            return Homeworkout();
+          }));
+        }
+      }
+    }
   }
 }

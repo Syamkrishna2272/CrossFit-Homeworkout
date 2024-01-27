@@ -1,3 +1,4 @@
+import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/db/model/advance_data_model.dart';
 import 'package:cross_fit/db/model/challenge_data_model.dart';
 import 'package:cross_fit/db/model/data_model.dart';
@@ -30,6 +31,7 @@ Future<void> main() async {
   await Hive.openBox<Beginnermodel>('leg_db');
   await Hive.openBox<Beginnermodel>('abs_db');
   runApp(MyApp());
+  getsignup();
 }
 
 class MyApp extends StatelessWidget {

@@ -1,5 +1,6 @@
+import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/home_page/privacy_policy.dart';
-import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import '../admins_screens/admin_login.dart';
 import '../bmi_calculator.dart';
@@ -128,32 +129,32 @@ class Drawer_page extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: IconButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (ctx) {
-                            return AlertDialog(
-                              content: Text("Do you want to Logout ?"),
-                              actions: [
-                                TextButton(
-                                    onPressed: () {
-                                      logout(context);
-                                    },
-                                    child: Text("Yes")),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text("No"))
-                              ],
-                            );
-                          });
-                    },
-                    icon: Icon(Icons.logout_rounded)),
+                leading: const Icon(Icons.logout_rounded),
                 iconColor: Colors.black,
-                title:
-                    const Text("Logout", style: TextStyle(color: Colors.black)),
+                title: const Text("Log Out",
+                    style: TextStyle(color: Colors.black)),
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (ctx) {
+                        return AlertDialog(
+                          content: Text("Do you want to Logout ?"),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  getsignup();
+                                  logout(context);
+                                },
+                                child: Text("Yes")),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("No"))
+                          ],
+                        );
+                      });
+                },
               ),
               const ListTile(
                 title: Text(
@@ -176,7 +177,7 @@ class Drawer_page extends StatelessWidget {
 
   Future<void> logout(BuildContext context) async {
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
-      return SignupScreen();
+      return loginPage();
     }), (route) => false);
   }
 }
