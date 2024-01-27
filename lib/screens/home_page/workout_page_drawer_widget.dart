@@ -2,8 +2,10 @@ import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/home_page/privacy_policy.dart';
 import 'package:cross_fit/screens/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../admins_screens/admin_login.dart';
 import '../bmi_calculator.dart';
+import '../intro_page.dart';
 import 'about_page.dart';
 import 'information_page.dart';
 
@@ -176,6 +178,8 @@ class Drawer_page extends StatelessWidget {
   }
 
   Future<void> logout(BuildContext context) async {
+    final sharedpref = await SharedPreferences.getInstance();
+    sharedpref.setBool(Keys, false);
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
       return loginPage();
     }), (route) => false);

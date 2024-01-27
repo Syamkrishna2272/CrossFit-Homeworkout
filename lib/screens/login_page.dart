@@ -3,6 +3,9 @@ import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'intro_page.dart';
 
 class loginPage extends StatefulWidget {
   const loginPage({super.key});
@@ -107,23 +110,6 @@ class _loginPageState extends State<loginPage> {
                       onPressed: () async {
                         loginfun(_UsernameController.text.trim(),
                             _PasswordController.text.trim());
-                        // if (_formKey.currentState!.validate()) {
-                        //   if (_UsernameController.text == _name &&
-                        //       _PasswordController == _password) {}
-                        // }
-                        // final sharedpref = await SharedPreferences.getInstance();
-                        // final storeusername = sharedpref.getString("username");
-                        // final storerpassword = sharedpref.getString("password");
-
-                        // if (_enteredUsername == storeusername &&
-                        //     _enteredPassword == storerpassword) {
-                        //   Navigator.of(context)
-                        //       .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                        //     return Homeworkout();
-                        //   }));
-                        // } else {
-                        //   print("no going");
-                        // }
                       },
                       style: ElevatedButton.styleFrom(
                           side: const BorderSide(color: Colors.red),
@@ -163,7 +149,7 @@ class _loginPageState extends State<loginPage> {
                                     return SignupScreen();
                                   }));
                                 },
-                                child: Text(
+                                child: const Text(
                                   "Signup",
                                   style: TextStyle(
                                       fontSize: 12,
@@ -185,10 +171,12 @@ class _loginPageState extends State<loginPage> {
     );
   }
 
-  loginfun(name1, password1) {
+  loginfun(name1, password1) async {
     for (var i = 0; i < logCheck.length; i++) {
       if (logCheck[i].name == name1 && logCheck[i].password == password1) {
         if (_formKey.currentState!.validate()) {
+          final sharedpref = await SharedPreferences.getInstance();
+           sharedpref.setBool(Keys, true);
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Homeworkout();

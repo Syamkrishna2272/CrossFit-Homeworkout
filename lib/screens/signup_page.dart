@@ -332,18 +332,12 @@ class _SignupScreenState extends State<SignupScreen> {
           weight: _weight);
       final sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(key1, true);
-
+      
       await addSignup(signup);
 
-      sharedpref.setString("username", _name);
-      sharedpref.setString("password", _password);
-      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (ctx){
-      //   return Homeworkout();
-      // }), (route) => false);
-
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx){
         return Homeworkout();
-      }));
+      }), (route) => false);
     }
   }
 }

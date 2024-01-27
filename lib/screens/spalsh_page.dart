@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/intro_page.dart';
-import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'home_page/workout_page.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -19,16 +17,8 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    gotonext(); 
-    gotoworkout();
+    gotonext();
     getsignup();
-    // gotoworkout();
-
-    // Timer(Duration(seconds: 3), () {
-    //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
-    //     return Intropage();
-    //   }));
-    // });
   }
 
   @override
@@ -54,31 +44,16 @@ class _SplashscreenState extends State<Splashscreen> {
 
     if (istrue == null || istrue == false) {
       await Future.delayed(Duration(seconds: 3));
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){
-        return Intropage();
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
+        return loginPage();
       }));
     } else {
       await Future.delayed(Duration(seconds: 1));
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-        return SignupScreen();
-      }));
-    }
-  }
 
-  Future<void> gotoworkout() async {
-    final sharedpref2 = await SharedPreferences.getInstance();
-    final signuptrue = await sharedpref2.getBool(key1);
-
-    if (signuptrue == null || signuptrue == false) {
-      await Future.delayed(Duration(seconds: 3));
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){
-        return SignupScreen();
-      })); 
-    } else {
-      await Future.delayed(Duration(seconds: 1));
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (ctx) {
         return Homeworkout();
-      }));
+      }), (route) => false);
     }
   }
 }
