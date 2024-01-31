@@ -1,21 +1,22 @@
+
 import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
-import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import '../model/advance_data_model.dart';
 
-ValueNotifier<List<Advancemodel>> Chestadvance = ValueNotifier([]);
-ValueNotifier<List<Advancemodel>> Shoulderadvance = ValueNotifier([]);
-ValueNotifier<List<Advancemodel>> Bicepsadvance = ValueNotifier([]);
-ValueNotifier<List<Advancemodel>> Tricepsadvance = ValueNotifier([]);
-ValueNotifier<List<Advancemodel>> Legadvance = ValueNotifier([]);
-ValueNotifier<List<Advancemodel>> Wingsadvance = ValueNotifier([]);
+List chestadvance=[];
+List Shoulderadvance=[];
+List Bicepsadvance=[];
+List Tricepsadvance=[];
+List Legadvance=[];
+List Wingsadvance=[];
+
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 Chestadding(Advancemodel value) async {
-  final chest = await Hive.openBox<Advancemodel>('chests_db');
+    final chest = await Hive.openBox<Advancemodel>('chests_db');
   chest.put(value.id, value);
   Getallchest();
 }
@@ -54,43 +55,44 @@ Wingsadding(Advancemodel value) async {
 
 Getallchest() async {
   final chest = await Hive.openBox<Advancemodel>('chests_db');
-  Chestadvance.value.clear();
-  Chestadvance.value.addAll(chest.values);
+  chestadvance.clear();
+  chestadvance.addAll(chest.values);
   print(chest.values);
 }
 
 Getallshoulder() async {
   final shoulder = await Hive.openBox<Advancemodel>('shoulders_db');
-  Shoulderadvance.value.clear();
-  Shoulderadvance.value.addAll(shoulder.values);
+  Shoulderadvance.clear();
+  Shoulderadvance.addAll(shoulder.values);
   print(shoulder.values);
 }
 
 Getallbiceps() async {
   final Biceps = await Hive.openBox<Advancemodel>('biceps_db');
-  Bicepsadvance.value.clear();
-  Bicepsadvance.value.addAll(Biceps.values);
+Bicepsadvance.clear();
+Bicepsadvance.addAll(Biceps.values);
   print(Biceps.values);
 }
 
 Getalltriceps() async {
   final Triceps = await Hive.openBox<Advancemodel>('triceps_db');
-  Tricepsadvance.value.clear();
-  Tricepsadvance.value.addAll(Triceps.values);
+ Tricepsadvance.clear();
+ Tricepsadvance.addAll(Triceps.values);
   print(Triceps.values);
 }
 
 Getallleg() async {
   final Leg = await Hive.openBox<Advancemodel>('legs_db');
-  Legadvance.value.clear();
-  Legadvance.value.addAll(Leg.values);
+  Legadvance.clear();
+  Legadvance.addAll(Leg.values);
+
   print(Leg.values);
 }
 
 Getallwings() async {
   final Wings = await Hive.openBox<Advancemodel>('wings_db');
-  Wingsadvance.value.clear();
-  Wingsadvance.value.addAll(Wings.values);
+  Wingsadvance.clear();
+  Wingsadvance.addAll(Wings.values);
   print(Wings.values);
 }
 
@@ -126,27 +128,32 @@ getAdvanceworkout() async {
 
 
   deleteadvance(int id, Workoutmodel value) async {
-  if (value.category == 'ADVANCE' && value.bodypart == 'Chest') {
-    final chest = await Hive.openBox<Advancemodel>('chests_db');
+    print('checking');
+    
+  if (value.category == 'ADVANCED' && value.bodypart == 'Chest') {
+    print('hello');
+      final chest = await Hive.openBox<Advancemodel>('chests_db');
+
     chest.delete(id);
+    print('deleted');
     Getallchest();
-  } else if (value.category == 'ADVANCE' && value.bodypart == 'Shoulder') {
+  } else if (value.category == 'ADVANCED' && value.bodypart == 'Shoulder') {
     final shoulder = await Hive.openBox<Advancemodel>('shoulders_db');
     shoulder.delete(id);
     Getallshoulder();
-  } else if (value.category == 'ADVANCE' && value.bodypart == 'Biceps') {
+  } else if (value.category == 'ADVANCED' && value.bodypart == 'Biceps') {
     final Biceps = await Hive.openBox<Advancemodel>('biceps_db');
     Biceps.delete(id);
     Getallbiceps();
-  } else if (value.category == 'ADVANCE' && value.bodypart == 'Triceps') {
+  } else if (value.category == 'ADVANCED' && value.bodypart == 'Triceps') {
     final Triceps = await Hive.openBox<Advancemodel>('triceps_db');
     Triceps.delete(id);
     Getalltriceps();
-  } else if (value.category == 'ADVANCE' && value.bodypart == 'Leg') {
+  } else if (value.category == 'ADVANCED' && value.bodypart == 'Leg') {
     final Leg = await Hive.openBox<Advancemodel>('legs_db');
     Leg.delete(id);
     Getallleg();
-  } else if (value.category == 'ADVANCE' && value.bodypart == 'Wings') {
+  } else if (value.category == 'ADVANCED' && value.bodypart == 'Wings') {
     final Wings = await Hive.openBox<Advancemodel>('wings_db');
     Wings.delete(id);
     Getallwings();

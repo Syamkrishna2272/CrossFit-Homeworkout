@@ -1,29 +1,31 @@
 import 'dart:io';
-
-import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class tricepsScreen extends StatelessWidget {
-  const tricepsScreen({super.key});
+// ignore: must_be_immutable
+class BeginnerWidget extends StatelessWidget {
+ BeginnerWidget({super.key,required this.notifier,required this.text});
+
+  ValueNotifier notifier;
+  String text;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Triceps",
-          style: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'custom'),
+          text,
+          style: const TextStyle(fontWeight: FontWeight.w400 ,fontFamily: 'custom'),
         ),
         backgroundColor: Colors.redAccent[700],
       ),
       body: ValueListenableBuilder(
-          valueListenable: Tricepsadvance,
-          builder: (context, AdTricepslist, child) {
+          valueListenable: notifier,
+          builder: (context, abslist, child) {
             return ListView.separated(
                 itemBuilder: (ctx, index) {
-                  final data = AdTricepslist[index];
+                  final data = abslist[index];
                   return Card(
                     color: Colors.transparent,
                     elevation: 15,
@@ -54,20 +56,20 @@ class tricepsScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Name: ${data.workoutname}",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300,
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: 'custom'),
                                   ),
                                   Text("Reps : ${data.reps}",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300,
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'custom')),
                                   Text(" ${data.description}",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w200,
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'custom')),
                                 ],
                               ),
@@ -83,7 +85,7 @@ class tricepsScreen extends StatelessWidget {
                     height: 10,
                   );
                 },
-                itemCount: AdTricepslist.length);
+                itemCount: abslist.length);
           }),
     );
   }

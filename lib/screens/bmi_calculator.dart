@@ -44,14 +44,6 @@ class BMIDetailsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   gradient: LinearGradient(
-          //   colors: [Colors.red, Colors.white],
-          //   begin: Alignment.topLeft,
-          //   end: Alignment.bottomRight,
-          //   stops: [0.0, 2.0],
-          //   tileMode: TileMode.clamp)
-          // ),
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

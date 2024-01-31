@@ -1,17 +1,11 @@
 import 'dart:io';
-
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/data_model.dart';
-import 'package:cross_fit/screens/beginner%20_screens/abs_screen.dart';
-import 'package:cross_fit/screens/beginner%20_screens/chest_screen.dart';
-import 'package:cross_fit/screens/beginner%20_screens/leg_screen.dart';
-import 'package:cross_fit/screens/beginner%20_screens/shoulder_screen.dart';
 import 'package:cross_fit/screens/workout_details.dart';
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-
 import '../../db/functions/beginner_function.dart';
+import 'beginner_widget.dart';
 
 List chestlist = [];
 List shoulderlist = [];
@@ -63,25 +57,25 @@ class _beginnerState extends State<beginner> {
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const Chestscreen();
+                            return  BeginnerWidget(notifier: chestnotifier,text:'Chest' ,);
                           }));
                           break;
                         case 1:
-                          Navigator.of(context)
+                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const Shoulderscreen();
+                            return  BeginnerWidget(notifier: shouldernotifier,text:'Shoulder' ,);
                           }));
                           break;
                         case 2:
-                          Navigator.of(context)
+                            Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Legscreen();
+                            return  BeginnerWidget(notifier: legnotifier,text:'Leg' ,);
                           }));
                           break;
                         case 3:
-                          Navigator.of(context)
+                            Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return Absscreen();
+                            return  BeginnerWidget(notifier: absnotifier,text:'Abs' ,);
                           }));
                           break;
                       }

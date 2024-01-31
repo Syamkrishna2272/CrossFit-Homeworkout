@@ -1,12 +1,7 @@
 import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:cross_fit/db/functions/db_functions.dart';
-import 'package:cross_fit/screens/advance_screens/biceps_advance.dart';
-import 'package:cross_fit/screens/advance_screens/chest_advance.dart';
-import 'package:cross_fit/screens/advance_screens/leg_advance.dart';
-import 'package:cross_fit/screens/advance_screens/shoulder_advance.dart';
-import 'package:cross_fit/screens/advance_screens/triceps_advance.dart';
-import 'package:cross_fit/screens/advance_screens/wings_advance.dart';
 import 'package:flutter/material.dart';
+import 'advance_widget.dart';
 
 List AdChestlist = [];
 List AdShoulderlist = [];
@@ -56,37 +51,37 @@ class advance extends StatelessWidget {
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const chestScreen();
+                            return AdvanceWidget(datas: chestadvance,text: 'Chest',);
                           }));
                           break;
                         case 1:
-                          Navigator.of(context)
+                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const shoulderScreen();
+                            return AdvanceWidget(datas:Shoulderadvance,text: 'Shoulder',);
                           }));
                           break;
                         case 2:
-                          Navigator.of(context)
+                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const bicepsScreen();
+                            return AdvanceWidget(datas: Bicepsadvance,text: 'Biceps',);
                           }));
                           break;
                         case 3:
-                          Navigator.of(context)
+                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const tricepsScreen();
+                            return AdvanceWidget(datas: Tricepsadvance,text: 'Triceps',);
                           }));
                           break;
                         case 4:
-                          Navigator.of(context)
+                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const legScreen();
+                            return AdvanceWidget(datas:Legadvance ,text: 'Leg',);
                           }));
                           break;
                         case 5:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return const wingsScreen();
+                            return AdvanceWidget(datas: Wingsadvance,text: 'Win',);
                           }));
                           break;
                       }

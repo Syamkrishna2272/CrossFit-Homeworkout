@@ -18,7 +18,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
             colors: [Colors.red, Colors.blueGrey],
             begin: Alignment.topLeft,

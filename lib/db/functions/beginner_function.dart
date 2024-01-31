@@ -11,12 +11,14 @@ ValueNotifier<List<Beginnermodel>> legnotifier = ValueNotifier([]);
 ValueNotifier<List<Beginnermodel>> absnotifier = ValueNotifier([]);
 
 
+
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
- AddchestrWorkout(Beginnermodel value) async {
+AddchestrWorkout(Beginnermodel value) async {
   final chest = await Hive.openBox<Beginnermodel>('chest_db');
   chest.put(value.id, value);
-  getallchest();  
+  getallchest();
 }
 
 AddshoulderWorkout(Beginnermodel value) async {
@@ -43,6 +45,7 @@ getallchest() async {
   final chest = await Hive.openBox<Beginnermodel>('chest_db');
   chestnotifier.value.clear();
   chestnotifier.value.addAll(chest.values);
+  chestnotifier.notifyListeners();
 
   print(chest.values);
 }
@@ -53,6 +56,7 @@ getallshoulder() async {
   final shold = await Hive.openBox<Beginnermodel>('shoulder_db');
   shouldernotifier.value.clear();
   shouldernotifier.value.addAll(shold.values);
+  shouldernotifier.notifyListeners();
   print(shold.values);
 }
 
@@ -62,6 +66,7 @@ getallleg() async {
   final leg = await Hive.openBox<Beginnermodel>('leg_db');
   legnotifier.value.clear();
   legnotifier.value.addAll(leg.values);
+  legnotifier.notifyListeners();
   print(leg.values);
 }
 
@@ -71,6 +76,7 @@ getallabs() async {
   final abs = await Hive.openBox<Beginnermodel>('abs_db');
   absnotifier.value.clear();
   absnotifier.value.addAll(abs.values);
+  absnotifier.notifyListeners();
   print(abs.values);
 }
 
@@ -131,4 +137,3 @@ workoutchecking(Workoutmodel value, Beginnermodel data) async {
     AddabsWorkout(data);
   }
 }
-

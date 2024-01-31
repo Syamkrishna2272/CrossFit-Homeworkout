@@ -1,10 +1,12 @@
 import 'dart:io';
-
-import 'package:cross_fit/db/functions/advance_function.dart';
 import 'package:flutter/material.dart';
 
-class chestScreen extends StatelessWidget {
-  const chestScreen({super.key});
+// ignore: must_be_immutable
+class AdvanceWidget extends StatelessWidget {
+   AdvanceWidget({super.key, required this.datas, required this.text});
+
+  List datas;
+  String text;
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +15,14 @@ class chestScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Chest ",
-          style: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'custom'),
+          text,
+          style: const TextStyle(fontWeight: FontWeight.w400,fontFamily: 'custom'),
         ),
         backgroundColor: Colors.redAccent[700],
       ),
-      body: ValueListenableBuilder(
-          valueListenable: Chestadvance,
-          builder: (context, AdChestlist, child) {
-            return ListView.separated(
+      body: ListView.separated(
                 itemBuilder: (ctx, index) {
-                  final data = AdChestlist[index];
+                  final data = datas[index];
                   return Card(
                     color: Colors.transparent,
                     elevation: 15,
@@ -50,24 +49,23 @@ class chestScreen extends StatelessWidget {
                               ),
                               Container(
                                 width: double.infinity,
-                                // color: Colors.yellow ,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Name: ${data.workoutname}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
                                           fontFamily: 'custom'),
                                     ),
                                     Text("Reps : ${data.reps}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
                                             fontFamily: 'custom')),
                                     Text(" ${data.description}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w200,
                                             fontFamily: 'custom')),
@@ -86,8 +84,7 @@ class chestScreen extends StatelessWidget {
                     height: 10,
                   );
                 },
-                itemCount: AdChestlist.length);
-          }),
+                itemCount: datas.length),
     );
   }
 }
