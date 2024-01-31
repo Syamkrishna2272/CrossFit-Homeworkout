@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/screens/workout_details.dart';

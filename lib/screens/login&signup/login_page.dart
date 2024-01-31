@@ -1,5 +1,4 @@
 import 'package:cross_fit/db/functions/signup_function.dart';
-import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:cross_fit/screens/login&signup/signup_page.dart';
 import 'package:cross_fit/screens/spalsh_page.dart';
