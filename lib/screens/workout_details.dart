@@ -26,7 +26,7 @@ class workoutdetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 250,
+              height: 280 ,
               width: double.infinity,
               child: Card(
                 elevation: 10,

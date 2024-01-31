@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
@@ -91,8 +90,7 @@ class _warmUpState extends State<warmUp> {
                             width: double.infinity,
                             height: 150,
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Lottie.asset(
                                   exercisedata[index].animationpath,
@@ -168,23 +166,22 @@ class _warmUpState extends State<warmUp> {
   }
 
   void startTimer(int index) {
-    timers[index]?.cancel();
-    remainingTimes[index] = 20;
-    timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (mounted) {
-        setState(() {
-          if (remainingTimes[index]! > 0 && isPlayingList[index]) {
-            remainingTimes[index] = remainingTimes[index]! - 1;
-          } else {
-            isPlayingList[index] = false;
-            timer.cancel();
-            completionState[index] = true;
-            W1.add(1);
-            // Challengeadd(1);
-          }
-        });
-      }
-    });
+      timers[index]?.cancel();
+      remainingTimes[index] = 20;
+      timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (mounted) {
+          setState(() {
+            if (remainingTimes[index]! > 0 && isPlayingList[index]) {
+              remainingTimes[index] = remainingTimes[index]! - 1;
+            } else {
+              isPlayingList[index] = false;
+              timer.cancel();
+              completionState[index] = true;
+              W1.add(1);
+            }
+          });
+        }
+      });
   }
 
   check() {

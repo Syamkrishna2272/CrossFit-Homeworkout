@@ -1,6 +1,5 @@
 import 'package:cross_fit/screens/admins_screens/admin_add_workout.dart';
 import 'package:cross_fit/screens/admins_screens/admin_login.dart';
-import 'package:cross_fit/screens/signup_page.dart';
 import 'package:flutter/material.dart';
 
 import 'admin_intro_expand.dart';
@@ -15,16 +14,14 @@ class Adminintropage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.red[700],
         title: const Text(
           "Admin",
           style: TextStyle(fontFamily: 'custom'),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
+        leading: IconButton(onPressed: () {
                 showDialog(
                     context: context,
                     builder: (ctx) {
@@ -44,9 +41,8 @@ class Adminintropage extends StatelessWidget {
                         ],
                       );
                     });
-              },
-              icon: Icon(Icons.logout_rounded))
-        ],
+              }, icon: Icon(Icons.logout_rounded)),
+       
       ),
       body: SafeArea(
         child: Column(

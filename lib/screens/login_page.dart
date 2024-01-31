@@ -171,18 +171,43 @@ class _loginPageState extends State<loginPage> {
     );
   }
 
-  loginfun(name1, password1) async {
-    for (var i = 0; i < logCheck.length; i++) {
-      if (logCheck[i].name == name1 && logCheck[i].password == password1) {
-        if (_formKey.currentState!.validate()) {
+  loginfun(String name1, String password1) async {
+    if (_formKey.currentState!.validate()) {
+      for (var i = 0; i < logCheck.length; i++) {
+        if (logCheck[i].name == name1 && logCheck[i].password == password1) {
           final sharedpref = await SharedPreferences.getInstance();
-           sharedpref.setBool(Keys, true);
+          sharedpref.setBool(Keys, true);
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Homeworkout();
           }));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Invalid Username and Password'),
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
+            margin: EdgeInsets.only(left: 8, right: 8, bottom: 35),
+          ));
         }
-      }
+      } 
     }
+    // print(logCheck);
+    // print(name1);
+    // print(password1);
+    // for (var i = 0; i < logCheck.length; i++) {
+    //   if (logCheck[i].name == name1 && logCheck[i].password == password1) {
+    //     print(logCheck[i].name);
+    //     print(logCheck[i].password);
+    //     final sharedpref = await SharedPreferences.getInstance();
+    //     sharedpref.setBool(Keys, true);
+    //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
+    //       return Homeworkout();
+    //     }));
+    //     if (_formKey.currentState!.validate()) {
+    //       break;
+    //     }
+    //   }
+    // }
   }
 }
