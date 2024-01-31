@@ -1,11 +1,11 @@
 import 'package:cross_fit/db/functions/signup_function.dart';
+import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/home_page/workout_page.dart';
-import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/login&signup/signup_page.dart';
+import 'package:cross_fit/screens/spalsh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'intro_page.dart';
 
 class loginPage extends StatefulWidget {
   const loginPage({super.key});
@@ -172,42 +172,41 @@ class _loginPageState extends State<loginPage> {
   }
 
   loginfun(String name1, String password1) async {
+    bool isEmpty=false;
     if (_formKey.currentState!.validate()) {
-      for (var i = 0; i < logCheck.length; i++) {
-        if (logCheck[i].name == name1 && logCheck[i].password == password1) {
+      print('yes');
+      print(logCheck);
+    
+      for (int i=0;i< logCheck.length; i++) {
+        isEmpty= false;
+        if (logCheck[i].name == name1 &&logCheck[i].password == password1) {
+          print('inside');
           final sharedpref = await SharedPreferences.getInstance();
           sharedpref.setBool(Keys, true);
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Homeworkout();
           }));
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('Invalid Username and Password'),
-            duration: Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.red,
-            margin: EdgeInsets.only(left: 8, right: 8, bottom: 35),
-          ));
+          break;
+        }else{
+          isEmpty=true;
         }
-      } 
+        
+      }
+
+      if(isEmpty==true){
+ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Invalid Username and Password'),
+        duration: Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.red,
+        margin: EdgeInsets.only(left: 8, right: 8, bottom: 35),
+      ));
+    
+      }
+      
+ 
+      
     }
-    // print(logCheck);
-    // print(name1);
-    // print(password1);
-    // for (var i = 0; i < logCheck.length; i++) {
-    //   if (logCheck[i].name == name1 && logCheck[i].password == password1) {
-    //     print(logCheck[i].name);
-    //     print(logCheck[i].password);
-    //     final sharedpref = await SharedPreferences.getInstance();
-    //     sharedpref.setBool(Keys, true);
-    //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
-    //       return Homeworkout();
-    //     }));
-    //     if (_formKey.currentState!.validate()) {
-    //       break;
-    //     }
-    //   }
-    // }
   }
 }

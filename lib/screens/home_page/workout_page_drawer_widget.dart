@@ -1,11 +1,11 @@
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/home_page/privacy_policy.dart';
-import 'package:cross_fit/screens/login_page.dart';
+import 'package:cross_fit/screens/login&signup/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../admins_screens/admin_login.dart';
-import '../bmi_calculator.dart';
-import '../intro_page.dart';
+import '../spalsh_page.dart';
+import 'bmi_calculator/bmi_calculator.dart';
 import 'about_page.dart';
 import 'information_page.dart';
 

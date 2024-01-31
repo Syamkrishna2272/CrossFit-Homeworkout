@@ -1,4 +1,4 @@
-import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/login&signup/signup_page.dart';
 import 'package:hive/hive.dart';
 import '../model/signup_data_model.dart';
 

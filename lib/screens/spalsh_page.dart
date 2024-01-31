@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:cross_fit/db/functions/signup_function.dart';
-import 'package:cross_fit/screens/intro_page.dart';
-import 'package:cross_fit/screens/login_page.dart';
+import 'package:cross_fit/screens/login&signup/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page/workout_page.dart';
 
+
+const Keys = "success";
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);
 

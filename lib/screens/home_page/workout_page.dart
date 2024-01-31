@@ -5,7 +5,7 @@ import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/home_page/workout_page_drawer_widget.dart';
-import 'package:cross_fit/screens/signup_page.dart';
+import 'package:cross_fit/screens/login&signup/signup_page.dart';
 import 'package:flutter/material.dart';
 import '../challenges_screen/fullbody_page.dart';
 

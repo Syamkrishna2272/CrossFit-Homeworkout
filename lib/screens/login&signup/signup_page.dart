@@ -1,10 +1,10 @@
 import 'package:cross_fit/db/model/signup_data_model.dart';
-import 'package:cross_fit/screens/login_page.dart';
+import 'package:cross_fit/screens/login&signup/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../db/functions/signup_function.dart';
-import 'home_page/workout_page.dart';
+import '../../db/functions/signup_function.dart';
+import '../home_page/workout_page.dart';
 
 const key1 = "success";
 
@@ -315,12 +315,12 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> onsignupclicked(context) async {
-    final _name = _nameController.text;
-    final _email = _emailController.text;
-    final _phone = _phoneController.text;
-    final _password = _passwordController.text;
-    final _height = _heightController.text;
-    final _weight = _weightController.text;
+    final _name = _nameController.text.trim();
+    final _email = _emailController.text.trim();
+    final _phone = _phoneController.text.trim();
+    final _password = _passwordController.text.trim();
+    final _height = _heightController.text.trim();
+    final _weight = _weightController.text.trim();
 
     if (_formKey.currentState!.validate()) {
       final signup = signupmodel(
