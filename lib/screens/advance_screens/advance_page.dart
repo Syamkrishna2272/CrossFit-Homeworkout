@@ -76,12 +76,12 @@ class advance extends StatelessWidget {
                            Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
                             return AdvanceWidget(datas:Legadvance ,text: 'Leg',);
-                          }));
+                          })); 
                           break;
                         case 5:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return AdvanceWidget(datas: Wingsadvance,text: 'Win',);
+                            return AdvanceWidget(datas: Wingsadvance,text: 'Wings',);
                           }));
                           break;
                       }

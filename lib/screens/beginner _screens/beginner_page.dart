@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/screens/workout_details.dart';
@@ -58,25 +57,37 @@ class _beginnerState extends State<beginner> {
                         case 0:
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return  BeginnerWidget(notifier: chestnotifier,text:'Chest' ,);
+                            return BeginnerWidget(
+                              notifier: chestnotifier,
+                              text: 'Chest',
+                            );
                           }));
                           break;
                         case 1:
-                           Navigator.of(context)
+                          Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return  BeginnerWidget(notifier: shouldernotifier,text:'Shoulder' ,);
+                            return BeginnerWidget(
+                              notifier: shouldernotifier,
+                              text: 'Shoulder',
+                            );
                           }));
                           break;
                         case 2:
-                            Navigator.of(context)
+                          Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return  BeginnerWidget(notifier: legnotifier,text:'Leg' ,);
+                            return BeginnerWidget(
+                              notifier: legnotifier,
+                              text: 'Leg',
+                            );
                           }));
                           break;
                         case 3:
-                            Navigator.of(context)
+                          Navigator.of(context)
                               .push(MaterialPageRoute(builder: (ctx) {
-                            return  BeginnerWidget(notifier: absnotifier,text:'Abs' ,);
+                            return BeginnerWidget(
+                              notifier: absnotifier,
+                              text: 'Abs',
+                            );
                           }));
                           break;
                       }

@@ -186,6 +186,7 @@ class _loginPageState extends State<loginPage> {
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Homeworkout();
           }));
+          x=i;
           break;
         }else{
           isEmpty=true;
@@ -209,3 +210,4 @@ ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
     }
   }
 }
+int x=0;

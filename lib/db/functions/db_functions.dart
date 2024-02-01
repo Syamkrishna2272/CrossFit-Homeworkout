@@ -43,12 +43,8 @@ Future<void> editAllworkout(int id, Workoutmodel value) async {
 
   final workoutDB = await Hive.openBox<Workoutmodel>('workout_db');
 
-  // await workoutDB.
+  // await workoutDB. 
 
   await workoutDB.put(id, value);
   getAllworkout();
 }
-
-
-
-

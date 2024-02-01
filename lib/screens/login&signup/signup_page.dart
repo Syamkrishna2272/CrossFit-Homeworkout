@@ -7,7 +7,7 @@ import '../../db/functions/signup_function.dart';
 import '../home_page/workout_page.dart';
 
 const key1 = "success";
-
+dynamic perid;
 dynamic pername;
 dynamic peremail;
 dynamic perpassword;
@@ -310,7 +310,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ],
             ),
-          ))),
+          ))
+          ),
     );
   }
 
@@ -323,7 +324,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final _weight = _weightController.text.trim();
 
     if (_formKey.currentState!.validate()) {
-      final signup = signupmodel(
+      final signup = signupmodel(        
           name: _name,
           email: _email,
           phone: _phone,

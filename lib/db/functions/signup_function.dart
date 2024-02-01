@@ -23,5 +23,13 @@ Future<void> getsignup() async {
     perphone = i.phone;
     perheight = i.height;
     perweight = i.weight;
+    perid=i.id;
+    print('id==${i.id}');
   }
+}
+
+Future<void> editallprofile(int id, signupmodel value) async {
+  final signupDB = await Hive.openBox<signupmodel>('signup_db');
+  await signupDB.put(id, value);
+  getsignup();
 }

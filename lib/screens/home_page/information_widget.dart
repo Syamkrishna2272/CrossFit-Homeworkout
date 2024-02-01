@@ -1,6 +1,9 @@
+import 'package:cross_fit/db/functions/signup_function.dart';
+import 'package:cross_fit/screens/home_page/information_edit.dart';
 import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:flutter/material.dart';
 import '../../db/model/signup_data_model.dart';
+import '../login&signup/login_page.dart';
 
 // ignore: must_be_immutable, camel_case_types
 class personalContainer extends StatelessWidget {
@@ -26,7 +29,7 @@ class personalContainer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'Name : ${data.name}',
+                'Name : ${logCheck[x].name}',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -48,7 +51,7 @@ class personalContainer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'Email : ${data.email}',
+                'Email : ${logCheck[x].email}',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -70,7 +73,7 @@ class personalContainer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'Phone : ${data.phone}',
+                'Phone : ${logCheck[x].phone}',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -93,7 +96,7 @@ class personalContainer extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Height : ${datas.height}',
+                  'Height : ${logCheck[x].height}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
@@ -112,7 +115,7 @@ class personalContainer extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Weight : ${datas.weight}',
+                  'Weight : ${logCheck[x].weight}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
@@ -135,7 +138,7 @@ class personalContainer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'BMI : ${calculateBMI(data.height, data.weight)}',
+                'BMI : ${calculateBMI(logCheck[x].height, logCheck[x].weight)}',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -144,7 +147,34 @@ class personalContainer extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                return PersonalinfoEdit(
+                  data: data,
+                );
+              }));
+            },
+            child: Container(
+              height: 40,
+              width: 170,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.red),
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black54,
+              ),
+              child: Center(
+                  child: Text(
+                "Edit your Profile",
+                style: TextStyle(
+                    fontFamily: 'custom', color: Colors.white, fontSize: 12),
+              )),
+            ),
+          ),
+        ),
       ],
     );
   }

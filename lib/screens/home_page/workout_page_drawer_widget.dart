@@ -23,26 +23,27 @@ class Drawer_page extends StatelessWidget {
           child: ListView(
             children: [
               ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.info,
                   ),
                   iconColor: Colors.black,
-                  title: Text("ABOUT", style: TextStyle(color: Colors.black)),
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (ctx) {
-                      return AboutScreen();
-                    }));
-                  }),
-              ListTile(
-                  leading: Icon(Icons.receipt),
-                  iconColor: Colors.black,
-                  title: Text("PRIVACY & POLICY ",
+                  title: const Text("ABOUT",
                       style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (ctx) {
-                      return PrivacyPolicyscreen();
+                      return const AboutScreen();
+                    }));
+                  }),
+              ListTile(
+                  leading: const Icon(Icons.receipt),
+                  iconColor: Colors.black,
+                  title: const Text("PRIVACY & POLICY ",
+                      style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (ctx) {
+                      return const PrivacyPolicyscreen();
                     }));
                   }),
               ListTile(
@@ -52,7 +53,7 @@ class Drawer_page extends StatelessWidget {
                     style: TextStyle(color: Colors.black)),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return PersonalInfo();
+                    return const PersonalInfo();
                   }));
                 },
               ),
@@ -126,7 +127,7 @@ class Drawer_page extends StatelessWidget {
                     const Text("ADMIN", style: TextStyle(color: Colors.black)),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return Adminloginpage();
+                    return const Adminloginpage();
                   }));
                 },
               ),
@@ -140,19 +141,19 @@ class Drawer_page extends StatelessWidget {
                       context: context,
                       builder: (ctx) {
                         return AlertDialog(
-                          content: Text("Do you want to Logout ?"),
+                          content: const Text("Do you want to Logout ?"),
                           actions: [
                             TextButton(
                                 onPressed: () {
                                   getsignup();
                                   logout(context);
                                 },
-                                child: Text("Yes")),
+                                child: const Text("Yes")),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text("No"))
+                                child: const Text("No"))
                           ],
                         );
                       });
@@ -181,7 +182,7 @@ class Drawer_page extends StatelessWidget {
     final sharedpref = await SharedPreferences.getInstance();
     sharedpref.setBool(Keys, false);
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx) {
-      return loginPage();
+      return const loginPage();
     }), (route) => false);
   }
 }

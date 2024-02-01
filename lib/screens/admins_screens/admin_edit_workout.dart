@@ -266,7 +266,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 
-    if ( validation.currentState!.validate()) {
+    if (validation.currentState!.validate()) {
       final workout = Workoutmodel(
           id: id,
           category: _selectedcategory!,
