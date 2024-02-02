@@ -4,6 +4,7 @@ import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/screens/workout_details.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:lottie/lottie.dart';
 import '../../db/functions/beginner_function.dart';
 import 'beginner_widget.dart';
 
@@ -170,8 +171,13 @@ class Search extends SearchDelegate {
                     .toLowerCase()
                     .contains(query.toLowerCase()))
                 .toList();
-            if (query.isEmpty) {
-              return const SizedBox();
+            if (query.isEmpty || filteredData.isEmpty) {
+              return Center(
+                child: Lottie.asset(
+                    'assets/animation/Animation - 1706848553710.json',
+                    width: 200,
+                    height: 200),
+              );
             } else if (filteredData.isEmpty) {
               return const Column(
                 mainAxisAlignment: MainAxisAlignment.center,

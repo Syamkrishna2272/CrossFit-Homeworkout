@@ -171,14 +171,14 @@ class _loginPageState extends State<loginPage> {
   }
 
   loginfun(String name1, String password1) async {
-    bool isEmpty=false;
+    bool isEmpty = false;
     if (_formKey.currentState!.validate()) {
       print('yes');
       print(logCheck);
-    
-      for (int i=0;i< logCheck.length; i++) {
-        isEmpty= false;
-        if (logCheck[i].name == name1 &&logCheck[i].password == password1) {
+
+      for (int i = 0; i < logCheck.length; i++) {
+        isEmpty = false;
+        if (logCheck[i].name == name1 && logCheck[i].password == password1) {
           print('inside');
           final sharedpref = await SharedPreferences.getInstance();
           sharedpref.setBool(Keys, true);
@@ -186,28 +186,24 @@ class _loginPageState extends State<loginPage> {
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Homeworkout();
           }));
-          x=i;
+          x = i;
           break;
-        }else{
-          isEmpty=true;
+        } else {
+          isEmpty = true;
         }
-        
       }
 
-      if(isEmpty==true){
-ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Invalid Username and Password'),
-        duration: Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.red,
-        margin: EdgeInsets.only(left: 8, right: 8, bottom: 35),
-      ));
-    
+      if (isEmpty == true) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Invalid Username and Password'),
+          duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.red,
+          margin: EdgeInsets.only(left: 8, right: 8, bottom: 35),
+        ));
       }
-      
- 
-      
     }
   }
 }
-int x=0;
+
+int x = 0;

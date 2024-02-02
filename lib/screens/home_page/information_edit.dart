@@ -24,11 +24,6 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
   @override
   void initState() {
     super.initState();
-    // _nameController.text=widget.data.name;
-    // _emailController.text=widget.data.email;
-    // _phoneController.text=widget.data.phone;
-    // _heightController.text=widget.data.height;
-    // _weightController.text=widget.data.weight;
     _nameController = TextEditingController(text: widget.data.name);
     _emailController = TextEditingController(text: widget.data.email);
     _phoneController = TextEditingController(text: widget.data.phone);
