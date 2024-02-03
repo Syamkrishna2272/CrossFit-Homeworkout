@@ -23,7 +23,7 @@ Future<void> getsignup() async {
     perphone = i.phone;
     perheight = i.height;
     perweight = i.weight;
-    perid=i.id;
+    perid = i.id;
     print('id==${i.id}');
   }
 }

@@ -20,6 +20,7 @@ class _warmUpState extends State<warmUp> {
   late Map<int, Timer> timers;
   late Map<int, int> remainingTimes;
   late Map<int, bool> completionState;
+  late int currentplayingindex;
 
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _warmUpState extends State<warmUp> {
     timers = {};
     remainingTimes = {};
     completionState = {};
+    currentplayingindex = -1;
   }
 
   @override
@@ -67,9 +69,9 @@ class _warmUpState extends State<warmUp> {
                   return GestureDetector(
                     onTap: () {
                       startTimer(index);
-                      setState(() {
-                        isPlayingList[index] = !isPlayingList[index];
-                      });
+                      // setState(() {
+                      //   isPlayingList[index] = !isPlayingList[index];
+                      // });
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -98,9 +100,14 @@ class _warmUpState extends State<warmUp> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    startTimer(index);
                                     setState(() {
-                                      isPlayingList[index] = true;
+                                      if (isPlayingList[index]) {
+                                        isPlayingList[index] = false;
+                                        timers[index]!.cancel();
+                                      } else {
+                                        isPlayingList[index] = true;
+                                        startTimer(index);
+                                      }
                                     });
                                   },
                                   icon: Icon(
@@ -127,14 +134,12 @@ class _warmUpState extends State<warmUp> {
                                             color: Colors.green,
                                             size: 25,
                                           )
-                                    : Visibility(
-                                        visible: isPlayingList[index],
-                                        child: Text(
-                                          '${remainingTimes[index] ?? 0}s',
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600),
-                                        )),
+                                    : Text(
+                                        '${remainingTimes[index] ?? 0}s',
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600),
+                                      ),
                                 const SizedBox(
                                   width: 35,
                                 )
@@ -165,15 +170,43 @@ class _warmUpState extends State<warmUp> {
     );
   }
 
+  // void startTimer(int index) {
+  //     timers[index]?.cancel();
+  //     remainingTimes[index] = 20;
+  //     timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
+  //       if (mounted) {
+  //         setState(() {
+  //           if (remainingTimes[index]! > 0 && isPlayingList[index]) {
+  //             remainingTimes[index] = remainingTimes[index]! - 1;
+  //           } else {
+  //             isPlayingList[index] = false;
+  //             timer.cancel();
+  //             completionState[index] = true;
+  //             W1.add(1);
+  //           }
+  //         });
+  //       }
+  //     });
+  // }
+
   void startTimer(int index) {
-      timers[index]?.cancel();
+    setState(() {
+      if (currentplayingindex != -1 && currentplayingindex != index) {
+        // Stop the previously playing animation
+        isPlayingList[currentplayingindex] = false;
+        timers[currentplayingindex]!.cancel();
+      }
+      currentplayingindex = index;
+      isPlayingList[index] = true;
       remainingTimes[index] = 20;
       timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (mounted) {
+        if (mounted && isPlayingList[index]) {
           setState(() {
-            if (remainingTimes[index]! > 0 && isPlayingList[index]) {
+            if (remainingTimes[index]! > 0) {
+              // If the animation is playing, decrement the remaining time
               remainingTimes[index] = remainingTimes[index]! - 1;
             } else {
+              // If the remaining time is 0, stop the animation
               isPlayingList[index] = false;
               timer.cancel();
               completionState[index] = true;
@@ -182,6 +215,7 @@ class _warmUpState extends State<warmUp> {
           });
         }
       });
+    });
   }
 
   check() {

@@ -289,7 +289,17 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
           weight: weight);
 
       editallprofile(data.id!, info);
+
       Navigator.of(context).pop();
+      clearinfo();
     }
+  }
+
+  clearinfo() {
+    _nameController.text = '';
+    _emailController.text = '';
+    _phoneController.text = '';
+    _heightController.text = '';
+    _weightController.text = '';
   }
 }

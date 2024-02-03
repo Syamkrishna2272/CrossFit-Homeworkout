@@ -274,7 +274,7 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
           bodypart: _selectedbodypart!,
           image: image!,
           reps: _reps,
-          description: _description);
+          description: _description); 
 
       editAllworkout(id!, workout);
       Navigator.of(context).pop();

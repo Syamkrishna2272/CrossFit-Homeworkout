@@ -159,10 +159,12 @@ class Drawer_page extends StatelessWidget {
                       });
                 },
               ),
-              const ListTile(
-                title: Text(
-                  "Version 1.2D ",
-                  style: TextStyle(color: Colors.black54, fontSize: 12),
+              Center(
+                child: const ListTile(
+                  title: Text(
+                    "Version 1.2D ",
+                    style: TextStyle(color: Colors.black54, fontSize: 12),
+                  ),
                 ),
               )
             ],
