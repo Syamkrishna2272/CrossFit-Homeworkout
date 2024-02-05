@@ -187,36 +187,37 @@ class _warmUpState extends State<warmUp> {
   //         });
   //       }
   //     });
-  // }
+  //}
 
   void startTimer(int index) {
-    setState(() {
-      if (currentplayingindex != -1 && currentplayingindex != index) {
-        // Stop the previously playing animation
-        isPlayingList[currentplayingindex] = false;
-        timers[currentplayingindex]!.cancel();
+  setState(() {
+    if (currentplayingindex != -1 && currentplayingindex != index) {
+      // Stop the previously playing animation
+      isPlayingList[currentplayingindex] = false;
+      timers[currentplayingindex]!.cancel();
+    }
+    currentplayingindex = index;
+    isPlayingList[index] = true;
+    remainingTimes[index] = 20;
+    timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted && isPlayingList[index]) {
+        setState(() {
+          if (remainingTimes[index]! > 0) {
+            // If the animation is playing, decrement the remaining time
+            remainingTimes[index] = remainingTimes[index]! - 1;
+          } else {
+            // If the remaining time is 0, stop the animation
+            isPlayingList[index] = false;
+            timer.cancel();
+            completionState[index] = true;
+            W1.add(1);
+          }
+        });
       }
-      currentplayingindex = index;
-      isPlayingList[index] = true;
-      remainingTimes[index] = 20;
-      timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (mounted && isPlayingList[index]) {
-          setState(() {
-            if (remainingTimes[index]! > 0) {
-              // If the animation is playing, decrement the remaining time
-              remainingTimes[index] = remainingTimes[index]! - 1;
-            } else {
-              // If the remaining time is 0, stop the animation
-              isPlayingList[index] = false;
-              timer.cancel();
-              completionState[index] = true;
-              W1.add(1);
-            }
-          });
-        }
-      });
     });
-  }
+  });
+}
+
 
   check() {
     print('length is==${W1.length}');

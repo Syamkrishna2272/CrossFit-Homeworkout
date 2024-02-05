@@ -6,13 +6,26 @@ import '../../db/model/signup_data_model.dart';
 import '../login&signup/login_page.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class personalContainer extends StatelessWidget {
+class personalContainer extends StatefulWidget {
   personalContainer({
     required this.data,
     super.key,
   });
   signupmodel data;
 
+  @override
+  State<personalContainer> createState() => _personalContainerState();
+}
+
+class _personalContainerState extends State<personalContainer> {
+  late signupmodel userdata;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userdata=widget.data;
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -154,7 +167,8 @@ class personalContainer extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                 return PersonalinfoEdit(
-                  data: data,
+                  data: widget.data,
+                  onUpdate: updateUserdata,
                 );
               }));
             },
@@ -184,5 +198,11 @@ class personalContainer extends StatelessWidget {
     double weight = double.parse(we);
     double heightInMeters = weight / (height * height);
     return heightInMeters.floor();
+  }
+
+  void updateUserdata(signupmodel newdata){
+    setState(() {
+      userdata=newdata;
+    });
   }
 }

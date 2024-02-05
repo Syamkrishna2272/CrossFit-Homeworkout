@@ -7,7 +7,8 @@ import 'package:flutter/services.dart';
 
 class PersonalinfoEdit extends StatefulWidget {
   final signupmodel data;
-  const PersonalinfoEdit({Key? key, required this.data}) : super(key: key);
+  final Function(signupmodel)onUpdate;
+  const PersonalinfoEdit({Key? key, required this.data,required this.onUpdate}) : super(key: key);
 
   @override
   State<PersonalinfoEdit> createState() => _PersonalinfoEditState();
@@ -240,7 +241,8 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
                   child: Center(
                     child: InkWell(
                       onTap: () {
-                        onUpdatebutton(context, widget.data);
+                        onUpdatebutton();
+                        clearinfo();
                       },
                       child: Container(
                         height: 40,
@@ -270,8 +272,8 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
     );
   }
 
-  Future<void> onUpdatebutton(context, signupmodel data) async {
-    print(data.id);
+  Future<void> onUpdatebutton() async {
+    // print(data.id);
     final name = _nameController.text.trim();
     final email = _emailController.text.trim();
     final phone = _phoneController.text.trim();
@@ -280,15 +282,16 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
 
     if (validation.currentState!.validate()) {
       final info = signupmodel(
-          id: data.id,
+          id: widget.data.id,
           name: name,
           email: email,
           phone: phone,
-          password: data.password,
+          password: widget.data.password,
           height: height,
           weight: weight);
 
-      editallprofile(data.id!, info);
+      editallprofile(widget.data.id!, info);
+      widget.onUpdate(info);
 
       Navigator.of(context).pop();
       clearinfo();
