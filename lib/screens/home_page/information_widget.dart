@@ -1,6 +1,5 @@
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/screens/home_page/information_edit.dart';
-import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:flutter/material.dart';
 import '../../db/model/signup_data_model.dart';
 import '../login&signup/login_page.dart';
@@ -24,8 +23,9 @@ class _personalContainerState extends State<personalContainer> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    userdata=widget.data;
+    userdata = widget.data;
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -200,9 +200,9 @@ class _personalContainerState extends State<personalContainer> {
     return heightInMeters.floor();
   }
 
-  void updateUserdata(signupmodel newdata){
+  void updateUserdata(signupmodel newdata) {
     setState(() {
-      userdata=newdata;
+      userdata = newdata;
     });
   }
 }

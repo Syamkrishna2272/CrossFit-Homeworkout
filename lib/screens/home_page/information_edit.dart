@@ -1,7 +1,6 @@
-import 'package:cross_fit/db/functions/advance_function.dart';
+
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
-import 'package:cross_fit/screens/home_page/workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

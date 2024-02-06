@@ -19,6 +19,7 @@ class _warmUpState extends State<warmUp> {
   late List<bool> isPlayingList;
   late Map<int, Timer> timers;
   late Map<int, int> remainingTimes;
+  late Map<int, int> initialDuration;
   late Map<int, bool> completionState;
   late int currentplayingindex;
 
@@ -27,9 +28,14 @@ class _warmUpState extends State<warmUp> {
     super.initState();
     isPlayingList = List.generate(exercisedata.length, (index) => false);
     timers = {};
+    initialDuration = {};
     remainingTimes = {};
     completionState = {};
     currentplayingindex = -1;
+
+    for (int i = 0; i < exercisedata.length; i++) {
+      initialDuration[i] = 20;
+    }
   }
 
   @override
@@ -170,54 +176,53 @@ class _warmUpState extends State<warmUp> {
     );
   }
 
-  // void startTimer(int index) {
-  //     timers[index]?.cancel();
-  //     remainingTimes[index] = 20;
-  //     timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //       if (mounted) {
-  //         setState(() {
-  //           if (remainingTimes[index]! > 0 && isPlayingList[index]) {
-  //             remainingTimes[index] = remainingTimes[index]! - 1;
-  //           } else {
-  //             isPlayingList[index] = false;
-  //             timer.cancel();
-  //             completionState[index] = true;
-  //             W1.add(1);
-  //           }
-  //         });
-  //       }
-  //     });
-  //}
-
   void startTimer(int index) {
-  setState(() {
-    if (currentplayingindex != -1 && currentplayingindex != index) {
-      // Stop the previously playing animation
-      isPlayingList[currentplayingindex] = false;
-      timers[currentplayingindex]!.cancel();
-    }
-    currentplayingindex = index;
-    isPlayingList[index] = true;
-    remainingTimes[index] = 20;
-    timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (mounted && isPlayingList[index]) {
-        setState(() {
-          if (remainingTimes[index]! > 0) {
-            // If the animation is playing, decrement the remaining time
-            remainingTimes[index] = remainingTimes[index]! - 1;
-          } else {
-            // If the remaining time is 0, stop the animation
-            isPlayingList[index] = false;
-            timer.cancel();
-            completionState[index] = true;
-            W1.add(1);
-          }
-        });
+    setState(() {
+      if (currentplayingindex != -1 && currentplayingindex != index) {
+        // Stop the previously playing animation
+        isPlayingList[currentplayingindex] = false;
+        timers[currentplayingindex]!.cancel();
+      }
+      currentplayingindex = index;
+      isPlayingList[index] = true;
+      remainingTimes[index] ??= initialDuration[index]!;
+      timers[index] = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (mounted && isPlayingList[index]) {
+          setState(() {
+            if (remainingTimes[index]! > 0) {
+              // If the animation is playing, decrement the remaining time
+              remainingTimes[index] = remainingTimes[index]! - 1;
+            } else {
+              // If the remaining time is 0, stop the animation
+              isPlayingList[index] = false;
+              timer.cancel();
+              completionState[index] = true;
+              W1.add(1);
+            }
+          });
+        }
+      });
+    });
+  }
+
+  void pauseTime(int index) {
+    setState(() {
+      if (timers.containsKey(index)) {
+        timers[index]!.cancel();
+        timers.remove(index);
+        remainingTimes[index] = remainingTimes[index]!;
+      }
+      isPlayingList[index] = false;
+    });
+  }
+
+  void resumeTime(int index) {
+    setState(() {
+      if (remainingTimes.containsKey(index)) {
+        startTimer(index);
       }
     });
-  });
-}
-
+  }
 
   check() {
     print('length is==${W1.length}');
