@@ -75,9 +75,6 @@ class _warmUpState extends State<warmUp> {
                   return GestureDetector(
                     onTap: () {
                       startTimer(index);
-                      // setState(() {
-                      //   isPlayingList[index] = !isPlayingList[index];
-                      // });
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -169,7 +166,7 @@ class _warmUpState extends State<warmUp> {
                 onPressed: () {
                   check();
                 },
-                child: const Text("Complete"))
+                child: const Text("Complete",style: TextStyle(fontFamily: 'custom',fontSize: 13,color: Colors.red ),))
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:cross_fit/screens/beginner%20_screens/beginner_page.dart';
 import 'package:cross_fit/screens/home_page/workout_page_drawer_widget.dart';
 import 'package:cross_fit/screens/login&signup/signup_page.dart';
 import 'package:flutter/material.dart';
+import '../beginner _screens/search.dart';
 import '../challenges_screen/fullbody_page.dart';
 
 var datas = signupmodel(
