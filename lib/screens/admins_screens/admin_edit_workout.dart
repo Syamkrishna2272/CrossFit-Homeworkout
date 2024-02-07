@@ -236,7 +236,8 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
                   height: 45,
                   child: ElevatedButton(
                       onPressed: () {
-                        onAddButtonClicked(context, widget.editmodel.id);
+                        onAddButtonClicked(context, widget.editmodel.id,
+                            widget.editmodel.image);
                       },
                       style: ElevatedButton.styleFrom(
                           side: const BorderSide(color: Colors.red),
@@ -259,10 +260,8 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
     );
   }
 
-  Future<void> onAddButtonClicked(context, int? id) async {
-    // final _category = _catagoryController.text.trim();
+  Future<void> onAddButtonClicked(context, int? id, String imagedefult) async {
     final _workoutname = _workoutnameController.text.trim();
-    // final _bodypart = _bodypartController.text.trim();
     final _reps = _repsController.text.trim();
     final _description = _descriptionController.text.trim();
 
@@ -272,9 +271,9 @@ class _AdmineditworkoutpageState extends State<Admineditworkoutpage> {
           category: _selectedcategory!,
           workoutname: _workoutname,
           bodypart: _selectedbodypart!,
-          image: image!,
+          image: image == null ? imagedefult : image!,
           reps: _reps,
-          description: _description); 
+          description: _description);
 
       editAllworkout(id!, workout);
       Navigator.of(context).pop();

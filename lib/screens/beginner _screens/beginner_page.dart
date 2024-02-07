@@ -1,3 +1,4 @@
+
 import 'package:cross_fit/db/functions/db_functions.dart';
 import 'package:flutter/material.dart';
 import '../../db/functions/beginner_function.dart';
@@ -130,3 +131,5 @@ class _beginnerState extends State<beginner> {
     );
   }
 }
+
+

@@ -1,22 +1,20 @@
-
 import 'package:cross_fit/db/model/data_model.dart';
 import 'package:cross_fit/screens/advance_screens/advance_page.dart';
 import 'package:hive/hive.dart';
 
 import '../model/advance_data_model.dart';
 
-List chestadvance=[];
-List Shoulderadvance=[];
-List Bicepsadvance=[];
-List Tricepsadvance=[];
-List Legadvance=[];
-List Wingsadvance=[];
-
+List chestadvance = [];
+List Shoulderadvance = [];
+List Bicepsadvance = [];
+List Tricepsadvance = [];
+List Legadvance = [];
+List Wingsadvance = [];
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 Chestadding(Advancemodel value) async {
-    final chest = await Hive.openBox<Advancemodel>('chests_db');
+  final chest = await Hive.openBox<Advancemodel>('chests_db');
   chest.put(value.id, value);
   Getallchest();
 }
@@ -69,15 +67,15 @@ Getallshoulder() async {
 
 Getallbiceps() async {
   final Biceps = await Hive.openBox<Advancemodel>('biceps_db');
-Bicepsadvance.clear();
-Bicepsadvance.addAll(Biceps.values);
+  Bicepsadvance.clear();
+  Bicepsadvance.addAll(Biceps.values);
   print(Biceps.values);
 }
 
 Getalltriceps() async {
   final Triceps = await Hive.openBox<Advancemodel>('triceps_db');
- Tricepsadvance.clear();
- Tricepsadvance.addAll(Triceps.values);
+  Tricepsadvance.clear();
+  Tricepsadvance.addAll(Triceps.values);
   print(Triceps.values);
 }
 
@@ -126,13 +124,12 @@ getAdvanceworkout() async {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+deleteadvance(int id, Workoutmodel value) async {
+  print('checking');
 
-  deleteadvance(int id, Workoutmodel value) async {
-    print('checking');
-    
   if (value.category == 'ADVANCED' && value.bodypart == 'Chest') {
     print('hello');
-      final chest = await Hive.openBox<Advancemodel>('chests_db');
+    final chest = await Hive.openBox<Advancemodel>('chests_db');
 
     chest.delete(id);
     print('deleted');
@@ -159,7 +156,6 @@ getAdvanceworkout() async {
     Getallwings();
   }
 }
-
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

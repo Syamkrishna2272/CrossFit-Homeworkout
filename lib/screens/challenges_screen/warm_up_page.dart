@@ -166,7 +166,11 @@ class _warmUpState extends State<warmUp> {
                 onPressed: () {
                   check();
                 },
-                child: const Text("Complete",style: TextStyle(fontFamily: 'custom',fontSize: 13,color: Colors.red ),))
+                child: const Text(
+                  "Complete",
+                  style: TextStyle(
+                      fontFamily: 'custom', fontSize: 13, color: Colors.red),
+                ))
           ],
         ),
       ),
@@ -223,7 +227,7 @@ class _warmUpState extends State<warmUp> {
 
   check() {
     print('length is==${W1.length}');
-    if (W1.length == 10) {
+    if (W1.length == 10||W1.length>10) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
         return const Fullbody();
       }));
@@ -238,5 +242,6 @@ class _warmUpState extends State<warmUp> {
           backgroundColor: Colors.red,
           content: Text("Complete all workouts ")));
     }
-  }
+  } 
 }
+ 

@@ -1,4 +1,3 @@
-
 import 'package:cross_fit/db/functions/signup_function.dart';
 import 'package:cross_fit/db/model/signup_data_model.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +5,9 @@ import 'package:flutter/services.dart';
 
 class PersonalinfoEdit extends StatefulWidget {
   final signupmodel data;
-  final Function(signupmodel)onUpdate;
-  const PersonalinfoEdit({Key? key, required this.data,required this.onUpdate}) : super(key: key);
+  final Function(signupmodel) onUpdate;
+  const PersonalinfoEdit({Key? key, required this.data, required this.onUpdate})
+      : super(key: key);
 
   @override
   State<PersonalinfoEdit> createState() => _PersonalinfoEditState();
@@ -29,6 +29,18 @@ class _PersonalinfoEditState extends State<PersonalinfoEdit> {
     _phoneController = TextEditingController(text: widget.data.phone);
     _heightController = TextEditingController(text: widget.data.height);
     _weightController = TextEditingController(text: widget.data.weight);
+  }
+
+  @override
+  void didUpdateWidget(covariant PersonalinfoEdit oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.data != oldWidget.data) {
+      _nameController.text = widget.data.name;
+      _emailController.text = widget.data.email;
+      _phoneController.text = widget.data.phone;
+      _heightController.text = widget.data.height;
+      _weightController.text = widget.data.weight;
+    }
   }
 
   @override

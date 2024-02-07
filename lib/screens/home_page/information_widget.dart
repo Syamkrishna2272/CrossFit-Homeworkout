@@ -15,7 +15,6 @@ class personalContainer extends StatefulWidget {
   @override
   State<personalContainer> createState() => _personalContainerState();
 }
-
 class _personalContainerState extends State<personalContainer> {
   late signupmodel userdata;
 
@@ -167,9 +166,13 @@ class _personalContainerState extends State<personalContainer> {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                 return PersonalinfoEdit(
-                  data: widget.data,
-                  onUpdate: updateUserdata,
-                );
+                    data: userdata,
+                    onUpdate: (newdata) {
+                      setState(() {
+                        // updateallText(newdata);
+                      });
+                    }
+                    );
               }));
             },
             child: Container(
@@ -180,7 +183,7 @@ class _personalContainerState extends State<personalContainer> {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.black54,
               ),
-              child: Center(
+              child: const Center(
                   child: Text(
                 "Edit your Profile",
                 style: TextStyle(
