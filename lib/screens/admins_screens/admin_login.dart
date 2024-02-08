@@ -86,8 +86,16 @@ class _AdminloginpageState extends State<Adminloginpage> {
                         _passwordController.text == '1234') {
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (ctx) {
-                        return Adminintropage();
+                        return const Adminintropage();
                       }));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        content: Text("Incorrect name or Password"),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: Colors.red,
+                        padding: EdgeInsets.all(10),
+                      ));
                     }
                   }
                 },

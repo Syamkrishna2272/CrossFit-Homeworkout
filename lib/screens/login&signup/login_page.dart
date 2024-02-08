@@ -175,7 +175,6 @@ class _loginPageState extends State<loginPage> {
     if (_formKey.currentState!.validate()) {
       print('yes');
       print(logCheck);
-
       for (int i = 0; i < logCheck.length; i++) {
         isEmpty = false;
         if (logCheck[i].name == name1 && logCheck[i].password == password1) {
