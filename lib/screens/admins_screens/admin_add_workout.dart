@@ -11,7 +11,7 @@ class Adminaddworkoutpage extends StatefulWidget {
     {'title': 'ADVANCED'},
   ];
 
-  Adminaddworkoutpage({super.key});
+  Adminaddworkoutpage({super.key}); 
 
   @override
   State<Adminaddworkoutpage> createState() => _AdminaddworkoutpageState();
